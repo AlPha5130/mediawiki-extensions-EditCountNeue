@@ -2,7 +2,7 @@
 
 namespace MediaWiki\Extension\EditCountNeue;
 
-class SpecialEditcount extends FormSpecialPage {
+class SpecialEditCount extends FormSpecialPage {
 	public function __construct() {
 		parent::__construct( 'Editcount', 'EditCount', 'Edit Count' );
 	}

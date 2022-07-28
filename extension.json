@@ -10,7 +10,7 @@
 		"MediaWiki": ">= 1.35.0"
 	},
 	"SpecialPages": {
-		"EditCount": "MediaWiki\\Extension\\EditCountNeue\\Special"
+		"EditCount": "MediaWiki\\Extension\\EditCountNeue\\SpecialEditCount"
 	},
 	"ExtensionMessageFiles": {
 		"EditCountAliases": "EditCount.alias.php"
