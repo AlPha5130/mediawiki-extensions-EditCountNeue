@@ -48,9 +48,7 @@ class EditCountQuery {
 		$queryRes = $this->execute( $user );
 		$res = [];
 		foreach ( $namespaces as $ns ) {
-			if ( $queryRes[$ns] !== null ) {
-				$res[$ns] = $queryRes[$ns];
-			}
+			$res[$ns] = isset( $queryRes[$ns] ) ? $queryRes[$ns] : 0;
 		}
 		return $res;
 	}
