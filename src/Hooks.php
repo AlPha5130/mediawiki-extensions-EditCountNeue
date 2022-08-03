@@ -19,3 +19,28 @@
  */
 
 namespace MediaWiki\Extension\EditCountNeue;
+
+use MediaWiki\User;
+
+class EditCountHooks {
+	public static function onParserFirstCallInit( Parser $parser ) {
+		$parser->setFunctionHook( 'editcount', [ self::class, 'renderEditCount' ] );
+	}
+
+	public static function renderEditCount( Parser $parser, $param1 = '', $param2 = '' ) {
+		$user = UserFactory::newFromName( $param1 );
+		// If user is invalid or does not exist, returns 0
+		if ( $user === null || $user->getId() === 0 ) {
+			return '0';
+		}
+
+		$count = 0;
+		if ( $param2 === '' ) {
+			$count = EditCountQuery::queryAllNamespaces( $user )['all'];
+		} else {
+			$count = EditCountQuery::queryNamespaces( $user, $param2 )[$param2];
+		}
+		$output = "$count";
+		return $output;
+	}
+}
