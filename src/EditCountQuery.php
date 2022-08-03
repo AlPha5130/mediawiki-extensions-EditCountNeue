@@ -73,10 +73,10 @@ class EditCountQuery {
 			->fetchResultSet();
 
 		$nsCount = [];
-		$nsCount['total'] = 0;
+		$nsCount['all'] = 0;
 		foreach ( $res as $row ) {
 			$nsCount[$row->page_namespace] = (int)$row->count;
-			$nsCount['total'] += (int)$row->count;
+			$nsCount['all'] += (int)$row->count;
 		}
 		return $nsCount;
 	}
