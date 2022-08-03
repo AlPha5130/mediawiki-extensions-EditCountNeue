@@ -31,7 +31,7 @@ class EditCountQuery {
 	 * @return array
 	 */
 	public static function queryAllNamespaces( User $user ) {
-		return $this->execute( $user );
+		return self::execute( $user );
 	}
 
 	/**
@@ -45,7 +45,7 @@ class EditCountQuery {
 		if ( !is_array( $namespaces ) ) {
 			$namespaces = [ $namespaces ];
 		}
-		$queryRes = $this->execute( $user );
+		$queryRes = self::execute( $user );
 		$res = [];
 		foreach ( $namespaces as $ns ) {
 			$res[$ns] = isset( $queryRes[$ns] ) ? $queryRes[$ns] : 0;
