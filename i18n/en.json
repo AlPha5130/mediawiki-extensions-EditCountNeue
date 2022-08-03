@@ -4,5 +4,5 @@
 			"Your Name"
 		]
 	},
-	"editcount-desc": "This is an example extension"
+	"editcount-desc": "Retrieves edit counts of a user"
 }

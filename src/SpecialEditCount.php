@@ -20,6 +20,9 @@
 
 namespace MediaWiki\Extension\EditCountNeue;
 
+use Html;
+use MediaWiki\User;
+
 class SpecialEditCount extends FormSpecialPage {
 	public function __construct() {
 		parent::__construct( 'Editcount', 'EditCount', 'Edit Count' );
@@ -50,7 +53,54 @@ class SpecialEditCount extends FormSpecialPage {
 	/**
 	 * @param array $data
 	 */
-	public function onSubmit( array $data ) {}
+	public function onSubmit( array $data ) {
+
+		$user = UserFactory::newFromName( $data['user'] );
+		$result = EditCountQuery::queryAllNamespaces( $user );
+
+		$out = $this->getOutput();
+		$out->enableOOUI();
+
+		// add heading
+		$out->addHTML(
+			'<h2 id="editcount-queryresult">' .
+			$this->msg( 'editcount-resulttitle' )->params( $user->getName() )->parse() .
+			'</h2>'
+		);
+
+		$this->makeTable( $result );
+
+		return Status::newGood();
+	}
+
+	/**
+	 * @param array $data
+	 */
+	protected function makeTable( $data ) {
+		$out = Html::openElement(
+			'table',
+			[ 'class' => 'mw-editcounttable wikitable' ]
+		) . "\n";
+		$out .= Html::openElement( 'thead' ) .
+				Html::openElement( 'tr', [ 'class' => 'mw-editcounttable-header' ] ) .
+				Html::element( 'th', [], $this->msg( 'editcount-user' )->text() ) .
+				Html::element( 'th', [], $this->msg( 'editcount-count')->text() ) .
+				Html::closeElement( 'tr' ) .
+				Html::closeElement( 'thead' ) .
+				Html::openElement( 'tbody' );
+
+		foreach ( $data as $ns => $count ) {
+			$out .= Html::openElement( 'tr', [ 'class' => 'mw-editcounttable-row' ] ) .
+					Html::element( 'td', [ 'class' => 'mw-editcounttable-ns' ], $ns ) .
+					Html::element( 'td', [ 'class' => 'mw-editcounttable-count' ], $count ) .
+					Html::closeElement( 'tr' );
+		}
+
+		$out .= Html::closeElement( 'tbody' ) .
+				Html::closeEmement( 'table' );
+
+		$this->getOutput()->addHTML( $out );
+	}
 
 	/**
 	 * @inheritDoc

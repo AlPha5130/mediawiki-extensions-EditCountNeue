@@ -30,11 +30,12 @@ class EditCountHooks {
 	public static function renderEditCount( Parser $parser, $param1 = '', $param2 = '' ) {
 		$user = UserFactory::newFromName( $param1 );
 		// If user is invalid or does not exist, returns 0
-		if ( $user === null || $user->getId() === 0 ) {
+		if ( !$user || $user->getId() === 0 ) {
 			return '0';
 		}
 
 		$count = 0;
+		// If param2 is not specified, query all namespaces
 		if ( $param2 === '' ) {
 			$count = EditCountQuery::queryAllNamespaces( $user )['all'];
 		} else {
