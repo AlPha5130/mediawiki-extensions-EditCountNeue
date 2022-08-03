@@ -39,7 +39,7 @@ class SpecialEditCount extends FormSpecialPage {
 				'label-message' => 'editcount-user',
 				'required' => true
 			]
-		]
+		];
 	}
 
 	/**
@@ -58,15 +58,12 @@ class SpecialEditCount extends FormSpecialPage {
 		$user = UserFactory::newFromName( $data['user'] );
 		$result = EditCountQuery::queryAllNamespaces( $user );
 
-		$out = $this->getOutput();
-		$out->enableOOUI();
-
 		// add heading
-		$out->addHTML(
-			'<h2 id="editcount-queryresult">' .
-			$this->msg( 'editcount-resulttitle' )->params( $user->getName() )->parse() .
-			'</h2>'
-		);
+		$this->getOutput()->addHTML(Html::element(
+			'h2',
+			[ 'id' => 'editcount-queryresult' ],
+			$this->msg( 'editcount-resulttitle' )->params( $user->getName() )->parse()
+		) );
 
 		$this->makeTable( $result );
 
@@ -82,22 +79,22 @@ class SpecialEditCount extends FormSpecialPage {
 			[ 'class' => 'mw-editcounttable wikitable' ]
 		) . "\n";
 		$out .= Html::openElement( 'thead' ) .
-				Html::openElement( 'tr', [ 'class' => 'mw-editcounttable-header' ] ) .
-				Html::element( 'th', [], $this->msg( 'editcount-user' )->text() ) .
-				Html::element( 'th', [], $this->msg( 'editcount-count')->text() ) .
-				Html::closeElement( 'tr' ) .
-				Html::closeElement( 'thead' ) .
-				Html::openElement( 'tbody' );
+			Html::openElement( 'tr', [ 'class' => 'mw-editcounttable-header' ] ) .
+			Html::element( 'th', [], $this->msg( 'editcount-user' )->text() ) .
+			Html::element( 'th', [], $this->msg( 'editcount-count')->text() ) .
+			Html::closeElement( 'tr' ) .
+			Html::closeElement( 'thead' ) .
+			Html::openElement( 'tbody' );
 
 		foreach ( $data as $ns => $count ) {
 			$out .= Html::openElement( 'tr', [ 'class' => 'mw-editcounttable-row' ] ) .
-					Html::element( 'td', [ 'class' => 'mw-editcounttable-ns' ], $ns ) .
-					Html::element( 'td', [ 'class' => 'mw-editcounttable-count' ], $count ) .
-					Html::closeElement( 'tr' );
+				Html::element( 'td', [ 'class' => 'mw-editcounttable-ns' ], $ns ) .
+				Html::element( 'td', [ 'class' => 'mw-editcounttable-count' ], $count ) .
+				Html::closeElement( 'tr' );
 		}
 
 		$out .= Html::closeElement( 'tbody' ) .
-				Html::closeEmement( 'table' );
+			Html::closeEmement( 'table' );
 
 		$this->getOutput()->addHTML( $out );
 	}
