@@ -95,32 +95,47 @@ class SpecialEditCount extends FormSpecialPage {
 			Html::openElement( 'tbody' );
 
 		foreach ( $data as $ns => $count ) {
-			if ( $ns === 'all' ) {
-				$nsName = $this->msg( 'editcount-all-namespaces' );
-			} elseif ( $ns == NS_MAIN ) {
-				$nsName = $this->msg( 'blanknamespace' );
+			if ( is_int( $ns ) ) {
+				if ( $ns == NS_MAIN ) {
+					$nsName = $this->msg( 'blanknamespace' );
+				} else {
+					$converter = MediaWikiServices::getInstance()->getLanguageConverterFactory()
+						->getLanguageConverter( $lang );
+					$nsName = $converter->convertNamespace( $ns );
+				}
+				$out .= Html::openElement( 'tr', [ 'class' => 'mw-editcounttable-row' ] ) .
+					Html::element(
+						'td',
+						[ 'class' => 'mw-editcounttable-ns' ],
+						$nsName
+					) .
+					Html::element(
+						'td',
+						[ 'class' => 'mw-editcounttable-count' ],
+						$lang->formatNum( $count )
+					) .
+					Html::element(
+						'td',
+						[ 'class' => 'mw-editcounttable-percentage' ],
+						wfPercent( $count / $data['all'] * 100 )
+					)
+					Html::closeElement( 'tr' );
 			} else {
-				$converter = MediaWikiServices::getInstance()->getLanguageConverterFactory()
-					->getLanguageConverter( $lang );
-				$nsName = $converter->convertNamespace( $ns );
+				$nsName = $this->msg( 'editcount-all-namespaces' );
+				$out .= Html::openElement( 'tr', [ 'class' => 'mw-editcounttable-footer' ] ) .
+					Html::element( 'th', [], $nsName ) .
+					Html::element(
+						'th',
+						[ 'class' => 'mw-editcounttable-count' ],
+						$lang->formatNum( $count )
+					) .
+					Html::element(
+						'th',
+						[ 'class' => 'mw-editcounttable-percentage' ],
+						wfPercent( 100 )
+					) .
+					Html::closeElement( 'tr' );
 			}
-			$out .= Html::openElement( 'tr', [ 'class' => 'mw-editcounttable-row' ] ) .
-				Html::element(
-					'td',
-					[ 'class' => 'mw-editcounttable-ns' ],
-					$nsName
-				) .
-				Html::element(
-					'td',
-					[ 'class' => 'mw-editcounttable-count' ],
-					$lang->formatNum( $count )
-				) .
-				Html::element(
-					'td',
-					[ 'class' => 'mw-editcounttable-percentage' ],
-					wfPercent( $count / $data['all'] * 100 )
-				)
-				Html::closeElement( 'tr' );
 		}
 
 		$out .= Html::closeElement( 'tbody' ) .
