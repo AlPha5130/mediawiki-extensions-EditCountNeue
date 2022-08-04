@@ -118,7 +118,7 @@ class SpecialEditCount extends FormSpecialPage {
 						'td',
 						[ 'class' => 'mw-editcounttable-percentage' ],
 						wfPercent( $count / $data['all'] * 100 )
-					)
+					) .
 					Html::closeElement( 'tr' );
 			} else {
 				$nsName = $this->msg( 'editcount-all-namespaces' );
