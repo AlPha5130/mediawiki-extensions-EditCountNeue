@@ -9,5 +9,5 @@ $specialPageAliases = [];
 
 /** English */
 $specialPageAliases['en'] = [
-	'EditCount' => [ 'EditCount', 'Editcount' ],
+	'EditCount' => [ 'EditCount', 'Edit Count' ],
 ];
