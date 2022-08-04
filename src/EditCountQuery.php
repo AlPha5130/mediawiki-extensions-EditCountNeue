@@ -71,9 +71,9 @@ class EditCountQuery {
 		// HACK: when actor migration finishes, use a more beautiful way
 		$actorWhere = ActorMigration::newMigration()->getWhere( $dbr, 'rev_user', $user );
 		foreach ( $actorWhere['joins'] as $k => $v ) {
-			$res->join( $actorWhere['tables'][$k], null, $v[1] );
+			$res = $res->join( $actorWhere['tables'][$k], null, $v[1] );
 		}
-		$res->where( $actorWhere['conds'] )
+		$res = $res->where( $actorWhere['conds'] )
 			->groupBy( 'page_namespace' )
 			->fetchResultSet();
 
