@@ -18,9 +18,11 @@
  * @file
  */
 
-namespace MediaWiki\Extension\EditCountNeue;
+namespace MediaWiki\Extension\EditCount;
 
+use ActorMigration;
 use MediaWiki\MediaWikiServices;
+use User;
 
 class EditCountQuery {
 
@@ -62,14 +64,17 @@ class EditCountQuery {
 	protected static function execute( User $user ) {
 		$lb = MediaWikiServices::getInstance()->getDBLoadBalancer();
 		$dbr = $lb->getConnectionRef( DB_REPLICA );
-		$actorWhere = ActorMigration::newMigration()->getWhere( $dbr, 'rev_user', $user );
 		$res = $dbr->newSelectQueryBuilder()
 			->select( [ 'page_namespace', 'count' => 'COUNT(*)' ] )
-			->from( [ 'revision', 'page' ] + $actorWhere['tables'] )
-			->where( $actorWhere['conds'] )
+			->from( 'revision' )
+			->join( 'page', null, 'page_id = rev_page' );
+		// HACK: when actor migration finishes, use a more beautiful way
+		$actorWhere = ActorMigration::newMigration()->getWhere( $dbr, 'rev_user', $user );
+		foreach ( $actorWhere['joins'] as $k => $v ) {
+			$res->join( $actorWhere['tables'][$k], null, $v[1] );
+		}
+		$res->where( $actorWhere['conds'] )
 			->groupBy( 'page_namespace' )
-			->join( 'page', null, 'page_id = rev_page' )
-			->joinConds( $actorWhere['joins'] )
 			->fetchResultSet();
 
 		$nsCount = [];

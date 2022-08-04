@@ -1,27 +1,37 @@
 {
 	"name": "EditCountNeue",
+	"version": "0.1.0",
 	"author": [
 		"Your Name"
 	],
 	"descriptionmsg": "editcount-desc",
 	"license-name": "GPL-2.0-or-later",
-	"type": "specialpage",
+	"type": "other",
 	"requires": {
 		"MediaWiki": ">= 1.35.0"
 	},
-	"SpecialPages": {
-		"EditCount": "MediaWiki\\Extension\\EditCountNeue\\SpecialEditCount"
-	},
-	"ExtensionMessageFiles": {
-		"EditCountAliases": "EditCount.alias.php"
-	},
-	"AutoloadNamespaces": {
-		"MediaWiki\\Extension\\EditCountNeue\\": "src/"
-	},
 	"MessagesDirs": {
-		"EditCountNeue": [
+		"EditCount": [
 			"i18n"
 		]
+	},
+	"ExtensionMessagesFiles": {
+		"EditCountAlias": "EditCount.i18n.alias.php",
+		"EditCountMagic": "EditCount.i18n.magic.php"
+	},
+	"AutoloadNamespaces": {
+		"MediaWiki\\Extension\\EditCount\\": "src/"
+	},
+	"SpecialPages": {
+		"EditCount": "MediaWiki\\Extension\\EditCount\\SpecialEditCount"
+	},
+	"Hooks": {
+		"ParserFirstCallInit": "handleHooks"
+	},
+	"HookHandlers": {
+		"handleHooks": {
+			"class": "MediaWiki\\Extension\\EditCount\\Hooks"
+		}
 	},
 	"manifest_version": 2
 }
