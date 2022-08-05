@@ -50,7 +50,7 @@ class SpecialEditCount extends SpecialPage {
 			if ( !$user || $user->getId() === 0 ) {
 				$this->outputHTMLForm();
 				$output->addHTML( '<br>' . Html::errorBox(
-					$this->msg( 'editcount-nomatcheduser' )
+					$this->msg( 'editcount-nomatcheduser' )->text()
 				) );
 			} else {
 				$this->outputHTMLForm( $user );
@@ -60,7 +60,7 @@ class SpecialEditCount extends SpecialPage {
 				$this->getOutput()->addHTML( Html::element(
 					'h2',
 					[ 'id' => 'editcount-queryresult' ],
-					$this->msg( 'editcount-resulttitle' )->params( $user->getName() )->parse()
+					$this->msg( 'editcount-resulttitle' )->params( $user->getName() )->text()
 				) );
 		
 				$this->makeTable( $result );
@@ -129,7 +129,7 @@ class SpecialEditCount extends SpecialPage {
 		foreach ( $data as $ns => $count ) {
 			if ( is_int( $ns ) ) {
 				if ( $ns == NS_MAIN ) {
-					$nsName = $this->msg( 'blanknamespace' );
+					$nsName = $this->msg( 'blanknamespace' )->text();
 				} else {
 					$converter = MediaWikiServices::getInstance()->getLanguageConverterFactory()
 						->getLanguageConverter( $lang );
