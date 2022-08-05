@@ -20,29 +20,73 @@
 
 namespace MediaWiki\Extension\EditCount;
 
-use FormSpecialPage;
+use SpecialPage;
+use HTMLForm;
 use Html;
 use MediaWiki\MediaWikiServices;
-use Status;
+use User;
 
-class SpecialEditCount extends FormSpecialPage {
+class SpecialEditCount extends SpecialPage {
 
 	public function __construct() {
 		parent::__construct( 'EditCount' );
 	}
 
+	public function execute( $par ) {
+		$request = $this->getRequest();
+		$output = $this->getOutput();
+		$this->setHeaders();
+		$this->outputHeader();
+
+		$userName = $par ?? $request->getText( 'wpuser' );
+
+		if ( !$userName ) {
+			$this->outputHTMLForm();
+		} else {
+			$user = MediaWikiServices::getInstance()
+				->getUserFactory()
+				->newFromName( $userName );
+
+			if ( !$user || $user->getId() === 0 ) {
+				$this->outputHTMLForm();
+				$output->addHTML( '<br>' . Html::errorBox(
+					$this->msg( 'editcount-nomatcheduser' )
+				) );
+			} else {
+				$this->outputHTMLForm( $user );
+
+				$result = $this->queryEditCount( $user );
+				// add heading
+				$this->getOutput()->addHTML( Html::element(
+					'h2',
+					[ 'id' => 'editcount-queryresult' ],
+					$this->msg( 'editcount-resulttitle' )->params( $user->getName() )->parse()
+				) );
+		
+				$this->makeTable( $result );
+			}
+		}
+	}
+
 	/**
-	 * @inheritDoc
+	 * @param string $user
 	 */
-	protected function getFormFields() {
-		return [
+	protected function outputHTMLForm( $user = '' ) {
+		$formDescriptor = [
 			'user' => [
 				'type' => 'user',
 				'exists' => true,
 				'label-message' => 'editcount-user',
-				'required' => true
+				'required' => true,
+				'default' => $user
 			]
 		];
+
+		$htmlForm = HTMLForm::factory( 'ooui', $formDescriptor, $this->getContext() );
+		$htmlForm
+			->setMethod( 'get' )
+			->prepareForm()
+			->displayForm( false );
 	}
 
 	/**
@@ -54,25 +98,13 @@ class SpecialEditCount extends FormSpecialPage {
 	}
 
 	/**
-	 * @param array $data
+	 * @param User $user
 	 */
-	public function onSubmit( array $data ) {
+	protected function queryEditCount( User $user ) {
 
-		$userFactory = MediaWikiServices::getInstance()->getUserFactory();
-
-		$user = $userFactory->newFromName( $data['user'] );
 		$result = EditCountQuery::queryAllNamespaces( $user );
 
-		// add heading
-		$this->getOutput()->addHTML(Html::element(
-			'h2',
-			[ 'id' => 'editcount-queryresult' ],
-			$this->msg( 'editcount-resulttitle' )->params( $user->getName() )->parse()
-		) );
-
-		$this->makeTable( $result );
-
-		return Status::newGood();
+		return $result;
 	}
 
 	/**
@@ -142,12 +174,5 @@ class SpecialEditCount extends FormSpecialPage {
 			Html::closeElement( 'table' );
 
 		$this->getOutput()->addHTML( $out );
-	}
-
-	/**
-	 * @inheritDoc
-	 */
-	protected function getDisplayFormat() {
-		return 'ooui';
 	}
 }
