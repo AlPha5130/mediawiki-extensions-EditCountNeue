@@ -153,7 +153,7 @@ class SpecialEditCount extends SpecialPage {
 					) .
 					Html::closeElement( 'tr' );
 			} else {
-				$nsName = $this->msg( 'editcount-all-namespaces' );
+				$nsName = $this->msg( 'editcount-all-namespaces' )->text();
 				$out .= Html::openElement( 'tr', [ 'class' => 'mw-editcounttable-footer' ] ) .
 					Html::element( 'th', [], $nsName ) .
 					Html::element(
