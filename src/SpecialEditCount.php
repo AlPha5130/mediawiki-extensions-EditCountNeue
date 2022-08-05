@@ -28,7 +28,7 @@ use Status;
 class SpecialEditCount extends FormSpecialPage {
 
 	public function __construct() {
-		parent::__construct( 'EditCount', 'Edit Count' );
+		parent::__construct( 'EditCount' );
 	}
 
 	/**
@@ -87,7 +87,7 @@ class SpecialEditCount extends FormSpecialPage {
 		) . "\n";
 		$out .= Html::openElement( 'thead' ) .
 			Html::openElement( 'tr', [ 'class' => 'mw-editcounttable-header' ] ) .
-			Html::element( 'th', [], $this->msg( 'namespace' )->text() ) .
+			Html::element( 'th', [], $this->msg( 'editcount-namespace' )->text() ) .
 			Html::element( 'th', [], $this->msg( 'editcount-count')->text() ) .
 			Html::element( 'th', [], $this->msg( 'editcount-percentage' )->text() ) .
 			Html::closeElement( 'tr' ) .
@@ -118,7 +118,7 @@ class SpecialEditCount extends FormSpecialPage {
 						'td',
 						[ 'class' => 'mw-editcounttable-percentage' ],
 						wfPercent( $count / $data['all'] * 100 )
-					)
+					) .
 					Html::closeElement( 'tr' );
 			} else {
 				$nsName = $this->msg( 'editcount-all-namespaces' );

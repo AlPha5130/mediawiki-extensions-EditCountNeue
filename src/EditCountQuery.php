@@ -64,25 +64,26 @@ class EditCountQuery {
 	protected static function execute( User $user ) {
 		$lb = MediaWikiServices::getInstance()->getDBLoadBalancer();
 		$dbr = $lb->getConnectionRef( DB_REPLICA );
-		$res = $dbr->newSelectQueryBuilder()
+		$query = $dbr->newSelectQueryBuilder()
 			->select( [ 'page_namespace', 'count' => 'COUNT(*)' ] )
 			->from( 'revision' )
 			->join( 'page', null, 'page_id = rev_page' );
 		// HACK: when actor migration finishes, use a more beautiful way
 		$actorWhere = ActorMigration::newMigration()->getWhere( $dbr, 'rev_user', $user );
 		foreach ( $actorWhere['joins'] as $k => $v ) {
-			$res->join( $actorWhere['tables'][$k], null, $v[1] );
+			$query->join( $actorWhere['tables'][$k], $k, $v[1] );
 		}
-		$res->where( $actorWhere['conds'] )
-			->groupBy( 'page_namespace' )
-			->fetchResultSet();
+		$query->where( $actorWhere['conds'] )
+			->groupBy( 'page_namespace' );
+		$res = $query->fetchResultSet();
 
 		$nsCount = [];
-		$nsCount['all'] = 0;
+		$totalCount = 0;
 		foreach ( $res as $row ) {
 			$nsCount[$row->page_namespace] = (int)$row->count;
-			$nsCount['all'] += (int)$row->count;
+			$totalCount += (int)$row->count;
 		}
+		$nsCount['all'] = $totalCount;
 		return $nsCount;
 	}
 }
