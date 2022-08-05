@@ -55,7 +55,7 @@ class SpecialEditCount extends SpecialPage {
 			} else {
 				$this->outputHTMLForm( $user );
 
-				$result = $this->queryEditCount( $user );
+				$result = self::queryEditCount( $user );
 				// add heading
 				$this->getOutput()->addHTML( Html::element(
 					'h2',
@@ -100,7 +100,7 @@ class SpecialEditCount extends SpecialPage {
 	/**
 	 * @param User $user
 	 */
-	protected function queryEditCount( User $user ) {
+	protected static function queryEditCount( User $user ) {
 
 		$result = EditCountQuery::queryAllNamespaces( $user );
 
