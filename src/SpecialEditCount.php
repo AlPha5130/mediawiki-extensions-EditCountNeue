@@ -49,7 +49,9 @@ class SpecialEditCount extends SpecialPage {
 
 			if ( !$user || $user->getId() === 0 ) {
 				$this->outputHTMLForm();
-				$output->addHTML( '<br>' . Html::errorBox(
+				$output->addHTML( '<br>' . Html::element(
+					'strong',
+					[ 'class' => 'error' ],
 					$this->msg( 'editcount-nomatcheduser' )->text()
 				) );
 			} else {
@@ -57,7 +59,7 @@ class SpecialEditCount extends SpecialPage {
 
 				$result = self::queryEditCount( $user );
 				// add heading
-				$this->getOutput()->addHTML( Html::element(
+				$output->addHTML( Html::element(
 					'h2',
 					[ 'id' => 'editcount-queryresult' ],
 					$this->msg( 'editcount-resulttitle' )->params( $user->getName() )->text()
