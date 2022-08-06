@@ -43,25 +43,25 @@ class Hooks implements \MediaWiki\Hook\ParserFirstCallInitHook {
 		if ( count( $args ) <= 1 ) {
 			// If namespaces are not specified, query all namespaces
 			$count = EditCountQuery::queryAllNamespaces( $user );
-			return "$count->sum";
+			return "$count[sum]";
 		} else {
-			$ns = [];
+			$namespaces = [];
 			foreach ( $args as $i => $v ) {
 				// except user
 				if ( $i !== 0 ) {
-					if ( intval( $v ) || $v === '0' ) {
-						$index = intval( $v );
+					$ns = trim( $frame->expand( $v ) );
+					if ( intval( $ns ) || $ns === '0' ) {
+						$index = intval( $ns );
 					} else {
-						$index = $parser->getContentLanguage()->getNsIndex( str_replace( ' ', '_', $v ) );
+						$index = $parser->getContentLanguage()->getNsIndex( str_replace( ' ', '_', $ns ) );
 					}
-					if ( $index !== false && !in_array( $index, $ns ) ) {
-						$ns[] = $index;
+					if ( $index !== false && !in_array( $index, $namespaces ) ) {
+						$namespaces[] = $index;
 					}
 				}
 			}
-			$count = EditCountQuery::queryNamespaces( $user, $ns );
-			return "$count->sum";
+			$count = EditCountQuery::queryNamespaces( $user, $namespaces );
+			return "$count[sum]";
 		}
 	}
 }
-
