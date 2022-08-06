@@ -1,5 +1,5 @@
 {
-	"name": "BoilerPlate",
+	"name": "EditCountNeue",
 	"private": true,
 	"scripts": {
 		"test": "grunt test"

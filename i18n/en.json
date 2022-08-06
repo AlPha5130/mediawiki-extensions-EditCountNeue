@@ -1,7 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
-			"NekoCharm (AlPha5130)"
+			"NekoCharm"
 		]
 	},
 	"editcount-desc": "Retrieves edit counts of a user"
