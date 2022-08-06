@@ -24,7 +24,6 @@ use MediaWiki\MediaWikiServices;
 use MediaWiki\User\UserFactory;
 use Parser;
 use PPFrame;
-use PPNode;
 
 class Hooks implements \MediaWiki\Hook\ParserFirstCallInitHook {
 
