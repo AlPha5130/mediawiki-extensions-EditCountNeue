@@ -48,10 +48,14 @@ class EditCountQuery {
 			$namespaces = [ $namespaces ];
 		}
 		$queryRes = self::execute( $user );
+
 		$res = [];
+		$sum = 0;
 		foreach ( $namespaces as $ns ) {
 			$res[$ns] = isset( $queryRes[$ns] ) ? $queryRes[$ns] : 0;
+			$sum += $res[$ns];
 		}
+		$res['sum'] = $sum;
 		return $res;
 	}
 
@@ -83,7 +87,7 @@ class EditCountQuery {
 			$nsCount[$row->page_namespace] = (int)$row->count;
 			$totalCount += (int)$row->count;
 		}
-		$nsCount['all'] = $totalCount;
+		$nsCount['sum'] = $totalCount;
 		return $nsCount;
 	}
 }

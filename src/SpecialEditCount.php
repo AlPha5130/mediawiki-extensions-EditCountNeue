@@ -151,7 +151,7 @@ class SpecialEditCount extends SpecialPage {
 					Html::element(
 						'td',
 						[ 'class' => 'mw-editcounttable-percentage' ],
-						wfPercent( $count / $data['all'] * 100 )
+						wfPercent( $count / $data['sum'] * 100 )
 					) .
 					Html::closeElement( 'tr' );
 			} else {

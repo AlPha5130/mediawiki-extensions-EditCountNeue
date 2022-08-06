@@ -23,6 +23,8 @@ namespace MediaWiki\Extension\EditCount;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\User\UserFactory;
 use Parser;
+use PPFrame;
+use PPNode;
 
 class Hooks implements \MediaWiki\Hook\ParserFirstCallInitHook {
 
@@ -30,21 +32,39 @@ class Hooks implements \MediaWiki\Hook\ParserFirstCallInitHook {
 		$parser->setFunctionHook( 'editcount', [ self::class, 'editCount' ] );
 	}
 
-	public static function editCount( Parser $parser, $param1 = '', $param2 = '' ) {
+	public static function editCount( Parser $parser, PPFrame $frame, array $args ) {
 		$userFactory = MediaWikiServices::getInstance()->getUserFactory();
-		$user = $userFactory->newFromName( $param1 );
+		$userName = isset( $args[0] ) ? trim( $frame->expand( $args[0] ) ) : '';
+		$user = $userFactory->newFromName( $userName );
 		// If user is invalid or does not exist, returns 0
 		if ( !$user || $user->getId() === 0 ) {
 			return '0';
 		}
 
-		// If param2 is not specified, query all namespaces
-		if ( $param2 === '' ) {
-			$count = EditCountQuery::queryAllNamespaces( $user )['all'];
+		if ( count( $args ) <= 1 ) {
+			// If namespaces are not specified, query all namespaces
+			$count = EditCountQuery::queryAllNamespaces( $user );
+			return "$count->sum";
 		} else {
-			$count = EditCountQuery::queryNamespaces( $user, $param2 )[$param2];
+			$ns = [];
+			foreach ( $args as $i => $v ) {
+				// except user
+				if ( $i !== 0 ) {
+					if ( intval( $v ) || $v === '0' ) {
+						$index = intval( $v );
+					} else {
+						$index = $parser->getContentLanguage()->getNsIndex( str_replace( ' ', '_', $v ) );
+					}
+					if ( $index !== false && !in_array( $index, $ns ) ) {
+						$ns[] = $index;
+					}
+				}
+			}
+			$count = EditCountQuery::queryNamespaces( $user, $ns );
+			return "$count->sum";
+		} else {
+			return '0';
 		}
-		$output = "$count";
-		return $output;
 	}
 }
+
