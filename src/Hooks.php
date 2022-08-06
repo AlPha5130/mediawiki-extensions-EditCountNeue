@@ -29,7 +29,7 @@ use PPNode;
 class Hooks implements \MediaWiki\Hook\ParserFirstCallInitHook {
 
 	public function onParserFirstCallInit( $parser ) {
-		$parser->setFunctionHook( 'editcount', [ self::class, 'editCount' ] );
+		$parser->setFunctionHook( 'editcount', [ self::class, 'editCount' ], Parser::SFH_OBJECT_ARGS );
 	}
 
 	public static function editCount( Parser $parser, PPFrame $frame, array $args ) {
