@@ -47,6 +47,11 @@ class EditCountQuery {
 		if ( !is_array( $namespaces ) ) {
 			$namespaces = [ $namespaces ];
 		}
+		if ( count( $namespaces ) === 0 ) {
+			return [
+				'sum' => 0
+			];
+		}
 		$queryRes = self::execute( $user );
 
 		$res = [];

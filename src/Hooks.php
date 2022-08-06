@@ -62,8 +62,6 @@ class Hooks implements \MediaWiki\Hook\ParserFirstCallInitHook {
 			}
 			$count = EditCountQuery::queryNamespaces( $user, $ns );
 			return "$count->sum";
-		} else {
-			return '0';
 		}
 	}
 }

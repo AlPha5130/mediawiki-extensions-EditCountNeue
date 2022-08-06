@@ -21,7 +21,7 @@ EditCountNeue adds a special page called `Special:EditCount` under `users` group
 
 ### Parser function
 
-EditCountNeue also adds a parser function to retrieve the number of edit of a user. The syntax is:
+EditCountNeue also adds a parser function to retrieve the number of edits of a user. The syntax is:
 
 ``` txt
 {{#editcount: <username> [ | <namespace1> [ | <namespace2> ... ] ] }}
