@@ -39,35 +39,35 @@ class SpecialEditCount extends SpecialPage {
 		$this->outputHeader();
 
 		$userName = $par ?? $request->getText( 'wpuser' );
-
 		if ( !$userName ) {
 			$this->outputHTMLForm();
-		} else {
-			$user = MediaWikiServices::getInstance()
-				->getUserFactory()
-				->newFromName( $userName );
-
-			if ( !$user || $user->getId() === 0 ) {
-				$this->outputHTMLForm();
-				$output->addHTML( '<br>' . Html::element(
-					'strong',
-					[ 'class' => 'error' ],
-					$this->msg( 'editcount-userdoesnotexist' )->params( $userName )->text()
-				) );
-			} else {
-				$this->outputHTMLForm( $user );
-
-				$result = self::queryEditCount( $user );
-				// add heading
-				$output->addHTML( Html::element(
-					'h2',
-					[ 'id' => 'editcount-queryresult' ],
-					$this->msg( 'editcount-resulttitle' )->params( $user->getName() )->text()
-				) );
-		
-				$this->makeTable( $result );
-			}
+			return;
 		}
+
+		$user = MediaWikiServices::getInstance()
+			->getUserFactory()
+			->newFromName( $userName );
+		if ( !$user || $user->getId() === 0 ) {
+			$this->outputHTMLForm();
+			$output->addHTML( '<br>' . Html::element(
+				'strong',
+				[ 'class' => 'error' ],
+				$this->msg( 'editcount-userdoesnotexist' )->params( $userName )->text()
+			) );
+			return;
+		}
+
+		$this->outputHTMLForm( $user );
+
+		$result = self::queryEditCount( $user );
+		// add heading
+		$output->addHTML( Html::element(
+			'h2',
+			[ 'id' => 'editcount-queryresult' ],
+			$this->msg( 'editcount-resulttitle' )->params( $user->getName() )->text()
+		) );
+		
+		$this->makeTable( $result );
 	}
 
 	/**
@@ -85,10 +85,7 @@ class SpecialEditCount extends SpecialPage {
 		];
 
 		$htmlForm = HTMLForm::factory( 'ooui', $formDescriptor, $this->getContext() );
-		$htmlForm
-			->setMethod( 'get' )
-			->prepareForm()
-			->displayForm( false );
+		$htmlForm->setMethod( 'get' )->prepareForm()->displayForm( false );
 	}
 
 	/**
@@ -103,9 +100,7 @@ class SpecialEditCount extends SpecialPage {
 	 * @param User $user
 	 */
 	protected static function queryEditCount( User $user ) {
-
 		$result = EditCountQuery::queryAllNamespaces( $user );
-
 		return $result;
 	}
 
@@ -128,49 +123,51 @@ class SpecialEditCount extends SpecialPage {
 			Html::closeElement( 'thead' ) .
 			Html::openElement( 'tbody' );
 
-		foreach ( $data as $ns => $count ) {
-			if ( is_int( $ns ) ) {
-				if ( $ns === NS_MAIN ) {
-					$nsName = $this->msg( 'blanknamespace' )->text();
-				} else {
-					$converter = MediaWikiServices::getInstance()->getLanguageConverterFactory()
-						->getLanguageConverter( $lang );
-					$nsName = $converter->convertNamespace( $ns );
-				}
-				$out .= Html::openElement( 'tr', [ 'class' => 'mw-editcounttable-row' ] ) .
-					Html::element(
-						'td',
-						[ 'class' => 'mw-editcounttable-ns' ],
-						$nsName
-					) .
-					Html::element(
-						'td',
-						[ 'class' => 'mw-editcounttable-count' ],
-						$lang->formatNum( $count )
-					) .
-					Html::element(
-						'td',
-						[ 'class' => 'mw-editcounttable-percentage' ],
-						wfPercent( $count / $data['sum'] * 100 )
-					) .
-					Html::closeElement( 'tr' );
+		$nsData = array_filter( $data, function ( $i ) {
+			return is_int( $i );
+		}, ARRAY_FILTER_USE_KEY );
+
+		foreach ( $nsData as $ns => $count ) {
+			if ( $ns === NS_MAIN ) {
+				$nsName = $this->msg( 'blanknamespace' )->text();
 			} else {
-				$nsName = $this->msg( 'editcount-all-namespaces' )->text();
-				$out .= Html::openElement( 'tr', [ 'class' => 'mw-editcounttable-footer' ] ) .
-					Html::element( 'th', [], $nsName ) .
-					Html::element(
-						'th',
-						[ 'class' => 'mw-editcounttable-count' ],
-						$lang->formatNum( $count )
-					) .
-					Html::element(
-						'th',
-						[ 'class' => 'mw-editcounttable-percentage' ],
-						wfPercent( 100 )
-					) .
-					Html::closeElement( 'tr' );
+				$converter = MediaWikiServices::getInstance()->getLanguageConverterFactory()
+					->getLanguageConverter( $lang );
+				$nsName = $converter->convertNamespace( $ns );
 			}
-		}
+			$out .= Html::openElement( 'tr', [ 'class' => 'mw-editcounttable-row' ] ) .
+				Html::element(
+					'td',
+					[ 'class' => 'mw-editcounttable-ns' ],
+					$nsName
+				) .
+				Html::element(
+					'td',
+					[ 'class' => 'mw-editcounttable-count' ],
+					$lang->formatNum( $count )
+				) .
+				Html::element(
+					'td',
+					[ 'class' => 'mw-editcounttable-percentage' ],
+					wfPercent( $count / $data['sum'] * 100 )
+				) .
+				Html::closeElement( 'tr' );
+		} 
+			
+		// bottom sum row
+		$out .= Html::openElement( 'tr', [ 'class' => 'mw-editcounttable-footer' ] ) .
+			Html::element( 'th', [], $this->msg( 'editcount-all-namespaces' )->text() ) .
+			Html::element(
+				'th',
+				[ 'class' => 'mw-editcounttable-count' ],
+				$lang->formatNum( $data['sum'] )
+			) .
+			Html::element(
+				'th',
+				[ 'class' => 'mw-editcounttable-percentage' ],
+				wfPercent( 100 )
+			) .
+			Html::closeElement( 'tr' );
 
 		$out .= Html::closeElement( 'tbody' ) .
 			Html::closeElement( 'table' );
