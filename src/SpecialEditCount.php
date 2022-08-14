@@ -52,7 +52,7 @@ class SpecialEditCount extends SpecialPage {
 				$output->addHTML( '<br>' . Html::element(
 					'strong',
 					[ 'class' => 'error' ],
-					$this->msg( 'editcount-nomatcheduser' )->text()
+					$this->msg( 'editcount-userdoesnotexist' )->params( $userName )->text()
 				) );
 			} else {
 				$this->outputHTMLForm( $user );
@@ -130,7 +130,7 @@ class SpecialEditCount extends SpecialPage {
 
 		foreach ( $data as $ns => $count ) {
 			if ( is_int( $ns ) ) {
-				if ( $ns == NS_MAIN ) {
+				if ( $ns === NS_MAIN ) {
 					$nsName = $this->msg( 'blanknamespace' )->text();
 				} else {
 					$converter = MediaWikiServices::getInstance()->getLanguageConverterFactory()
