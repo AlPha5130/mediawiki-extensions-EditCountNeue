@@ -4,5 +4,12 @@
 			"NekoCharm"
 		]
 	},
-	"editcount-desc": "Retrieves edit counts of a user"
+	"editcount-desc": "Retrieves number of edits of a user",
+	"editcount-all-namespaces": "All namespaces",
+	"editcount-count": "Number of edits",
+	"editcount-namespace": "Namespace",
+	"editcount-percentage": "Percentage",
+	"editcount-resulttitle": "Number of edits of user \"$1\"",
+	"editcount-user": "Username",
+	"editcount-userdoesnotexist": "User account \"$1\" is not registered and does not have edits."
 }
