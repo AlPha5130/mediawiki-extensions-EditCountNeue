@@ -73,6 +73,7 @@ class EditCountQuery {
 	protected static function execute( User $user ) {
 		$lb = MediaWikiServices::getInstance()->getDBLoadBalancer();
 		$dbr = $lb->getConnectionRef( DB_REPLICA );
+
 		$query = $dbr->newSelectQueryBuilder()
 			->select( [ 'page_namespace', 'count' => 'COUNT(*)' ] )
 			->from( 'revision' )
@@ -84,6 +85,7 @@ class EditCountQuery {
 		}
 		$query->where( $actorWhere['conds'] )
 			->groupBy( 'page_namespace' );
+
 		$res = $query->fetchResultSet();
 
 		$nsCount = [];
