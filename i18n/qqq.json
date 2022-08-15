@@ -4,6 +4,7 @@
 			"NekoCharm"
 		]
 	},
+	"editcount": "{{doc-special|EditCount}}",
 	"editcount-desc": "{{desc|name=EditCountNeue|url=https://www.mediawiki.org/wiki/Extension:EditCountNeue}}",
 	"editcount-all-namespaces": "Table cell text in namespace column representing all namespaces.",
 	"editcount-count": "Column header in result table for the number of edits.",

@@ -4,6 +4,7 @@
 			"NekoCharm"
 		]
 	},
+	"editcount": "Edit Count",
 	"editcount-desc": "Retrieves number of edits of a user",
 	"editcount-all-namespaces": "All namespaces",
 	"editcount-count": "Number of edits",
