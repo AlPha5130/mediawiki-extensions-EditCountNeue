@@ -11,6 +11,6 @@
 	"editcount-namespace": "Namespace",
 	"editcount-percentage": "Percentage",
 	"editcount-resulttitle": "Number of edits of user \"$1\"",
-	"editcount-user": "Username",
+	"editcount-user": "Username:",
 	"editcount-userdoesnotexist": "User account \"$1\" is not registered and does not have edits."
 }
