@@ -20,7 +20,6 @@
 
 namespace MediaWiki\Extension\EditCount;
 
-use ActorMigration;
 use MediaWiki\MediaWikiServices;
 use User;
 
@@ -73,19 +72,21 @@ class EditCountQuery {
 	protected static function execute( User $user ) {
 		$lb = MediaWikiServices::getInstance()->getDBLoadBalancer();
 		$dbr = $lb->getConnectionRef( DB_REPLICA );
+		$norm = MediaWikiServices::getInstance()->getActorNormalization();
+		$actorId = $norm->findActorId( $user, $dbr );
+		if ( is_null( $actorId ) ) {
+			return [
+				'sum' => 0
+			];
+		}
 
 		$query = $dbr->newSelectQueryBuilder()
 			->select( [ 'page_namespace', 'count' => 'COUNT(*)' ] )
 			->from( 'revision' )
-			->join( 'page', null, 'page_id = rev_page' );
-		// HACK: when actor migration finishes, use a more beautiful way
-		$actorWhere = ActorMigration::newMigration()->getWhere( $dbr, 'rev_user', $user );
-		foreach ( $actorWhere['joins'] as $k => $v ) {
-			$query->join( $actorWhere['tables'][$k], $k, $v[1] );
-		}
-		$query->where( $actorWhere['conds'] )
+			->join( 'page', null, 'page_id = rev_page' )
+			->join( 'actor', null, 'rev_actor = actor_id' )
+			->where( "actor_id = $actorId" )
 			->groupBy( 'page_namespace' );
-
 		$res = $query->fetchResultSet();
 
 		$nsCount = [];
