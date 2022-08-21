@@ -38,21 +38,21 @@ class SpecialEditCount extends SpecialPage {
 		$this->setHeaders();
 		$this->outputHeader();
 
-		$userName = $par ?? $request->getText( 'wpuser' );
-		if ( !$userName ) {
+		$username = $par ?? $request->getText( 'wpuser' );
+		if ( !$username ) {
 			$this->outputHTMLForm();
 			return;
 		}
 
 		$user = MediaWikiServices::getInstance()
 			->getUserFactory()
-			->newFromName( $userName );
+			->newFromName( $username );
 		if ( !$user || $user->getId() === 0 ) {
 			$this->outputHTMLForm();
 			$output->addHTML( '<br>' . Html::element(
 				'strong',
 				[ 'class' => 'error' ],
-				$this->msg( 'editcount-userdoesnotexist' )->params( $userName )->text()
+				$this->msg( 'editcount-userdoesnotexist' )->params( $username )->text()
 			) );
 			return;
 		}
@@ -71,16 +71,16 @@ class SpecialEditCount extends SpecialPage {
 	}
 
 	/**
-	 * @param string $user
+	 * @param ?User $user
 	 */
-	protected function outputHTMLForm( $user = '' ) {
+	protected function outputHTMLForm( ?User $user ) {
 		$formDescriptor = [
 			'user' => [
 				'type' => 'user',
 				'exists' => true,
 				'label-message' => 'editcount-user',
 				'required' => true,
-				'default' => $user
+				'default' => $user ? $user->getName() : ''
 			]
 		];
 
