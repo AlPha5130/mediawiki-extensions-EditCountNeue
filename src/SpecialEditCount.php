@@ -73,7 +73,7 @@ class SpecialEditCount extends SpecialPage {
 	/**
 	 * @param ?User $user
 	 */
-	protected function outputHTMLForm( ?User $user ) {
+	protected function outputHTMLForm( ?User $user = null ) {
 		$formDescriptor = [
 			'user' => [
 				'type' => 'user',
