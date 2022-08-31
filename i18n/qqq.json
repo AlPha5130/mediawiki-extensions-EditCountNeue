@@ -10,7 +10,7 @@
 	"editcount-count": "Column header in result table for the number of edits.",
 	"editcount-namespace": "Column header in result table for the namespaces.",
 	"editcount-percentage": "Column header in result table for the percentages.",
-	"editcount-resulttitle": "<h2> element for the title of the query result.",
+	"editcount-resulttitle": "The heading element for the title of the query result.",
 	"editcount-user": "Username field label in special page form.",
 	"editcount-userdoesnotexist": "An error message shown when a user account is not registered."
 }
