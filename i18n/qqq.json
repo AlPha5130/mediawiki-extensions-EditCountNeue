@@ -4,13 +4,13 @@
 			"NekoCharm"
 		]
 	},
-	"editcount": "{{doc-special|EditCount}}",
-	"editcount-desc": "{{desc|name=EditCountNeue|url=https://www.mediawiki.org/wiki/Extension:EditCountNeue}}",
-	"editcount-all-namespaces": "Table cell text in namespace column representing all namespaces.",
-	"editcount-count": "Column header in result table for the number of edits.",
-	"editcount-namespace": "Column header in result table for the namespaces.",
-	"editcount-percentage": "Column header in result table for the percentages.",
-	"editcount-resulttitle": "The heading element for the title of the query result.",
-	"editcount-user": "Username field label in special page form.",
-	"editcount-userdoesnotexist": "An error message shown when a user account is not registered."
+	"editcountneue": "{{doc-special|EditCount}}",
+	"editcountneue-desc": "{{desc|name=EditCountNeue|url=https://www.mediawiki.org/wiki/Extension:EditCountNeue}}",
+	"editcountneue-all-namespaces": "Table cell text in namespace column representing all namespaces.",
+	"editcountneue-count": "Column header in result table for the number of edits.",
+	"editcountneue-namespace": "Column header in result table for the namespaces.",
+	"editcountneue-percentage": "Column header in result table for the percentages.",
+	"editcountneue-resulttitle": "The heading element for the title of the query result.",
+	"editcountneue-user": "Username field label in special page form.",
+	"editcountneue-userdoesnotexist": "An error message shown when a user account is not registered."
 }
