@@ -52,7 +52,7 @@ class SpecialEditCount extends SpecialPage {
 			$output->addHTML( '<br>' . Html::element(
 				'strong',
 				[ 'class' => 'error' ],
-				$this->msg( 'editcount-userdoesnotexist' )->params( $username )->text()
+				$this->msg( 'editcountneue-userdoesnotexist' )->params( $username )->text()
 			) );
 			return;
 		}
@@ -64,7 +64,7 @@ class SpecialEditCount extends SpecialPage {
 		$output->addHTML( Html::element(
 			'h2',
 			[ 'id' => 'editcount-queryresult' ],
-			$this->msg( 'editcount-resulttitle' )->params( $user->getName() )->text()
+			$this->msg( 'editcountneue-resulttitle' )->params( $user->getName() )->text()
 		) );
 		
 		$this->makeTable( $result );
@@ -78,7 +78,7 @@ class SpecialEditCount extends SpecialPage {
 			'user' => [
 				'type' => 'user',
 				'exists' => true,
-				'label-message' => 'editcount-user',
+				'label-message' => 'editcountneue-user',
 				'required' => true,
 				'default' => $user ? $user->getName() : ''
 			]
@@ -116,9 +116,9 @@ class SpecialEditCount extends SpecialPage {
 		) . "\n";
 		$out .= Html::openElement( 'thead' ) .
 			Html::openElement( 'tr', [ 'class' => 'mw-editcounttable-header' ] ) .
-			Html::element( 'th', [], $this->msg( 'editcount-namespace' )->text() ) .
-			Html::element( 'th', [], $this->msg( 'editcount-count')->text() ) .
-			Html::element( 'th', [], $this->msg( 'editcount-percentage' )->text() ) .
+			Html::element( 'th', [], $this->msg( 'editcountneue-namespace' )->text() ) .
+			Html::element( 'th', [], $this->msg( 'editcountneue-count')->text() ) .
+			Html::element( 'th', [], $this->msg( 'editcountneue-percentage' )->text() ) .
 			Html::closeElement( 'tr' ) .
 			Html::closeElement( 'thead' ) .
 			Html::openElement( 'tbody' );
@@ -156,7 +156,7 @@ class SpecialEditCount extends SpecialPage {
 			
 		// bottom sum row
 		$out .= Html::openElement( 'tr', [ 'class' => 'mw-editcounttable-footer' ] ) .
-			Html::element( 'th', [], $this->msg( 'editcount-all-namespaces' )->text() ) .
+			Html::element( 'th', [], $this->msg( 'editcountneue-all-namespaces' )->text() ) .
 			Html::element(
 				'th',
 				[ 'class' => 'mw-editcounttable-count' ],
