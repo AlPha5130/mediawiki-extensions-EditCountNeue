@@ -1,0 +1,13 @@
+{
+	"@metadata": {
+		"authors": []
+	},
+	"editcountneue": "編輯次數",
+	"editcountneue-all-namespaces": "所有命名空間",
+	"editcountneue-count": "編輯數",
+	"editcountneue-namespace": "命名空間",
+	"editcountneue-percentage": "百分比",
+	"editcountneue-resulttitle": "使用者「$1」的編輯數",
+	"editcountneue-user": "使用者名稱：",
+	"editcountneue-userdoesnotexist": "使用者帳號「$1」尚未註冊且沒有編輯。"
+}

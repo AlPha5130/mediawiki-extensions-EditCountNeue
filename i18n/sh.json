@@ -1,0 +1,13 @@
+{
+	"@metadata": {
+		"authors": []
+	},
+	"editcountneue": "Brojač izmjena",
+	"editcountneue-all-namespaces": "Svi imenski prostori",
+	"editcountneue-count": "Broj izmjena:",
+	"editcountneue-namespace": "Imenski prostor",
+	"editcountneue-percentage": "Postotak",
+	"editcountneue-resulttitle": "Broj izmjena korisnika \"$1\"",
+	"editcountneue-user": "Korisničko ime:",
+	"editcountneue-userdoesnotexist": "Korisnički račun \"$1\" nije registriran i nema izmjena."
+}

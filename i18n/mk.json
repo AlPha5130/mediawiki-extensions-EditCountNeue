@@ -1,0 +1,13 @@
+{
+	"@metadata": {
+		"authors": []
+	},
+	"editcountneue": "Број на уредувања",
+	"editcountneue-all-namespaces": "Сите именски простори",
+	"editcountneue-count": "Број на уредувања",
+	"editcountneue-namespace": "Именски простор",
+	"editcountneue-percentage": "Постоток",
+	"editcountneue-resulttitle": "Број на уредувања на корисникот „$1“",
+	"editcountneue-user": "Корисничко име:",
+	"editcountneue-userdoesnotexist": "Корисничката сметка „$1“ не е регистрирана и нема уредувања."
+}

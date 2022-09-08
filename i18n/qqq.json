@@ -5,7 +5,6 @@
 		]
 	},
 	"editcountneue": "{{doc-special|EditCount}}",
-	"editcountneue-desc": "{{desc|name=EditCountNeue|url=https://www.mediawiki.org/wiki/Extension:EditCountNeue}}",
 	"editcountneue-all-namespaces": "Table cell text in namespace column representing all namespaces.",
 	"editcountneue-count": "Column header in result table for the number of edits.",
 	"editcountneue-namespace": "Column header in result table for the namespaces.",

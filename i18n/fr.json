@@ -1,0 +1,14 @@
+{
+	"@metadata": {
+		"authors": []
+	},
+	"editcountneue": "Compteur de modifications",
+	"editcountneue-desc": "Affiche le [[Special:Editcount|compteur de modifications]] d’un utilisateur",
+	"editcountneue-all-namespaces": "Tous les espaces de noms",
+	"editcountneue-count": "Nombre de modifications",
+	"editcountneue-namespace": "Espace de noms",
+	"editcountneue-percentage": "Pourcentage",
+	"editcountneue-resulttitle": "Nombre de modifications de l’utilisateur « $1 »",
+	"editcountneue-user": "Nom d’utilisateur :",
+	"editcountneue-userdoesnotexist": "Le compte d'utilisateur « $1 » n’est pas inscrit et n’a aucune modification."
+}

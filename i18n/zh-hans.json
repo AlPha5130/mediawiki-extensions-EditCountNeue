@@ -1,0 +1,13 @@
+{
+	"@metadata": {
+		"authors": []
+	},
+	"editcountneue": "编辑数",
+	"editcountneue-all-namespaces": "所有命名空间",
+	"editcountneue-count": "编辑数",
+	"editcountneue-namespace": "命名空间",
+	"editcountneue-percentage": "百分比",
+	"editcountneue-resulttitle": "用户“$1”的编辑数",
+	"editcountneue-user": "用户名：",
+	"editcountneue-userdoesnotexist": "用户账号“$1”尚未注册且没有编辑。"
+}

@@ -1,0 +1,8 @@
+{
+	"@metadata": {
+		"authors": []
+	},
+	"editcountneue-resulttitle": "用戶「$1」的編輯數",
+	"editcountneue-user": "用戶名稱：",
+	"editcountneue-userdoesnotexist": "用戶帳號「$1」尚未註冊且沒有編輯。"
+}

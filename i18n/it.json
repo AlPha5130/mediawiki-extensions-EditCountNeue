@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": []
+	},
+	"editcountneue": "Conteggio delle modifiche",
+	"editcountneue-all-namespaces": "Tutti i namespace",
+	"editcountneue-count": "Numero di modifiche",
+	"editcountneue-namespace": "Namespace",
+	"editcountneue-percentage": "Percentuale",
+	"editcountneue-resulttitle": "Numero di modifiche dell'utente \"$1\"",
+	"editcountneue-user": "Nome utente:"
+}
