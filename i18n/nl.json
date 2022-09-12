@@ -1,0 +1,16 @@
+{
+	"@metadata": {
+		"authors": [
+			"Mainframe98"
+		]
+	},
+	"editcountneue": "Bewerkingsteller",
+	"editcountneue-desc": "Haalt het aantal bewerkingen van een gebruiker op",
+	"editcountneue-all-namespaces": "Alle naamruimten",
+	"editcountneue-count": "Aantal bewerkingen",
+	"editcountneue-namespace": "Naamruimte",
+	"editcountneue-percentage": "Percentage",
+	"editcountneue-resulttitle": "Aantal bewerkingen van gebruiker \"$1\"",
+	"editcountneue-user": "Gebruikersnaam:",
+	"editcountneue-userdoesnotexist": "Het gebruikersaccount \"$1\" is niet geregistreerd en heeft geen bewerkingen."
+}

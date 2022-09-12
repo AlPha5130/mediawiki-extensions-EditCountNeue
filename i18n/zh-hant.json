@@ -1,8 +1,11 @@
 {
 	"@metadata": {
-		"authors": []
+		"authors": [
+			"Lakejason0"
+		]
 	},
 	"editcountneue": "編輯次數",
+	"editcountneue-desc": "取得使用者的編輯數",
 	"editcountneue-all-namespaces": "所有命名空間",
 	"editcountneue-count": "編輯數",
 	"editcountneue-namespace": "命名空間",
