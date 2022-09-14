@@ -38,7 +38,7 @@ class SpecialEditCount extends SpecialPage {
 		$this->setHeaders();
 		$this->outputHeader();
 
-		$username = $par ?? $request->getText( 'wpuser' );
+		$username = $par ?? $request->getText( 'wpUsername' ) ?? $request->getText( 'wpuser' );
 		if ( !$username ) {
 			$this->outputHTMLForm();
 			return;
@@ -74,18 +74,29 @@ class SpecialEditCount extends SpecialPage {
 	 * @param ?User $user
 	 */
 	protected function outputHTMLForm( ?User $user = null ) {
+		$this->getOutput()->addHTML( $this->msg( 'editcountneue-intro' )->parse() );
+		$username = ( $user && $user->getId() === 0 ) ? $user->getName() : '';
 		$formDescriptor = [
-			'user' => [
+			'Username' => [
+				'section' => 'editcountneue-section-title',
 				'type' => 'user',
 				'exists' => true,
 				'label-message' => 'editcountneue-user',
 				'required' => true,
-				'default' => $user ? $user->getName() : ''
+				'default' => $username
+			],
+			'submit' => [
+				'section' => 'editcountneue-section-title',
+				'type' => 'submit',
+				'buttonlabel-message' => 'editcountneue-submit'
 			]
 		];
 
 		$htmlForm = HTMLForm::factory( 'ooui', $formDescriptor, $this->getContext() );
-		$htmlForm->setMethod( 'get' )->prepareForm()->displayForm( false );
+		$htmlForm->setMethod( 'get' )
+			->suppressDefaultSubmit()
+			->prepareForm()
+			->displayForm( false );
 	}
 
 	/**

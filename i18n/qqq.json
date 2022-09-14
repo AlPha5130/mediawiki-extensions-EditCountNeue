@@ -2,16 +2,20 @@
 	"@metadata": {
 		"authors": [
 			"NekoCharm",
-			"Nike"
+			"Nike",
+			"Winston Sung"
 		]
 	},
 	"editcountneue": "{{doc-special|EditCount}}",
 	"editcountneue-desc": "{{desc|name=EditCountNeue|url=https://www.mediawiki.org/wiki/Extension:EditCountNeue}}",
 	"editcountneue-all-namespaces": "Table cell text in namespace column representing all namespaces.",
 	"editcountneue-count": "Column header in result table for the number of edits.",
+	"editcountneue-intro": "Page intro between the page title and the form wrapper.",
 	"editcountneue-namespace": "Column header in result table for the namespaces.",
 	"editcountneue-percentage": "Column header in result table for the percentages.",
 	"editcountneue-resulttitle": "The heading element for the title of the query result.",
+	"editcountneue-section-title": "Section title for the user edit count query form.",
+	"editcountneue-submit": "Submit button to query edit count by username.",
 	"editcountneue-user": "Username field label in special page form.",
 	"editcountneue-userdoesnotexist": "An error message shown when a user account is not registered."
 }

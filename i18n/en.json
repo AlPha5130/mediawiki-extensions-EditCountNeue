@@ -1,16 +1,20 @@
 {
 	"@metadata": {
 		"authors": [
-			"NekoCharm"
+			"NekoCharm",
+			"Winston Sung"
 		]
 	},
 	"editcountneue": "Edit Count",
 	"editcountneue-desc": "Retrieves number of edits of a user",
 	"editcountneue-all-namespaces": "All namespaces",
 	"editcountneue-count": "Number of edits",
+	"editcountneue-intro": "Query number of edits of a user.",
 	"editcountneue-namespace": "Namespace",
 	"editcountneue-percentage": "Percentage",
 	"editcountneue-resulttitle": "Number of edits of user \"$1\"",
+	"editcountneue-section-title": "Query user edit count",
+	"editcountneue-submit": "Query",
 	"editcountneue-user": "Username:",
 	"editcountneue-userdoesnotexist": "User account \"$1\" is not registered and does not have edits."
 }
