@@ -33,8 +33,8 @@ class Hooks implements \MediaWiki\Hook\ParserFirstCallInitHook {
 
 	public static function editCount( Parser $parser, PPFrame $frame, array $args ) {
 		$userFactory = MediaWikiServices::getInstance()->getUserFactory();
-		$userName = isset( $args[0] ) ? trim( $frame->expand( $args[0] ) ) : '';
-		$user = $userFactory->newFromName( $userName );
+		$username = isset( $args[0] ) ? trim( $frame->expand( $args[0] ) ) : '';
+		$user = $userFactory->newFromName( $username );
 		// If user is invalid or does not exist, returns 0
 		if ( !$user || $user->getId() === 0 ) {
 			return '0';
