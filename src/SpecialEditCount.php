@@ -40,7 +40,7 @@ class SpecialEditCount extends SpecialPage {
 
 		$output->setPageTitle( $this->msg( 'editcountneue' ) );
 		
-		$username = $par ?? $request->getText( 'wpuser' );
+		$username = $par ?? $request->getText( 'wpUsername' ) ?? $request->getText( 'wpuser' );
 		if ( !$username ) {
 			$this->outputHTMLForm();
 			return;
@@ -54,7 +54,7 @@ class SpecialEditCount extends SpecialPage {
 			$output->addHTML( '<br>' . Html::element(
 				'strong',
 				[ 'class' => 'error' ],
-				$this->msg( 'editcountneue-userdoesnotexist' )->params( $username )->text()
+				$this->msg( 'editcountneue-error-userdoesnotexist' )->params( $username )->text()
 			) );
 			return;
 		}
@@ -66,7 +66,7 @@ class SpecialEditCount extends SpecialPage {
 		$output->addHTML( Html::element(
 			'h2',
 			[ 'id' => 'editcount-queryresult' ],
-			$this->msg( 'editcountneue-resulttitle' )->params( $user->getName() )->text()
+			$this->msg( 'editcountneue-result-heading' )->params( $user->getName() )->text()
 		) );
 		
 		$this->makeTable( $result );
@@ -77,17 +77,25 @@ class SpecialEditCount extends SpecialPage {
 	 */
 	protected function outputHTMLForm( ?User $user = null ) {
 		$formDescriptor = [
-			'user' => [
+			'username' => [
 				'type' => 'user',
+				'name' => 'wpUsername',
+				'id' => 'editcount-username',
 				'exists' => true,
-				'label-message' => 'editcountneue-user',
+				'label-message' => 'editcountneue-form-username',
 				'required' => true,
 				'default' => $user ? $user->getName() : ''
 			]
 		];
 
 		$htmlForm = HTMLForm::factory( 'ooui', $formDescriptor, $this->getContext() );
-		$htmlForm->setMethod( 'get' )->prepareForm()->displayForm( false );
+		$htmlForm
+			->setMethod( 'get' )
+			->setTitle( $this->getTitle() )
+			->setWrappingLegendMsg( 'editcountneue-form-legend' )
+			->setSubmitTextMsg( 'editcountneue-form-submit' )
+			->prepareForm()
+			->displayForm( false );
 	}
 
 	/**
@@ -118,9 +126,9 @@ class SpecialEditCount extends SpecialPage {
 		) . "\n";
 		$out .= Html::openElement( 'thead' ) .
 			Html::openElement( 'tr', [ 'class' => 'mw-editcounttable-header' ] ) .
-			Html::element( 'th', [], $this->msg( 'editcountneue-namespace' )->text() ) .
-			Html::element( 'th', [], $this->msg( 'editcountneue-count')->text() ) .
-			Html::element( 'th', [], $this->msg( 'editcountneue-percentage' )->text() ) .
+			Html::element( 'th', [], $this->msg( 'editcountneue-result-namespace' )->text() ) .
+			Html::element( 'th', [], $this->msg( 'editcountneue-result-count')->text() ) .
+			Html::element( 'th', [], $this->msg( 'editcountneue-result-percentage' )->text() ) .
 			Html::closeElement( 'tr' ) .
 			Html::closeElement( 'thead' ) .
 			Html::openElement( 'tbody' );
@@ -158,7 +166,7 @@ class SpecialEditCount extends SpecialPage {
 			
 		// bottom sum row
 		$out .= Html::openElement( 'tr', [ 'class' => 'mw-editcounttable-footer' ] ) .
-			Html::element( 'th', [], $this->msg( 'editcountneue-all-namespaces' )->text() ) .
+			Html::element( 'th', [], $this->msg( 'editcountneue-result-allnamespaces' )->text() ) .
 			Html::element(
 				'th',
 				[ 'class' => 'mw-editcounttable-count' ],
