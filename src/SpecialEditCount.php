@@ -38,7 +38,7 @@ class SpecialEditCount extends SpecialPage {
 		$this->setHeaders();
 		$this->outputHeader();
 
-		$output->setPageTitle( $this->msg( 'editcountneue' ) );
+		$output->setPageTitle( $this->msg( 'editcount' ) );
 		
 		$username = $par ?? $request->getText( 'wpUsername' ) ?? $request->getText( 'wpuser' );
 		if ( !$username ) {
