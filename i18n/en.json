@@ -4,7 +4,7 @@
 			"NekoCharm"
 		]
 	},
-	"editcountneue": "Edit Count",
+	"editcount": "Edit Count",
 	"editcountneue-desc": "Retrieves number of edits of a user",
 	"editcountneue-form-legend": "Query edit count",
 	"editcountneue-form-username": "Username:",
