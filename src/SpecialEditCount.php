@@ -91,8 +91,7 @@ class SpecialEditCount extends SpecialPage {
 		$htmlForm = HTMLForm::factory( 'ooui', $formDescriptor, $this->getContext() );
 		$htmlForm
 			->setMethod( 'get' )
-			->setTitle( $this->getTitle() )
-			->setWrappingLegendMsg( 'editcountneue-form-legend' )
+			->setWrapperLegendMsg( 'editcountneue-form-legend' )
 			->setSubmitTextMsg( 'editcountneue-form-submit' )
 			->prepareForm()
 			->displayForm( false );
