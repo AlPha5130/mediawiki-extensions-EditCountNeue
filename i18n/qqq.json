@@ -5,7 +5,7 @@
 			"Nike"
 		]
 	},
-	"editcount": "{{doc-special|EditCount}}",
+	"editcountneue": "{{doc-special|EditCount}}",
 	"editcountneue-desc": "{{desc|name=EditCountNeue|url=https://www.mediawiki.org/wiki/Extension:EditCountNeue}}",
 	"editcountneue-form-legend": "The legend text of the special page form.",
 	"editcountneue-form-username": "Username field label in the form.",

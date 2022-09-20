@@ -32,13 +32,15 @@ class SpecialEditCount extends SpecialPage {
 		parent::__construct( 'EditCount' );
 	}
 
+	public function getDescription() {
+		return $this->msg( 'editcountneue' )->text();
+	}
+
 	public function execute( $par ) {
 		$request = $this->getRequest();
 		$output = $this->getOutput();
 		$this->setHeaders();
 		$this->outputHeader();
-
-		$output->setPageTitle( $this->msg( 'editcount' ) );
 		
 		$username = $par ?? $request->getText( 'wpUsername' ) ?? $request->getText( 'wpuser' );
 		if ( !$username ) {
