@@ -6,11 +6,13 @@
 	},
 	"editcountneue": "Edit Count",
 	"editcountneue-desc": "Retrieves number of edits of a user",
-	"editcountneue-all-namespaces": "All namespaces",
-	"editcountneue-count": "Number of edits",
-	"editcountneue-namespace": "Namespace",
-	"editcountneue-percentage": "Percentage",
-	"editcountneue-resulttitle": "Number of edits of user \"$1\"",
-	"editcountneue-user": "Username:",
-	"editcountneue-userdoesnotexist": "User account \"$1\" is not registered and does not have edits."
+	"editcountneue-form-legend": "Query edit count",
+	"editcountneue-form-username": "Username:",
+	"editcountneue-form-submit": "Submit",
+	"editcountneue-result-allnamespaces": "All namespaces",
+	"editcountneue-result-count": "Number of edits",
+	"editcountneue-result-namespace": "Namespace",
+	"editcountneue-result-percentage": "Percentage",
+	"editcountneue-result-heading": "Number of edits of user \"$1\"",
+	"editcountneue-error-userdoesnotexist": "User account \"$1\" is not registered and does not have edits."
 }
