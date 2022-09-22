@@ -1,0 +1,13 @@
+{
+	"@metadata": {
+		"authors": []
+	},
+	"editcountneue": "Değişiklik sayısı",
+	"editcountneue-form-username": "Kullanıcı adı:",
+	"editcountneue-result-allnamespaces": "Tüm ad alanları",
+	"editcountneue-result-count": "Değişiklik sayısı",
+	"editcountneue-result-namespace": "Ad alanı",
+	"editcountneue-result-percentage": "Yüzde",
+	"editcountneue-result-heading": "\"$1\" kullanıcısının değişiklik sayısı",
+	"editcountneue-error-userdoesnotexist": "\"$1\" kullanıcı hesabı kayıtlı değil ve değişikliği yok."
+}

@@ -1,0 +1,19 @@
+{
+	"@metadata": {
+		"authors": [
+			"Mainframe98",
+			"McDutchie"
+		]
+	},
+	"editcountneue": "Bewerkingsteller",
+	"editcountneue-desc": "Haalt het aantal bewerkingen van een gebruiker op",
+	"editcountneue-form-legend": "Aantal bewerkingen opvragen",
+	"editcountneue-form-username": "Gebruikersnaam:",
+	"editcountneue-form-submit": "Indienen",
+	"editcountneue-result-allnamespaces": "Alle naamruimten",
+	"editcountneue-result-count": "Aantal bewerkingen",
+	"editcountneue-result-namespace": "Naamruimte",
+	"editcountneue-result-percentage": "Percentage",
+	"editcountneue-result-heading": "Aantal bewerkingen van gebruiker \"$1\"",
+	"editcountneue-error-userdoesnotexist": "Het gebruikersaccount \"$1\" is niet geregistreerd en heeft geen bewerkingen."
+}

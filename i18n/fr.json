@@ -1,0 +1,19 @@
+{
+	"@metadata": {
+		"authors": [
+			"Verdy p",
+			"Wladek92"
+		]
+	},
+	"editcountneue": "Compteur de modifications",
+	"editcountneue-desc": "Affiche le compteur de modifications d’un utilisateur",
+	"editcountneue-form-legend": "Compteur de modifications de la requête",
+	"editcountneue-form-username": "Nom d’utilisateur :",
+	"editcountneue-form-submit": "Soumettre",
+	"editcountneue-result-allnamespaces": "Tous les espaces de noms",
+	"editcountneue-result-count": "Nombre de modifications",
+	"editcountneue-result-namespace": "Espace de noms",
+	"editcountneue-result-percentage": "Pourcentage",
+	"editcountneue-result-heading": "Nombre de modifications de l’utilisateur « $1 »",
+	"editcountneue-error-userdoesnotexist": "Le compte d’utilisateur « $1 » n’est pas inscrit et n’a aucune modification."
+}
