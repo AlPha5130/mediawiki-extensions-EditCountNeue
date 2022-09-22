@@ -1,0 +1,16 @@
+{
+	"@metadata": {
+		"authors": [
+			"Vlad5250"
+		]
+	},
+	"editcountneue": "Brojač izmjena",
+	"editcountneue-form-username": "Korisničko ime:",
+	"editcountneue-form-submit": "Unesi",
+	"editcountneue-result-allnamespaces": "Svi imenski prostori",
+	"editcountneue-result-count": "Broj izmjena:",
+	"editcountneue-result-namespace": "Imenski prostor",
+	"editcountneue-result-percentage": "Postotak",
+	"editcountneue-result-heading": "Broj izmjena korisnika \"$1\"",
+	"editcountneue-error-userdoesnotexist": "Korisnički račun \"$1\" nije registriran i nema izmjena."
+}

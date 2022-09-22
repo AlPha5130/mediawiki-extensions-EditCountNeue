@@ -1,0 +1,13 @@
+{
+	"@metadata": {
+		"authors": []
+	},
+	"editcountneue": "संपादन संख्या",
+	"editcountneue-form-username": "सदस्यनाम:",
+	"editcountneue-result-allnamespaces": "सभी नामस्थान",
+	"editcountneue-result-count": "संपादनों की संख्या",
+	"editcountneue-result-namespace": "नामस्थान",
+	"editcountneue-result-percentage": "प्रतिशत",
+	"editcountneue-result-heading": "सदस्य \"$1\" के संपादनों की संख्या",
+	"editcountneue-error-userdoesnotexist": "सदस्य खाता \"$1\" पंजीकृत नहीं है और इसपर संपादन नहीं हैं।"
+}

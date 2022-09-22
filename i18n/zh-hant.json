@@ -1,0 +1,16 @@
+{
+	"@metadata": {
+		"authors": [
+			"Lakejason0"
+		]
+	},
+	"editcountneue": "編輯次數",
+	"editcountneue-desc": "取得使用者的編輯數",
+	"editcountneue-form-username": "使用者名稱：",
+	"editcountneue-result-allnamespaces": "所有命名空間",
+	"editcountneue-result-count": "編輯數",
+	"editcountneue-result-namespace": "命名空間",
+	"editcountneue-result-percentage": "百分比",
+	"editcountneue-result-heading": "使用者「$1」的編輯數",
+	"editcountneue-error-userdoesnotexist": "使用者帳號「$1」尚未註冊且沒有編輯。"
+}
