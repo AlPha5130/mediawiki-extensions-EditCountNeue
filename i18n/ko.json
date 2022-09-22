@@ -1,0 +1,13 @@
+{
+	"@metadata": {
+		"authors": []
+	},
+	"editcountneue": "편집 수",
+	"editcountneue-form-username": "사용자 이름:",
+	"editcountneue-result-allnamespaces": "모든 이름공간",
+	"editcountneue-result-count": "편집 수",
+	"editcountneue-result-namespace": "이름공간",
+	"editcountneue-result-percentage": "백분율",
+	"editcountneue-result-heading": "\"$1\" 사용자의 편집 수",
+	"editcountneue-error-userdoesnotexist": "\"$1\" 사용자 계정은 등록되어 있지 않으며 편집이 없습니다."
+}

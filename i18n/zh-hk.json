@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"Lakejason0"
+		]
+	},
+	"editcountneue-desc": "取得用戶的編輯數",
+	"editcountneue-form-username": "用戶名稱：",
+	"editcountneue-result-heading": "用戶「$1」的編輯數",
+	"editcountneue-error-userdoesnotexist": "用戶帳號「$1」尚未註冊且沒有編輯。"
+}

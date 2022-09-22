@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Deltaspace"
+		]
+	},
+	"editcountneue": "Счётчик правок",
+	"editcountneue-form-submit": "Отправить",
+	"editcountneue-result-allnamespaces": "Все пространства имён",
+	"editcountneue-result-count": "Количество правок",
+	"editcountneue-result-namespace": "Пространство имён"
+}

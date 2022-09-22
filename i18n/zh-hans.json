@@ -1,0 +1,16 @@
+{
+	"@metadata": {
+		"authors": [
+			"Lakejason0"
+		]
+	},
+	"editcountneue": "编辑计数",
+	"editcountneue-desc": "获取用户的编辑数",
+	"editcountneue-form-username": "用户名：",
+	"editcountneue-result-allnamespaces": "所有命名空间",
+	"editcountneue-result-count": "编辑数",
+	"editcountneue-result-namespace": "命名空间",
+	"editcountneue-result-percentage": "百分比",
+	"editcountneue-result-heading": "用户“$1”的编辑数",
+	"editcountneue-error-userdoesnotexist": "用户账号“$1”尚未注册且没有编辑。"
+}

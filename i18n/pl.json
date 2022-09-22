@@ -1,0 +1,18 @@
+{
+	"@metadata": {
+		"authors": [
+			"Rail"
+		]
+	},
+	"editcountneue": "Licznik edycji",
+	"editcountneue-desc": "Pobiera liczbę edycji użytkownika",
+	"editcountneue-form-legend": "Pobierz edycje użytkownika",
+	"editcountneue-form-username": "Nazwa użytkownika:",
+	"editcountneue-form-submit": "Prześlij",
+	"editcountneue-result-allnamespaces": "Wszystkie przestrzenie nazw",
+	"editcountneue-result-count": "liczba edycji",
+	"editcountneue-result-namespace": "Przestrzeń nazw",
+	"editcountneue-result-percentage": "Procent",
+	"editcountneue-result-heading": "Liczba edycji {{GENDER:$1|użytkownika|użytkowniczki}} „$1”",
+	"editcountneue-error-userdoesnotexist": "Konto użytkownika „$1” nie jest zarejestrowane i nie posiada edycji."
+}
