@@ -3,11 +3,11 @@
 		"authors": []
 	},
 	"editcountneue": "Değişiklik sayısı",
-	"editcountneue-all-namespaces": "Tüm ad alanları",
-	"editcountneue-count": "Değişiklik sayısı",
-	"editcountneue-namespace": "Ad alanı",
-	"editcountneue-percentage": "Yüzde",
-	"editcountneue-resulttitle": "\"$1\" kullanıcısının değişiklik sayısı",
-	"editcountneue-user": "Kullanıcı adı:",
-	"editcountneue-userdoesnotexist": "\"$1\" kullanıcı hesabı kayıtlı değil ve değişikliği yok."
+	"editcountneue-form-username": "Kullanıcı adı:",
+	"editcountneue-result-allnamespaces": "Tüm ad alanları",
+	"editcountneue-result-count": "Değişiklik sayısı",
+	"editcountneue-result-namespace": "Ad alanı",
+	"editcountneue-result-percentage": "Yüzde",
+	"editcountneue-result-heading": "\"$1\" kullanıcısının değişiklik sayısı",
+	"editcountneue-error-userdoesnotexist": "\"$1\" kullanıcı hesabı kayıtlı değil ve değişikliği yok."
 }

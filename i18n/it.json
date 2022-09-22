@@ -3,10 +3,10 @@
 		"authors": []
 	},
 	"editcountneue": "Conteggio delle modifiche",
-	"editcountneue-all-namespaces": "Tutti i namespace",
-	"editcountneue-count": "Numero di modifiche",
-	"editcountneue-namespace": "Namespace",
-	"editcountneue-percentage": "Percentuale",
-	"editcountneue-resulttitle": "Numero di modifiche dell'utente \"$1\"",
-	"editcountneue-user": "Nome utente:"
+	"editcountneue-form-username": "Nome utente:",
+	"editcountneue-result-allnamespaces": "Tutti i namespace",
+	"editcountneue-result-count": "Numero di modifiche",
+	"editcountneue-result-namespace": "Namespace",
+	"editcountneue-result-percentage": "Percentuale",
+	"editcountneue-result-heading": "Numero di modifiche dell'utente \"$1\""
 }

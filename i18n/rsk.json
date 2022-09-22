@@ -2,8 +2,8 @@
 	"@metadata": {
 		"authors": []
 	},
-	"editcountneue-all-namespaces": "Шицки простори за назви",
-	"editcountneue-count": "Число пременкох",
-	"editcountneue-namespace": "Простор за назви",
-	"editcountneue-user": "Хасновательске мено:"
+	"editcountneue-form-username": "Хасновательске мено:",
+	"editcountneue-result-allnamespaces": "Шицки простори за назви",
+	"editcountneue-result-count": "Число пременкох",
+	"editcountneue-result-namespace": "Простор за назви"
 }

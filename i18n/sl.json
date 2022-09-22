@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"Eleassar"
+		]
+	},
+	"editcountneue": "Število prispevkov",
+	"editcountneue-desc": "Pridobi število urejanj uporabnika",
+	"editcountneue-form-legend": "Število urejanj poizvedbe",
+	"editcountneue-form-submit": "Pošlji"
+}

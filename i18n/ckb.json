@@ -3,9 +3,9 @@
 		"authors": []
 	},
 	"editcountneue": "ژمارەی دەستکارییەکان",
-	"editcountneue-all-namespaces": "ھەموو بۆشاییی ناوەکان",
-	"editcountneue-count": "ژمارەی دەستکارییەکان",
-	"editcountneue-namespace": "بۆشاییی ناو",
-	"editcountneue-resulttitle": "ژمارەی دەستکارییەکانی بەکارھێنەر «$1»",
-	"editcountneue-user": "ناوی بەکارھێنەر:"
+	"editcountneue-form-username": "ناوی بەکارھێنەر:",
+	"editcountneue-result-allnamespaces": "ھەموو بۆشاییی ناوەکان",
+	"editcountneue-result-count": "ژمارەی دەستکارییەکان",
+	"editcountneue-result-namespace": "بۆشاییی ناو",
+	"editcountneue-result-heading": "ژمارەی دەستکارییەکانی بەکارھێنەر «$1»"
 }

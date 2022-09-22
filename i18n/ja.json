@@ -1,15 +1,17 @@
 {
 	"@metadata": {
 		"authors": [
-			"Lakejason0"
+			"Lakejason0",
+			"MathXplore"
 		]
 	},
 	"editcountneue": "編集回数",
-	"editcountneue-all-namespaces": "全ての名前空間",
-	"editcountneue-count": "編集回数",
-	"editcountneue-namespace": "名前空間",
-	"editcountneue-percentage": "割合",
-	"editcountneue-resulttitle": "利用者「$1」の編集回数",
-	"editcountneue-user": "利用者名:",
-	"editcountneue-userdoesnotexist": "利用者アカウント「$1」は登録されておらず、編集履歴もありません。"
+	"editcountneue-form-username": "利用者名:",
+	"editcountneue-form-submit": "送信",
+	"editcountneue-result-allnamespaces": "全ての名前空間",
+	"editcountneue-result-count": "編集回数",
+	"editcountneue-result-namespace": "名前空間",
+	"editcountneue-result-percentage": "割合",
+	"editcountneue-result-heading": "利用者「$1」の編集回数",
+	"editcountneue-error-userdoesnotexist": "利用者アカウント「$1」は登録されておらず、編集履歴もありません。"
 }

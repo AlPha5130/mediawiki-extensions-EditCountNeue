@@ -1,13 +1,18 @@
 {
 	"@metadata": {
-		"authors": []
+		"authors": [
+			"Bjankuloski06"
+		]
 	},
 	"editcountneue": "Број на уредувања",
-	"editcountneue-all-namespaces": "Сите именски простори",
-	"editcountneue-count": "Број на уредувања",
-	"editcountneue-namespace": "Именски простор",
-	"editcountneue-percentage": "Постоток",
-	"editcountneue-resulttitle": "Број на уредувања на корисникот „$1“",
-	"editcountneue-user": "Корисничко име:",
-	"editcountneue-userdoesnotexist": "Корисничката сметка „$1“ не е регистрирана и нема уредувања."
+	"editcountneue-desc": "Дава број на уредувања на корисник",
+	"editcountneue-form-legend": "Побарај број на уредувања",
+	"editcountneue-form-username": "Корисничко име:",
+	"editcountneue-form-submit": "Поднеси",
+	"editcountneue-result-allnamespaces": "Сите именски простори",
+	"editcountneue-result-count": "Број на уредувања",
+	"editcountneue-result-namespace": "Именски простор",
+	"editcountneue-result-percentage": "Постоток",
+	"editcountneue-result-heading": "Број на уредувања на корисникот „$1“",
+	"editcountneue-error-userdoesnotexist": "Корисничката сметка „$1“ не е регистрирана и нема уредувања."
 }
