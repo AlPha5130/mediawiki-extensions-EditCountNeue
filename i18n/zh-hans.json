@@ -1,12 +1,15 @@
 {
 	"@metadata": {
 		"authors": [
-			"Lakejason0"
+			"Lakejason0",
+			"NekoCharm"
 		]
 	},
 	"editcountneue": "编辑计数",
 	"editcountneue-desc": "获取用户的编辑数",
+	"editcountneue-form-legend": "查询编辑数",
 	"editcountneue-form-username": "用户名：",
+	"editcountneue-form-submit": "提交",
 	"editcountneue-result-allnamespaces": "所有命名空间",
 	"editcountneue-result-count": "编辑数",
 	"editcountneue-result-namespace": "命名空间",
