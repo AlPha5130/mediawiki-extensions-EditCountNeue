@@ -6,6 +6,8 @@
 		]
 	},
 	"editcountneue": "編集回数",
+	"editcountneue-desc": "利用者の編集回数を取得する",
+	"editcountneue-form-legend": "編集回数クエリ",
 	"editcountneue-form-username": "利用者名:",
 	"editcountneue-form-submit": "送信",
 	"editcountneue-result-allnamespaces": "全ての名前空間",
