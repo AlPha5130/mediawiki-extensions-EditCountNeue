@@ -24,14 +24,18 @@
 		"MediaWiki\\Extension\\EditCount\\": "src/"
 	},
 	"SpecialPages": {
-		"EditCount": "MediaWiki\\Extension\\EditCount\\SpecialEditCount"
+		"EditCount": {
+			"class": "MediaWiki\\Extension\\EditCount\\SpecialEditCount",
+			"services": [ "UserIdentityLookup" ]
+		}
 	},
 	"Hooks": {
 		"ParserFirstCallInit": "handleHooks"
 	},
 	"HookHandlers": {
 		"handleHooks": {
-			"class": "MediaWiki\\Extension\\EditCount\\Hooks"
+			"class": "MediaWiki\\Extension\\EditCount\\Hooks",
+			"services": [ "UserIdentityLookup" ]
 		}
 	},
 	"manifest_version": 2

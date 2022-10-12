@@ -24,12 +24,16 @@ use SpecialPage;
 use HTMLForm;
 use Html;
 use MediaWiki\MediaWikiServices;
-use User;
+use MediaWiki\User\UserIdentity;
 
 class SpecialEditCount extends SpecialPage {
 
-	public function __construct() {
+	/** @var UserIdentityLookup */
+	private $userIdentityLookup;
+
+	public function __construct( UserIdentityLookup $userIdentityLookup ) {
 		parent::__construct( 'EditCount' );
+		$this->userIdentityLookup = $userIdentityLookup;
 	}
 
 	public function getDescription() {
@@ -48,9 +52,8 @@ class SpecialEditCount extends SpecialPage {
 			return;
 		}
 
-		$user = MediaWikiServices::getInstance()
-			->getUserFactory()
-			->newFromName( $username );
+		$user = $this->userIdentityLookup
+			->getUserIdentityByName( $username );
 		if ( !$user || $user->getId() === 0 ) {
 			$this->outputHTMLForm();
 			$output->addHTML( '<br>' . Html::element(
@@ -75,9 +78,9 @@ class SpecialEditCount extends SpecialPage {
 	}
 
 	/**
-	 * @param ?User $user
+	 * @param ?UserIdentity $user
 	 */
-	protected function outputHTMLForm( ?User $user = null ) {
+	protected function outputHTMLForm( ?UserIdentity $user = null ) {
 		$formDescriptor = [
 			'username' => [
 				'type' => 'user',
@@ -108,9 +111,9 @@ class SpecialEditCount extends SpecialPage {
 	}
 
 	/**
-	 * @param User $user
+	 * @param UserIdentity $user
 	 */
-	protected static function queryEditCount( User $user ) {
+	protected static function queryEditCount( UserIdentity $user ) {
 		$result = EditCountQuery::queryAllNamespaces( $user );
 		return $result;
 	}

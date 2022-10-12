@@ -21,20 +21,28 @@
 namespace MediaWiki\Extension\EditCount;
 
 use MediaWiki\MediaWikiServices;
-use MediaWiki\User\UserFactory;
+use MediaWiki\User\UserIdentityLookup;
 use Parser;
 use PPFrame;
 
 class Hooks implements \MediaWiki\Hook\ParserFirstCallInitHook {
 
+	/** @var UserIdentityLookup */
+	private $userIdentityLookup;
+
+	public function __construct( UserIdentityLookup $userIdentityLookup ) {
+		parent::__construct();
+		$this->userIdentityLookup = $userIdentityLookup;
+	}
+
 	public function onParserFirstCallInit( $parser ) {
 		$parser->setFunctionHook( 'editcount', [ self::class, 'editCount' ], Parser::SFH_OBJECT_ARGS );
 	}
 
-	public static function editCount( Parser $parser, PPFrame $frame, array $args ) {
-		$userFactory = MediaWikiServices::getInstance()->getUserFactory();
+	public function editCount( Parser $parser, PPFrame $frame, array $args ) {
 		$username = isset( $args[0] ) ? trim( $frame->expand( $args[0] ) ) : '';
-		$user = $userFactory->newFromName( $username );
+		$user = $this->userIdentityLookup
+			->getUserIdentityByName( $username );
 		// If user is invalid or does not exist, returns 0
 		if ( !$user || $user->getId() === 0 ) {
 			return '0';

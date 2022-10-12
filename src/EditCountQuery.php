@@ -21,7 +21,7 @@
 namespace MediaWiki\Extension\EditCount;
 
 use MediaWiki\MediaWikiServices;
-use User;
+use MediaWiki\User\UserIdentity;
 
 class EditCountQuery {
 
@@ -31,18 +31,18 @@ class EditCountQuery {
 	 * @param User $user
 	 * @return array
 	 */
-	public static function queryAllNamespaces( User $user ) {
+	public static function queryAllNamespaces( UserIdentity $user ) {
 		return self::execute( $user );
 	}
 
 	/**
 	 * Count the number of edits of a user in given namespaces
 	 * 
-	 * @param User $user
+	 * @param UserIdentity $user
 	 * @param int|int[] $namespaces the namespaces to check
 	 * @return array
 	 */
-	public static function queryNamespaces( User $user , $namespaces ) {
+	public static function queryNamespaces( UserIdentity $user , array $namespaces ) {
 		if ( !is_array( $namespaces ) ) {
 			$namespaces = [ $namespaces ];
 		}
@@ -66,10 +66,10 @@ class EditCountQuery {
 	/**
 	 * Execute the query
 	 * 
-	 * @param User $user the user to check
+	 * @param UserIdentity $user the user to check
 	 * @return array
 	 */
-	protected static function execute( User $user ) {
+	protected static function execute( UserIdentity $user ) {
 		$lb = MediaWikiServices::getInstance()->getDBLoadBalancer();
 		$dbr = $lb->getConnectionRef( DB_REPLICA );
 		$norm = MediaWikiServices::getInstance()->getActorNormalization();
