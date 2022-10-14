@@ -25,6 +25,7 @@ use HTMLForm;
 use Html;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\User\UserIdentity;
+use MediaWiki\User\UserIdentityLookup;
 
 class SpecialEditCount extends SpecialPage {
 

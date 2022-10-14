@@ -31,12 +31,11 @@ class Hooks implements \MediaWiki\Hook\ParserFirstCallInitHook {
 	private $userIdentityLookup;
 
 	public function __construct( UserIdentityLookup $userIdentityLookup ) {
-		parent::__construct();
 		$this->userIdentityLookup = $userIdentityLookup;
 	}
 
 	public function onParserFirstCallInit( $parser ) {
-		$parser->setFunctionHook( 'editcount', [ self::class, 'editCount' ], Parser::SFH_OBJECT_ARGS );
+		$parser->setFunctionHook( 'editcount', [ new Hooks( $this->userIdentityLookup ), 'editCount' ], Parser::SFH_OBJECT_ARGS );
 	}
 
 	public function editCount( Parser $parser, PPFrame $frame, array $args ) {
