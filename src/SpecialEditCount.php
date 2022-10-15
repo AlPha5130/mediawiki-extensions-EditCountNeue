@@ -164,6 +164,9 @@ class SpecialEditCount extends SpecialPage {
 				$converter = $this->languageConverterFactory
 					->getLanguageConverter( $lang );
 				$nsName = $converter->convertNamespace( $ns );
+				if ( $nsName === '' ) {
+					$nsName = "NS$ns";
+				}
 			}
 			$out .= Html::openElement( 'tr', [ 'class' => 'mw-editcounttable-row' ] ) .
 				Html::element(
