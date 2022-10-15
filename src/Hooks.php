@@ -28,24 +28,38 @@ use WikiMedia\Rdbms\ILoadBalancer;
 
 class Hooks implements \MediaWiki\Hook\ParserFirstCallInitHook {
 
-	
-	/** @var EditCountQuery */
-	private $editCountQuery;
+	/** @var ActorNormalization */
+	private $actorNormalization;
+
+	/** @var ILoadBalancer */
+	private $dbLoadBalancer;
 
 	/** @var UserIdentityLookup */
 	private $userIdentityLookup;
+
+	/** @var EditCountQuery */
+	private $editCountQuery;
 
 	public function __construct(
 		ActorNormalization $actorNormalization,
 		ILoadBalancer $dbLoadBalancer,
 		UserIdentityLookup $userIdentityLookup
 	) {
+		$this->actorNormalization = $actorNormalization;
+		$this->dbLoadBalancer = $dbLoadBalancer;
 		$this->userIdentityLookup = $userIdentityLookup;
-		$this->editCountQuery = new EditCountQuery( $actorNormalization, $dbLoadBalancer );
+		$this->editCountQuery = new EditCountQuery(
+			$actorNormalization,
+			$dbLoadBalancer
+		);
 	}
 
 	public function onParserFirstCallInit( $parser ) {
-		$parser->setFunctionHook( 'editcount', [ new Hooks( $this->userIdentityLookup ), 'editCount' ], Parser::SFH_OBJECT_ARGS );
+		$parser->setFunctionHook( 'editcount', [ new Hooks(
+			$this->actorNormalization,
+			$this->dbLoadBalancer,
+			$this->userIdentityLookup
+		), 'editCount' ], Parser::SFH_OBJECT_ARGS );
 	}
 
 	public function editCount( Parser $parser, PPFrame $frame, array $args ) {
