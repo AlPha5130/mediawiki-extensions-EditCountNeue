@@ -23,18 +23,33 @@ namespace MediaWiki\Extension\EditCount;
 use SpecialPage;
 use HTMLForm;
 use Html;
-use MediaWiki\MediaWikiServices;
+use MediaWiki\Languages\LanguageConverterFactory;
+use MediaWiki\User\ActorNormalization;
 use MediaWiki\User\UserIdentity;
 use MediaWiki\User\UserIdentityLookup;
+use WikiMedia\Rdbms\ILoadBalancer;
 
 class SpecialEditCount extends SpecialPage {
+
+	/** @var LanguageConverterFactory */
+	private $languageConverterFactory;
 
 	/** @var UserIdentityLookup */
 	private $userIdentityLookup;
 
-	public function __construct( UserIdentityLookup $userIdentityLookup ) {
+	/** @var EditCountQuery */
+	private $editCountQuery;
+
+	public function __construct(
+		ActorNormalization $actorNormalization,
+		ILoadBalancer $dbLoadBalancer,
+		LanguageConverterFactory $languageConverterFactory,
+		UserIdentityLookup $userIdentityLookup
+	) {
 		parent::__construct( 'EditCount' );
+		$this->languageConverterFactory = $languageConverterFactory;
 		$this->userIdentityLookup = $userIdentityLookup;
+		$this->editCountQuery = new EditCountQuery( $actorNormalization, $dbLoadBalancer );
 	}
 
 	public function getDescription() {
@@ -114,8 +129,8 @@ class SpecialEditCount extends SpecialPage {
 	/**
 	 * @param UserIdentity $user
 	 */
-	protected static function queryEditCount( UserIdentity $user ) {
-		$result = EditCountQuery::queryAllNamespaces( $user );
+	protected function queryEditCount( UserIdentity $user ) {
+		$result = $this->editCountQuery->queryAllNamespaces( $user );
 		return $result;
 	}
 
@@ -146,7 +161,7 @@ class SpecialEditCount extends SpecialPage {
 			if ( $ns === NS_MAIN ) {
 				$nsName = $this->msg( 'blanknamespace' )->text();
 			} else {
-				$converter = MediaWikiServices::getInstance()->getLanguageConverterFactory()
+				$converter = $this->languageConverterFactory
 					->getLanguageConverter( $lang );
 				$nsName = $converter->convertNamespace( $ns );
 			}

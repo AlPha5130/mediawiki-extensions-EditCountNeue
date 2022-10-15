@@ -26,7 +26,12 @@
 	"SpecialPages": {
 		"EditCount": {
 			"class": "MediaWiki\\Extension\\EditCount\\SpecialEditCount",
-			"services": [ "UserIdentityLookup" ]
+			"services": [
+				"ActorNormalization",
+				"DBLoadBalancer",
+				"LanguageConverterFactory",
+				"UserIdentityLookup"
+			]
 		}
 	},
 	"Hooks": {
@@ -35,7 +40,11 @@
 	"HookHandlers": {
 		"handleHooks": {
 			"class": "MediaWiki\\Extension\\EditCount\\Hooks",
-			"services": [ "UserIdentityLookup" ]
+			"services": [
+				"ActorNormalization",
+				"DBLoadBalancer",
+				"UserIdentityLookup"
+			]
 		}
 	},
 	"manifest_version": 2

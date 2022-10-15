@@ -20,18 +20,28 @@
 
 namespace MediaWiki\Extension\EditCount;
 
-use MediaWiki\MediaWikiServices;
-use MediaWiki\User\UserIdentityLookup;
 use Parser;
 use PPFrame;
+use MediaWiki\User\ActorNormalization;
+use MediaWiki\User\UserIdentityLookup;
+use WikiMedia\Rdbms\ILoadBalancer;
 
 class Hooks implements \MediaWiki\Hook\ParserFirstCallInitHook {
+
+	
+	/** @var EditCountQuery */
+	private $editCountQuery;
 
 	/** @var UserIdentityLookup */
 	private $userIdentityLookup;
 
-	public function __construct( UserIdentityLookup $userIdentityLookup ) {
+	public function __construct(
+		ActorNormalization $actorNormalization,
+		ILoadBalancer $dbLoadBalancer,
+		UserIdentityLookup $userIdentityLookup
+	) {
 		$this->userIdentityLookup = $userIdentityLookup;
+		$this->editCountQuery = new EditCountQuery( $actorNormalization, $dbLoadBalancer );
 	}
 
 	public function onParserFirstCallInit( $parser ) {
@@ -49,7 +59,7 @@ class Hooks implements \MediaWiki\Hook\ParserFirstCallInitHook {
 
 		if ( count( $args ) <= 1 ) {
 			// If namespaces are not specified, query all namespaces
-			$count = EditCountQuery::queryAllNamespaces( $user );
+			$count = $this->editCountQuery->queryAllNamespaces( $user );
 			return "$count[sum]";
 		} else {
 			// filter out the first argument (the username)
@@ -70,7 +80,7 @@ class Hooks implements \MediaWiki\Hook\ParserFirstCallInitHook {
 				}
 			}
 
-			$count = EditCountQuery::queryNamespaces( $user, $namespaces );
+			$count = $this->editCountQuery->queryNamespaces( $user, $namespaces );
 			return "$count[sum]";
 		}
 	}

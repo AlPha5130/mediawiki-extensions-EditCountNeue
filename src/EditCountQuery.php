@@ -20,10 +20,25 @@
 
 namespace MediaWiki\Extension\EditCount;
 
-use MediaWiki\MediaWikiServices;
+use MediaWiki\User\ActorNormalization;
 use MediaWiki\User\UserIdentity;
+use WikiMedia\Rdbms\ILoadBalancer;
 
 class EditCountQuery {
+
+	/** @var ILoadBalancer */
+	private $dbLoadBalancer;
+
+	/** @var ActorNormalization */
+	private $actorNormalization;
+
+	public function __construct(
+		ActorNormalization $actorNormalization,
+		ILoadBalancer $dbLoadBalancer
+	) {
+		$this->actorNormalization = $actorNormalization;
+		$this->dbLoadBalancer = $dbLoadBalancer;
+	}
 
 	/**
 	 * Count the number of edits of a user in all namespaces
@@ -31,8 +46,8 @@ class EditCountQuery {
 	 * @param User $user
 	 * @return array
 	 */
-	public static function queryAllNamespaces( UserIdentity $user ) {
-		return self::execute( $user );
+	public function queryAllNamespaces( UserIdentity $user ) {
+		return $this->execute( $user );
 	}
 
 	/**
@@ -42,7 +57,7 @@ class EditCountQuery {
 	 * @param int|int[] $namespaces the namespaces to check
 	 * @return array
 	 */
-	public static function queryNamespaces( UserIdentity $user , array $namespaces ) {
+	public function queryNamespaces( UserIdentity $user , array $namespaces ) {
 		if ( !is_array( $namespaces ) ) {
 			$namespaces = [ $namespaces ];
 		}
@@ -51,7 +66,7 @@ class EditCountQuery {
 				'sum' => 0
 			];
 		}
-		$queryRes = self::execute( $user );
+		$queryRes = $this->execute( $user );
 
 		$res = [];
 		$sum = 0;
@@ -69,11 +84,9 @@ class EditCountQuery {
 	 * @param UserIdentity $user the user to check
 	 * @return array
 	 */
-	protected static function execute( UserIdentity $user ) {
-		$lb = MediaWikiServices::getInstance()->getDBLoadBalancer();
-		$dbr = $lb->getConnectionRef( DB_REPLICA );
-		$norm = MediaWikiServices::getInstance()->getActorNormalization();
-		$actorId = $norm->findActorId( $user, $dbr );
+	protected function execute( UserIdentity $user ) {
+		$dbr = $this->dbLoadBalancer->getConnectionRef( DB_REPLICA );
+		$actorId = $this->actorNormalization->findActorId( $user, $dbr );
 		if ( is_null( $actorId ) ) {
 			return [
 				'sum' => 0
@@ -81,6 +94,7 @@ class EditCountQuery {
 		}
 
 		$query = $dbr->newSelectQueryBuilder()
+			->caller( __METHOD__ )
 			->select( [ 'page_namespace', 'count' => 'COUNT(*)' ] )
 			->from( 'revision' )
 			->join( 'page', null, 'page_id = rev_page' )
