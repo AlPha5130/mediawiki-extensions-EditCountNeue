@@ -13,7 +13,8 @@
 	},
 	"MessagesDirs": {
 		"EditCount": [
-			"i18n"
+			"i18n",
+			"i18n/api"
 		]
 	},
 	"ExtensionMessagesFiles": {
@@ -22,6 +23,17 @@
 	},
 	"AutoloadNamespaces": {
 		"MediaWiki\\Extension\\EditCount\\": "src/"
+	},
+	"APIListModules": {
+		"editcount": {
+			"class": "MediaWiki\\Extension\\EditCount\\Api\\ApiQueryEditCount",
+			"services": [
+				"ActorNormalization",
+				"DBLoadBalancer",
+				"UserIdentityLookup",
+				"UserNameUtils"
+			]
+		}
 	},
 	"SpecialPages": {
 		"EditCount": {

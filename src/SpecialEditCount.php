@@ -153,9 +153,7 @@ class SpecialEditCount extends SpecialPage {
 			Html::closeElement( 'thead' ) .
 			Html::openElement( 'tbody' );
 
-		$nsData = array_filter( $data, function ( $i ) {
-			return is_int( $i );
-		}, ARRAY_FILTER_USE_KEY );
+		$nsData = array_filter( $data, fn( $k ): bool => is_int( $k ), ARRAY_FILTER_USE_KEY );
 
 		foreach ( $nsData as $ns => $count ) {
 			if ( $ns === NS_MAIN ) {
