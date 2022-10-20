@@ -1,0 +1,18 @@
+{
+	"@metadata": {
+		"authors": [
+			"Sabelöga"
+		]
+	},
+	"editcountneue": "Redigeringsräknare",
+	"editcountneue-desc": "Hämtar en användares redigeringsantal",
+	"editcountneue-form-legend": "Sökfråga för redigeringsantal",
+	"editcountneue-form-username": "Användarnamn:",
+	"editcountneue-form-submit": "Skicka in",
+	"editcountneue-result-allnamespaces": "Alla namnrymder",
+	"editcountneue-result-count": "Antalet redigeringar",
+	"editcountneue-result-namespace": "Namnrymd",
+	"editcountneue-result-percentage": "Andel i procent",
+	"editcountneue-result-heading": "Antalet redigeringar från användare \"$1\"",
+	"editcountneue-error-userdoesnotexist": "Användarkonto \"$1\" är inte registrerat och har inga redigeringar."
+}

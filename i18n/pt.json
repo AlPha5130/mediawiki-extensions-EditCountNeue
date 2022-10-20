@@ -1,0 +1,18 @@
+{
+	"@metadata": {
+		"authors": [
+			"Hamilton Abreu"
+		]
+	},
+	"editcountneue": "Contador de edições",
+	"editcountneue-desc": "Obtém o número de edições de um utilizador",
+	"editcountneue-form-legend": "Consultar contagem de edições",
+	"editcountneue-form-username": "Nome de utilizador:",
+	"editcountneue-form-submit": "Enviar",
+	"editcountneue-result-allnamespaces": "Todos os espaços nominais",
+	"editcountneue-result-count": "Número de edições",
+	"editcountneue-result-namespace": "Espaço nominal",
+	"editcountneue-result-percentage": "Percentagem",
+	"editcountneue-result-heading": "Número de edições do utilizador \"$1\"",
+	"editcountneue-error-userdoesnotexist": "A conta de utilizador \"$1\" não está registada e não tem edições."
+}
