@@ -1,0 +1,13 @@
+{
+	"@metadata": {
+		"authors": [
+			"ThisCarthing"
+		]
+	},
+	"editcountneue": "Bearbeitungszähler",
+	"editcountneue-form-username": "Benutzername:",
+	"editcountneue-result-allnamespaces": "Alle Namensräume",
+	"editcountneue-result-count": "Anzahl der Bearbeitungen",
+	"editcountneue-result-namespace": "Namensraum",
+	"editcountneue-result-percentage": "Prozentsatz"
+}
