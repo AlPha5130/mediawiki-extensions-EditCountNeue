@@ -1,0 +1,18 @@
+{
+	"@metadata": {
+		"authors": [
+			"Meno25"
+		]
+	},
+	"editcountneue": "عداد المساهمات",
+	"editcountneue-desc": "يسترجع عدد تعديلات المستخدم",
+	"editcountneue-form-legend": "عدد تحرير الاستعلام",
+	"editcountneue-form-username": "اسم المستخدم:",
+	"editcountneue-form-submit": "يُقدِّم",
+	"editcountneue-result-allnamespaces": "كل مساحات الأسماء",
+	"editcountneue-result-count": "عدد التعديلات",
+	"editcountneue-result-namespace": "مساحة الاسم",
+	"editcountneue-result-percentage": "نسبة مئوية",
+	"editcountneue-result-heading": "عدد تعديلات المستخدم \" $1 \"",
+	"editcountneue-error-userdoesnotexist": "حساب المستخدم \" $1 \" غير مسجل وليس به تعديلات."
+}
