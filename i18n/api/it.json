@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"Beta16"
+		]
+	},
+	"apihelp-query+editcount-summary": "Elenca il numero di modifiche degli utenti indicati.",
+	"apihelp-query+editcount-param-user": "Gli utenti per cui recuperare il numero di modifiche.",
+	"apihelp-query+editcount-param-namespace": "Elenca il numero di modifiche solo in questi namespace.",
+	"apihelp-query+editcount-example-user": "Elenca il numero di modifiche dell'utente <kbd>Example</kbd> ."
+}

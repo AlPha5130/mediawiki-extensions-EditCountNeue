@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"Ajiniyaz Nurniyazov"
+		]
+	},
+	"apihelp-query+editcount-summary": "Berilgen paydalanıwshılardıń dúzetiwleri sanı.",
+	"apihelp-query+editcount-param-user": "Kirgizgen ózgerisleriniń sanın alıw kerek bolǵan paydalanıwshılar.",
+	"apihelp-query+editcount-param-namespace": "Bul atama maydanlarında tek dúzetiwler sanın kórsetiń.",
+	"apihelp-query+editcount-example-user": "Paydalanıwshınıń dúzetiwleri sanı <kbd>Mısal</kbd>."
+}
