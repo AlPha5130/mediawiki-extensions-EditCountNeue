@@ -40,6 +40,12 @@ class SpecialEditCount extends SpecialPage {
 	/** @var EditCountQuery */
 	private $editCountQuery;
 
+	/**
+	 * @param ActorNormalization $actorNormalization
+	 * @param ILoadBalancer $dbLoadBalancer
+	 * @param LanguageConverterFactory $languageConverterFactory
+	 * @param UserIdentityLookup $userIdentityLookup
+	 */
 	public function __construct(
 		ActorNormalization $actorNormalization,
 		ILoadBalancer $dbLoadBalancer,
@@ -52,10 +58,17 @@ class SpecialEditCount extends SpecialPage {
 		$this->editCountQuery = new EditCountQuery( $actorNormalization, $dbLoadBalancer );
 	}
 
+	/**
+	 * @inheritDoc
+	 */
 	public function getDescription() {
 		return $this->msg( 'editcountneue' )->text();
 	}
 
+	/**
+	 * @inheritDoc
+	 * @param string $par
+	 */
 	public function execute( $par ) {
 		$request = $this->getRequest();
 		$output = $this->getOutput();
@@ -94,6 +107,7 @@ class SpecialEditCount extends SpecialPage {
 	}
 
 	/**
+	 * Output form for query.
 	 * @param ?UserIdentity $user
 	 */
 	protected function outputHTMLForm( ?UserIdentity $user = null ) {
@@ -127,6 +141,7 @@ class SpecialEditCount extends SpecialPage {
 	}
 
 	/**
+	 * Make query.
 	 * @param UserIdentity $user
 	 */
 	protected function queryEditCount( UserIdentity $user ) {
@@ -135,6 +150,7 @@ class SpecialEditCount extends SpecialPage {
 	}
 
 	/**
+	 * Output result table.
 	 * @param array $data
 	 */
 	protected function makeTable( $data ) {

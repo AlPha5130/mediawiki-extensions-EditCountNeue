@@ -32,6 +32,10 @@ class EditCountQuery {
 	/** @var ActorNormalization */
 	private $actorNormalization;
 
+	/**
+	 * @param ActorNormalization $actorNormalization
+	 * @param ILoadBalancer $dbLoadBalancer
+	 */
 	public function __construct(
 		ActorNormalization $actorNormalization,
 		ILoadBalancer $dbLoadBalancer
@@ -42,7 +46,6 @@ class EditCountQuery {
 
 	/**
 	 * Count the number of edits of a user in all namespaces
-	 * 
 	 * @param User $user
 	 * @return array
 	 */
@@ -52,7 +55,6 @@ class EditCountQuery {
 
 	/**
 	 * Count the number of edits of a user in given namespaces
-	 * 
 	 * @param UserIdentity $user
 	 * @param int|int[] $namespaces the namespaces to check
 	 * @return array
@@ -80,7 +82,6 @@ class EditCountQuery {
 
 	/**
 	 * Execute the query
-	 * 
 	 * @param UserIdentity $user the user to check
 	 * @return array
 	 */
