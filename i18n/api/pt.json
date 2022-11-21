@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"Hamilton Abreu"
+		]
+	},
+	"apihelp-query+editcount-summary": "Listar o número de edições dos utilizadores especificados.",
+	"apihelp-query+editcount-param-user": "Os utilizadores cujo número de edições será obtido.",
+	"apihelp-query+editcount-param-namespace": "Listar só o número de edições nestes espaços nominais.",
+	"apihelp-query+editcount-example-user": "Listar o número de edições do utilizador <kbd>Example</kbd>."
+}
