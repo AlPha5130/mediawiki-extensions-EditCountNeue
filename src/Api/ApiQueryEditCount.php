@@ -89,6 +89,7 @@ class ApiQueryEditCount extends ApiQueryBase {
 
 		$result = $this->getResult();
 		$result->addIndexedTagName( [ 'query', $this->getModuleName() ], '' );
+
 		foreach ( $userIter as $user ) {
 			if ( !isset( $params['namespace'] ) ) {
 				$queryResult = $this->editCountQuery->queryAllNamespaces( $user );
@@ -100,7 +101,7 @@ class ApiQueryEditCount extends ApiQueryBase {
 				'user' => $user->getName(),
 				'userid' => $user->getId(),
 				'stat' => array_map( fn ( $k, $v ): array => [
-					'namespace' => $k,
+					'ns' => $k,
 					'count' => $v
 				], array_keys( $nsResult ), array_values( $nsResult ) ),
 				'sum' => $queryResult['sum']
