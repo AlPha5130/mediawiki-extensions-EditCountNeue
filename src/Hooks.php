@@ -90,6 +90,7 @@ class Hooks implements \MediaWiki\Hook\ParserFirstCallInitHook {
 			return "{$this->queryResult[$uid]['sum']}";
 		} else {
 			// normalize ns array
+			$namespaces = [];
 			foreach ( $nsIter as $v ) {
 				$ns = trim( $frame->expand( $v ) );
 				if ( intval( $ns ) || $ns === '0' ) {
