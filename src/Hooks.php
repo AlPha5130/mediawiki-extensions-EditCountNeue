@@ -23,6 +23,7 @@ namespace MediaWiki\Extension\EditCount;
 use Parser;
 use PPFrame;
 use MediaWiki\User\ActorNormalization;
+use MediaWiki\User\UserIdentity;
 use MediaWiki\User\UserIdentityLookup;
 use WikiMedia\Rdbms\ILoadBalancer;
 
