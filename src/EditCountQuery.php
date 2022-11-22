@@ -64,9 +64,7 @@ class EditCountQuery {
 			$namespaces = [ $namespaces ];
 		}
 		if ( count( $namespaces ) === 0 ) {
-			return [
-				'sum' => 0
-			];
+			return [ 'sum' => 0 ];
 		}
 		$queryRes = $this->execute( $user );
 
@@ -89,9 +87,7 @@ class EditCountQuery {
 		$dbr = $this->dbLoadBalancer->getConnectionRef( DB_REPLICA );
 		$actorId = $this->actorNormalization->findActorId( $user, $dbr );
 		if ( is_null( $actorId ) ) {
-			return [
-				'sum' => 0
-			];
+			return [ 'sum' => 0 ];
 		}
 
 		$query = $dbr->newSelectQueryBuilder()
