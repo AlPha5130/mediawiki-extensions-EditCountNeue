@@ -170,13 +170,12 @@ class SpecialEditCount extends SpecialPage {
 			Html::openElement( 'tbody' );
 
 		$nsData = array_filter( $data, fn( $k ): bool => is_int( $k ), ARRAY_FILTER_USE_KEY );
+		$converter = $this->languageConverterFactory->getLanguageConverter( $lang );
 
 		foreach ( $nsData as $ns => $count ) {
 			if ( $ns === NS_MAIN ) {
 				$nsName = $this->msg( 'blanknamespace' )->text();
 			} else {
-				$converter = $this->languageConverterFactory
-					->getLanguageConverter( $lang );
 				$nsName = $converter->convertNamespace( $ns );
 				if ( $nsName === '' ) {
 					$nsName = "NS$ns";
