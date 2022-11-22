@@ -60,8 +60,10 @@ class ApiQueryEditCount extends ApiQueryBase {
 
 	public function execute() {
 		$params = $this->extractRequestParams();
-		$this->checkEmpty( $params, 'user' );
-		$this->checkEmpty( $params, 'namespace' );
+		if ( !isset( $params['user'] ) || $params['user'] === [] ) {
+			$encParamName = $this->encodeParamName( 'user' );
+			$this->dieWithError( [ 'apierror-paramempty', $encParamName ], "paramempty_$encParamName" );
+		}
 
 		$names = [];
 		foreach ( $params['user'] as $u ) {
@@ -88,7 +90,11 @@ class ApiQueryEditCount extends ApiQueryBase {
 		$result = $this->getResult();
 		$result->addIndexedTagName( [ 'query', $this->getModuleName() ], '' );
 		foreach ( $userIter as $user ) {
-			$queryResult = $this->editCountQuery->queryNamespaces( $user, $params['namespace'] );
+			if ( !isset( $params['namespace'] ) ) {
+				$queryResult = $this->editCountQuery->queryAllNamespaces( $user );
+			} else {
+				$queryResult = $this->editCountQuery->queryNamespaces( $user, $params['namespace'] );
+			}
 			$nsResult = array_filter( $queryResult, fn( $k ): bool => is_int( $k ), ARRAY_FILTER_USE_KEY );
 			$vals = [
 				'user' => $user->getName(),
@@ -100,13 +106,6 @@ class ApiQueryEditCount extends ApiQueryBase {
 				'sum' => $queryResult['sum']
 			];
 			$result->addValue( [ 'query', $this->getModuleName() ], null, $vals );
-		}
-	}
-
-	protected function checkEmpty( array $params, string $key ) {
-		if ( !isset( $params[$key] ) || $params[$key] === [] ) {
-			$encParamName = $this->encodeParamName( $key );
-			$this->dieWithError( [ 'apierror-paramempty', $encParamName ], "paramempty_$encParamName" );
 		}
 	}
 
