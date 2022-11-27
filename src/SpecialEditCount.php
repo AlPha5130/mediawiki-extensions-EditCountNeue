@@ -95,7 +95,7 @@ class SpecialEditCount extends SpecialPage {
 
 		$this->outputHTMLForm( $user );
 
-		$result = self::queryEditCount( $user );
+		$result = $this->queryEditCount( $user );
 		// add heading
 		$output->addHTML( Html::element(
 			'h2',
