@@ -72,8 +72,7 @@ class Hooks implements \MediaWiki\Hook\ParserFirstCallInitHook {
 	 */
 	public function editCount( Parser $parser, PPFrame $frame, array $args ) {
 		$username = isset( $args[0] ) ? trim( $frame->expand( $args[0] ) ) : '';
-		$user = $this->userIdentityLookup
-			->getUserIdentityByName( $username );
+		$user = $this->userIdentityLookup->getUserIdentityByName( $username );
 		// If user is invalid or does not exist, returns 0
 		if ( !$user || $user->getId() === 0 ) {
 			return '0';
