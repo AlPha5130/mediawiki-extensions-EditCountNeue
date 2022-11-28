@@ -8,12 +8,12 @@
 	"editcountneue": "{{doc-special|EditCount}}",
 	"editcountneue-desc": "{{desc|name=EditCountNeue|url=https://www.mediawiki.org/wiki/Extension:EditCountNeue}}",
 	"editcountneue-form-legend": "The legend text of the special page form.",
-	"editcountneue-form-username": "Username field label in the form.",
-	"editcountneue-form-submit": "The text on button for submitting the form.",
+	"editcountneue-form-username": "Username field label in the form.\n\n{{Identical|Username}}",
+	"editcountneue-form-submit": "The text on button for submitting the form.\n\n{{Identical|Submit}}",
 	"editcountneue-result-allnamespaces": "Table cell text in namespace column representing all namespaces.",
 	"editcountneue-result-count": "Column header in result table for the number of edits.",
-	"editcountneue-result-namespace": "Column header in result table for the namespaces.",
-	"editcountneue-result-percentage": "Column header in result table for the percentages.",
+	"editcountneue-result-namespace": "Column header in result table for the namespaces.\n\n{{Identical|Namespace}}",
+	"editcountneue-result-percentage": "Column header in result table for the percentages.\n\n{{Identical|Percentage}}",
 	"editcountneue-result-heading": "The heading element for the title of the query result.",
 	"editcountneue-error-userdoesnotexist": "An error message shown when a user account is not registered."
 }
