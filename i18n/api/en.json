@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"NekoCharm"
+		]
+	},
+	"apihelp-query+editcount-summary": "List number of edits of given users.",
+	"apihelp-query+editcount-param-user": "The users to retrieve number of edits for.",
+	"apihelp-query+editcount-param-namespace": "Only list number of edits in these namespaces.",
+	"apihelp-query+editcount-example-user": "List number of edits of user <kbd>Example</kbd>."
+}

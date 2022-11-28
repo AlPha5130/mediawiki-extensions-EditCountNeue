@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"Rail"
+		]
+	},
+	"apihelp-query+editcount-summary": "Listuje liczbę edycji danych użytkowników.",
+	"apihelp-query+editcount-param-user": "Użytkownicy, dla których ma zostać pozyskana liczba edycji.",
+	"apihelp-query+editcount-param-namespace": "Podaj tylko liczbę edycji w tych przestrzeniach nazw.",
+	"apihelp-query+editcount-example-user": "Pobierz listę edycji użytkownika <kbd>Example</kbd>."
+}

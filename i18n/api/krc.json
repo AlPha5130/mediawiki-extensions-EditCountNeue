@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"Къарачайлы"
+		]
+	},
+	"apihelp-query+editcount-summary": "Бу къошулуучула этген тюзетиулени саныны тизмеси.",
+	"apihelp-query+editcount-param-user": "Тюзетиулени саны керек болгъан къошулуучула.",
+	"apihelp-query+editcount-param-namespace": "Бу атланы аламында къуру тюзетиулени саныны тизмеси.",
+	"apihelp-query+editcount-example-user": "<kbd>Юлгю</kbd> къошулуучуну тюзетиулерини тизмеси."
+}

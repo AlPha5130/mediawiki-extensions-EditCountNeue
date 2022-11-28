@@ -1,0 +1,9 @@
+{
+	"@metadata": {
+		"authors": [
+			"Eduardoaddad"
+		]
+	},
+	"apihelp-query+editcount-summary": "Liste o número de edições de determinados usuários.",
+	"apihelp-query+editcount-param-namespace": "Liste apenas o número de edições nesses namespaces."
+}

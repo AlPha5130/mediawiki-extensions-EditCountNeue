@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"Bjankuloski06"
+		]
+	},
+	"apihelp-query+editcount-summary": "Дај број на уредувања на дадени корисници.",
+	"apihelp-query+editcount-param-user": "За кои корисници да се даде број на уредувања.",
+	"apihelp-query+editcount-param-namespace": "Дај број на уредувања само во овие именски простори.",
+	"apihelp-query+editcount-example-user": "Дај број на уредувања на корисникот <kbd>Пример</kbd>."
+}
