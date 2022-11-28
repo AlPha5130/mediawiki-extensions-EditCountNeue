@@ -24,14 +24,27 @@
 		"MediaWiki\\Extension\\EditCount\\": "src/"
 	},
 	"SpecialPages": {
-		"EditCount": "MediaWiki\\Extension\\EditCount\\SpecialEditCount"
+		"EditCount": {
+			"class": "MediaWiki\\Extension\\EditCount\\SpecialEditCount",
+			"services": [
+				"ActorNormalization",
+				"DBLoadBalancer",
+				"LanguageConverterFactory",
+				"UserIdentityLookup"
+			]
+		}
 	},
 	"Hooks": {
 		"ParserFirstCallInit": "handleHooks"
 	},
 	"HookHandlers": {
 		"handleHooks": {
-			"class": "MediaWiki\\Extension\\EditCount\\Hooks"
+			"class": "MediaWiki\\Extension\\EditCount\\Hooks",
+			"services": [
+				"ActorNormalization",
+				"DBLoadBalancer",
+				"UserIdentityLookup"
+			]
 		}
 	},
 	"manifest_version": 2

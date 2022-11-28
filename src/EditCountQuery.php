@@ -20,39 +20,53 @@
 
 namespace MediaWiki\Extension\EditCount;
 
-use ActorMigration;
-use MediaWiki\MediaWikiServices;
-use User;
+use MediaWiki\User\ActorNormalization;
+use MediaWiki\User\UserIdentity;
+use WikiMedia\Rdbms\ILoadBalancer;
 
 class EditCountQuery {
 
+	/** @var ILoadBalancer */
+	private $dbLoadBalancer;
+
+	/** @var ActorNormalization */
+	private $actorNormalization;
+
+	/**
+	 * @param ActorNormalization $actorNormalization
+	 * @param ILoadBalancer $dbLoadBalancer
+	 */
+	public function __construct(
+		ActorNormalization $actorNormalization,
+		ILoadBalancer $dbLoadBalancer
+	) {
+		$this->actorNormalization = $actorNormalization;
+		$this->dbLoadBalancer = $dbLoadBalancer;
+	}
+
 	/**
 	 * Count the number of edits of a user in all namespaces
-	 * 
 	 * @param User $user
 	 * @return array
 	 */
-	public static function queryAllNamespaces( User $user ) {
-		return self::execute( $user );
+	public function queryAllNamespaces( UserIdentity $user ) {
+		return $this->execute( $user );
 	}
 
 	/**
 	 * Count the number of edits of a user in given namespaces
-	 * 
-	 * @param User $user
+	 * @param UserIdentity $user
 	 * @param int|int[] $namespaces the namespaces to check
 	 * @return array
 	 */
-	public static function queryNamespaces( User $user , $namespaces ) {
+	public function queryNamespaces( UserIdentity $user , array $namespaces ) {
 		if ( !is_array( $namespaces ) ) {
 			$namespaces = [ $namespaces ];
 		}
 		if ( count( $namespaces ) === 0 ) {
-			return [
-				'sum' => 0
-			];
+			return [ 'sum' => 0 ];
 		}
-		$queryRes = self::execute( $user );
+		$queryRes = $this->execute( $user );
 
 		$res = [];
 		$sum = 0;
@@ -66,19 +80,21 @@ class EditCountQuery {
 
 	/**
 	 * Execute the query
-	 * 
-	 * @param User $user the user to check
+	 * @param UserIdentity $user the user to check
 	 * @return array
 	 */
-	protected static function execute( User $user ) {
-		$lb = MediaWikiServices::getInstance()->getDBLoadBalancer();
-		$dbr = $lb->getConnectionRef( DB_REPLICA );
+	protected function execute( UserIdentity $user ) {
+		$dbr = $this->dbLoadBalancer->getConnectionRef( DB_REPLICA );
+		$actorId = $this->actorNormalization->findActorId( $user, $dbr );
+		if ( is_null( $actorId ) ) {
+			return [ 'sum' => 0 ];
+		}
 
 		$query = $dbr->newSelectQueryBuilder()
 			->select( [ 'page_namespace', 'count' => 'COUNT(*)' ] )
 			->from( 'revision' )
 			->join( 'page', null, 'page_id = rev_page' );
-		// HACK: when actor migration finishes, use a more beautiful way
+		// HACK: this is used only before actor migration
 		$actorWhere = ActorMigration::newMigration()->getWhere( $dbr, 'rev_user', $user );
 		foreach ( $actorWhere['joins'] as $k => $v ) {
 			$query->join( $actorWhere['tables'][$k], $k, $v[1] );
