@@ -23,6 +23,17 @@
 	"AutoloadNamespaces": {
 		"MediaWiki\\Extension\\EditCount\\": "src/"
 	},
+	"APIListModules": {
+		"editcount": {
+			"class": "MediaWiki\\Extension\\EditCount\\Api\\ApiQueryEditCount",
+			"services": [
+				"ActorNormalization",
+				"DBLoadBalancer",
+				"UserIdentityLookup",
+				"UserNameUtils"
+			]
+		}
+	},
 	"SpecialPages": {
 		"EditCount": {
 			"class": "MediaWiki\\Extension\\EditCount\\SpecialEditCount",
