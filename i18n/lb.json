@@ -1,0 +1,18 @@
+{
+	"@metadata": {
+		"authors": [
+			"Robby"
+		]
+	},
+	"editcountneue": "Zuel vun de Säitenännerungen",
+	"editcountneue-desc": "Ermëttelt d'Zuel vun den Ännerunge vun engem Benotzer",
+	"editcountneue-form-legend": "Zuel vun den Ännerungen ufroen",
+	"editcountneue-form-username": "Benotzernumm:",
+	"editcountneue-form-submit": "Schécken",
+	"editcountneue-result-allnamespaces": "All Nummraim",
+	"editcountneue-result-count": "Zuel vun den Ännerungen",
+	"editcountneue-result-namespace": "Nummraum",
+	"editcountneue-result-percentage": "Prozentsaz",
+	"editcountneue-result-heading": "Zuel vun den Ännerunge vum Benotzer \"$1\"",
+	"editcountneue-error-userdoesnotexist": "De Benotzerkont \"$1\" ass net registréiert an huet keng Ännerungen."
+}

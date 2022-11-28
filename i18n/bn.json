@@ -1,0 +1,18 @@
+{
+	"@metadata": {
+		"authors": [
+			"আফতাবুজ্জামান"
+		]
+	},
+	"editcountneue": "সম্পাদনা সংখ্যা",
+	"editcountneue-desc": "একজন ব্যবহারকারীর সম্পাদনার সংখ্যা বের করে",
+	"editcountneue-form-legend": "সম্পাদনা গণনা",
+	"editcountneue-form-username": "ব্যবহারকারী নাম:",
+	"editcountneue-form-submit": "জমা দিন",
+	"editcountneue-result-allnamespaces": "সকল নামস্থান",
+	"editcountneue-result-count": "সম্পাদনার সংখ্যা",
+	"editcountneue-result-namespace": "নামস্থান",
+	"editcountneue-result-percentage": "শতাংশ",
+	"editcountneue-result-heading": "ব্যবহারকারী \"$1\"-এর সম্পাদনার সংখ্যা",
+	"editcountneue-error-userdoesnotexist": "ব্যবহারকারীর অ্যাকাউন্ট \"$1\" নিবন্ধিত নয় এবং এর কোনও সম্পাদনা নেই।"
+}
