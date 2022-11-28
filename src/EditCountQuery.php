@@ -20,6 +20,7 @@
 
 namespace MediaWiki\Extension\EditCount;
 
+use ActorMigration;
 use MediaWiki\User\ActorNormalization;
 use MediaWiki\User\UserIdentity;
 use WikiMedia\Rdbms\ILoadBalancer;
