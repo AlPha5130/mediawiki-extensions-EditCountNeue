@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"NekoCharm"
+		]
+	},
+	"apihelp-query+editcount-summary": "{{doc-apihelp-summary|query+editcount}}",
+	"apihelp-query+editcount-param-user": "{{doc-apihelp-param|query+editcount|ecuser}}",
+	"apihelp-query+editcount-param-namespace": "{{doc-apihelp-param|query+editcount|ecnamespace}}",
+	"apihelp-query+editcount-example-user": "{{doc-apihelp-example|query+editcount}}"
+}

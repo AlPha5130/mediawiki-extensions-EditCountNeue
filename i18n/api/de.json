@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"Justman10000"
+		]
+	},
+	"apihelp-query+editcount-summary": "Listet die Anzahl der Bearbeitungen von bestimmten Benutzern auf.",
+	"apihelp-query+editcount-param-user": "Die Benutzer, für die die Anzahl der Bearbeitungen abgerufen werden soll.",
+	"apihelp-query+editcount-param-namespace": "Gib nur die Anzahl der Bearbeitungen in diesen Namensräumen an.",
+	"apihelp-query+editcount-example-user": "Liste der Anzahl der Bearbeitungen des Benutzers <kbd>Beispiel</kbd>."
+}

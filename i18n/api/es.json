@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"SpikeShroom"
+		]
+	},
+	"apihelp-query+editcount-summary": "Muestra el número de ediciones de usuarios dados.",
+	"apihelp-query+editcount-param-user": "Los usuarios para recuperar el número de ediciones.",
+	"apihelp-query+editcount-param-namespace": "Muestre sólo el número de ediciones en estos espacios de nombres.",
+	"apihelp-query+editcount-example-user": "Muestra el número de ediciones del usuario <kbd>Example</kbd> ."
+}

@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"Lakejason0"
+		]
+	},
+	"apihelp-query+editcount-summary": "列出指定用户的编辑数。",
+	"apihelp-query+editcount-param-user": "要获取编辑数的用户。",
+	"apihelp-query+editcount-param-namespace": "仅列出指定命名空间内的编辑数。",
+	"apihelp-query+editcount-example-user": "列出用户<kbd>Example</kbd>的编辑数。"
+}

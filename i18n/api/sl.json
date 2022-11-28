@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"Eleassar"
+		]
+	},
+	"apihelp-query+editcount-summary": "Seznam števila urejanj danih uporabnikov.",
+	"apihelp-query+editcount-param-user": "Uporabniki, za katere želite pridobiti število urejanj.",
+	"apihelp-query+editcount-param-namespace": "Navedite samo število urejanj v teh imenskih prostorih.",
+	"apihelp-query+editcount-example-user": "Seznam števila urejanj uporabnika <kbd>Zgled</kbd>."
+}

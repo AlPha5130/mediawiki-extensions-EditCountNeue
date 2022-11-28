@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Verdy p",
+			"Wladek92"
+		]
+	},
+	"apihelp-query+editcount-summary": "Lister le nombre de modifications des utilisateurs donnés.",
+	"apihelp-query+editcount-param-user": "Les utilisateurs dont le nombre de modifications doit être récupéré.",
+	"apihelp-query+editcount-param-namespace": "Lister uniquement le nombre de modifications dans ces espaces de noms.",
+	"apihelp-query+editcount-example-user": "Lister le nombre de modifications de l’utilisateur <kbd>Example</kbd>."
+}

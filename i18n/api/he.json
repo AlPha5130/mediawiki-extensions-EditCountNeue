@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"Amire80"
+		]
+	},
+	"apihelp-query+editcount-summary": "רשימת מניין העריכות של משתמשים נתונים.",
+	"apihelp-query+editcount-param-user": "המשתמשים שיש לאחזר עבורם את מספר העריכות.",
+	"apihelp-query+editcount-param-namespace": "לרשום רק את מספר העריכות במרחבי השמות האלה.",
+	"apihelp-query+editcount-example-user": "לרשום את מספר העריכות של משתמש <kbd>Example</kbd>."
+}
