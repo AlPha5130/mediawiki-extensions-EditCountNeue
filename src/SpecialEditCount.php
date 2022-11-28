@@ -23,19 +23,52 @@ namespace MediaWiki\Extension\EditCount;
 use SpecialPage;
 use HTMLForm;
 use Html;
-use MediaWiki\MediaWikiServices;
-use User;
+use MediaWiki\Languages\LanguageConverterFactory;
+use MediaWiki\User\ActorNormalization;
+use MediaWiki\User\UserIdentity;
+use MediaWiki\User\UserIdentityLookup;
+use WikiMedia\Rdbms\ILoadBalancer;
 
 class SpecialEditCount extends SpecialPage {
 
-	public function __construct() {
+	/** @var LanguageConverterFactory */
+	private $languageConverterFactory;
+
+	/** @var UserIdentityLookup */
+	private $userIdentityLookup;
+
+	/** @var EditCountQuery */
+	private $editCountQuery;
+
+	/**
+	 * @param ActorNormalization $actorNormalization
+	 * @param ILoadBalancer $dbLoadBalancer
+	 * @param LanguageConverterFactory $languageConverterFactory
+	 * @param UserIdentityLookup $userIdentityLookup
+	 */
+	public function __construct(
+		ActorNormalization $actorNormalization,
+		ILoadBalancer $dbLoadBalancer,
+		LanguageConverterFactory $languageConverterFactory,
+		UserIdentityLookup $userIdentityLookup
+	) {
 		parent::__construct( 'EditCount' );
+		$this->languageConverterFactory = $languageConverterFactory;
+		$this->userIdentityLookup = $userIdentityLookup;
+		$this->editCountQuery = new EditCountQuery( $actorNormalization, $dbLoadBalancer );
 	}
 
+	/**
+	 * @inheritDoc
+	 */
 	public function getDescription() {
 		return $this->msg( 'editcountneue' )->text();
 	}
 
+	/**
+	 * @inheritDoc
+	 * @param string $par
+	 */
 	public function execute( $par ) {
 		$request = $this->getRequest();
 		$output = $this->getOutput();
@@ -48,9 +81,8 @@ class SpecialEditCount extends SpecialPage {
 			return;
 		}
 
-		$user = MediaWikiServices::getInstance()
-			->getUserFactory()
-			->newFromName( $username );
+		$user = $this->userIdentityLookup
+			->getUserIdentityByName( $username );
 		if ( !$user || $user->getId() === 0 ) {
 			$this->outputHTMLForm();
 			$output->addHTML( '<br>' . Html::element(
@@ -63,7 +95,7 @@ class SpecialEditCount extends SpecialPage {
 
 		$this->outputHTMLForm( $user );
 
-		$result = self::queryEditCount( $user );
+		$result = $this->queryEditCount( $user );
 		// add heading
 		$output->addHTML( Html::element(
 			'h2',
@@ -75,9 +107,10 @@ class SpecialEditCount extends SpecialPage {
 	}
 
 	/**
-	 * @param ?User $user
+	 * Output form for query.
+	 * @param ?UserIdentity $user
 	 */
-	protected function outputHTMLForm( ?User $user = null ) {
+	protected function outputHTMLForm( ?UserIdentity $user = null ) {
 		$formDescriptor = [
 			'username' => [
 				'type' => 'user',
@@ -108,14 +141,16 @@ class SpecialEditCount extends SpecialPage {
 	}
 
 	/**
-	 * @param User $user
+	 * Make query.
+	 * @param UserIdentity $user
 	 */
-	protected static function queryEditCount( User $user ) {
-		$result = EditCountQuery::queryAllNamespaces( $user );
+	protected function queryEditCount( UserIdentity $user ) {
+		$result = $this->editCountQuery->queryAllNamespaces( $user );
 		return $result;
 	}
 
 	/**
+	 * Output result table.
 	 * @param array $data
 	 */
 	protected function makeTable( $data ) {
@@ -134,17 +169,17 @@ class SpecialEditCount extends SpecialPage {
 			Html::closeElement( 'thead' ) .
 			Html::openElement( 'tbody' );
 
-		$nsData = array_filter( $data, function ( $i ) {
-			return is_int( $i );
-		}, ARRAY_FILTER_USE_KEY );
+		$nsData = array_filter( $data, fn( $k ): bool => is_int( $k ), ARRAY_FILTER_USE_KEY );
+		$converter = $this->languageConverterFactory->getLanguageConverter( $lang );
 
 		foreach ( $nsData as $ns => $count ) {
 			if ( $ns === NS_MAIN ) {
 				$nsName = $this->msg( 'blanknamespace' )->text();
 			} else {
-				$converter = MediaWikiServices::getInstance()->getLanguageConverterFactory()
-					->getLanguageConverter( $lang );
 				$nsName = $converter->convertNamespace( $ns );
+				if ( $nsName === '' ) {
+					$nsName = "NS$ns";
+				}
 			}
 			$out .= Html::openElement( 'tr', [ 'class' => 'mw-editcounttable-row' ] ) .
 				Html::element(

@@ -20,38 +20,77 @@
 
 namespace MediaWiki\Extension\EditCount;
 
-use MediaWiki\MediaWikiServices;
-use MediaWiki\User\UserFactory;
 use Parser;
 use PPFrame;
+use MediaWiki\User\ActorNormalization;
+use MediaWiki\User\UserIdentity;
+use MediaWiki\User\UserIdentityLookup;
+use WikiMedia\Rdbms\ILoadBalancer;
 
 class Hooks implements \MediaWiki\Hook\ParserFirstCallInitHook {
 
-	public function onParserFirstCallInit( $parser ) {
-		$parser->setFunctionHook( 'editcount', [ self::class, 'editCount' ], Parser::SFH_OBJECT_ARGS );
+	/** @var UserIdentityLookup */
+	private $userIdentityLookup;
+
+	/** @var EditCountQuery */
+	private $editCountQuery;
+
+	/** @var array */
+	private $queryResult;
+
+	/**
+	 * @param ActorNormalization $actorNormalization
+	 * @param ILoadBalancer $dbLoadBalancer
+	 * @param UserIdentityLookup $userIdentityLookup
+	 */
+	public function __construct(
+		ActorNormalization $actorNormalization,
+		ILoadBalancer $dbLoadBalancer,
+		UserIdentityLookup $userIdentityLookup
+	) {
+		$this->userIdentityLookup = $userIdentityLookup;
+		$this->editCountQuery = new EditCountQuery(
+			$actorNormalization,
+			$dbLoadBalancer
+		);
+		$this->queryResult = [];
 	}
 
-	public static function editCount( Parser $parser, PPFrame $frame, array $args ) {
-		$userFactory = MediaWikiServices::getInstance()->getUserFactory();
-		$userName = isset( $args[0] ) ? trim( $frame->expand( $args[0] ) ) : '';
-		$user = $userFactory->newFromName( $userName );
+	/**
+	 * @param Parser $parser
+	 */
+	public function onParserFirstCallInit( $parser ) {
+		$parser->setFunctionHook( 'editcount', [ $this, 'editCount' ], Parser::SFH_OBJECT_ARGS );
+	}
+
+	/**
+	 * Entry point for {{#editcount}} parser function.
+	 * @param Parser $parser
+	 * @param PPFrame $frame
+	 * @param array $args
+	 * @return string
+	 */
+	public function editCount( Parser $parser, PPFrame $frame, array $args ) {
+		$username = isset( $args[0] ) ? trim( $frame->expand( $args[0] ) ) : '';
+		$user = $this->userIdentityLookup->getUserIdentityByName( $username );
 		// If user is invalid or does not exist, returns 0
 		if ( !$user || $user->getId() === 0 ) {
 			return '0';
 		}
+		$uid = $user->getId();
 
-		if ( count( $args ) <= 1 ) {
-			// If namespaces are not specified, query all namespaces
-			$count = EditCountQuery::queryAllNamespaces( $user );
-			return "$count[sum]";
+		// save query result to cache to prevent excessive DB queries
+		if ( !isset( $this->queryResult[$uid] ) ) {
+			$this->makeQuery( $user );
+		}
+
+		$nsIter = array_filter( $args, fn ( $i ): bool => $i !== 0, ARRAY_FILTER_USE_KEY );
+		if ( count( $nsIter ) === 0 ) {
+			return "{$this->queryResult[$uid]['sum']}";
 		} else {
-			// filter out the first argument (the username)
-			$iter = array_filter( $args, function ( $i ) {
-				return $i !== 0;
-			} , ARRAY_FILTER_USE_KEY );
-
+			// normalize ns array
 			$namespaces = [];
-			foreach ( $iter as $v ) {
+			foreach ( $nsIter as $v ) {
 				$ns = trim( $frame->expand( $v ) );
 				if ( intval( $ns ) || $ns === '0' ) {
 					$index = intval( $ns );
@@ -63,8 +102,20 @@ class Hooks implements \MediaWiki\Hook\ParserFirstCallInitHook {
 				}
 			}
 
-			$count = EditCountQuery::queryNamespaces( $user, $namespaces );
-			return "$count[sum]";
+			$count = 0;
+			foreach ( $namespaces as $v ) {
+				$count += $this->queryResult[$uid][$v] ?? 0;
+			}
+			return "$count";
 		}
+	}
+
+	/**
+	 * Make DB query if cannot find from cache.
+	 * @param UserIdentity $user
+	 */
+	protected function makeQuery( UserIdentity $user ) {
+		$result = $this->editCountQuery->queryAllNamespaces( $user );
+		$this->queryResult[$user->getId()] = $result;
 	}
 }
