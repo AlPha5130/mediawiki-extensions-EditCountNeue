@@ -91,6 +91,7 @@ class EditCountQuery {
 		}
 
 		$query = $dbr->newSelectQueryBuilder()
+			->caller( __METHOD__ )
 			->select( [ 'page_namespace', 'count' => 'COUNT(*)' ] )
 			->from( 'revision' )
 			->join( 'page', null, 'page_id = rev_page' );
@@ -101,7 +102,6 @@ class EditCountQuery {
 		}
 		$query->where( $actorWhere['conds'] )
 			->groupBy( 'page_namespace' );
-
 		$res = $query->fetchResultSet();
 
 		$nsCount = [];
