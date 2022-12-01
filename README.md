@@ -33,6 +33,47 @@ EditCountNeue also adds a parser function to retrieve the number of edits of a u
 
 An invalid username causes the function to return 0 as the result. An invalid namespace behaves as though that namespace argument does not exist. If all specified namespaces are invalid, the function returns 0.
 
+### API
+
+EditCountNeue adds one API list module `list=editcount`.
+
+#### Parameters
+
+* `ecuser` - The users to retrieve number of edits for.
+* `ecnamespace` - Only list number of edits in these namespaces.
+
+#### Example
+
+List number of edits of user `Example`:
+
+``` text
+api.php?action=query&list=editcount&ecuser=Example
+```
+
+Example return:
+
+``` json
+{
+    "query": {
+        "editcount": {
+            "user": "Example",
+            "userid": 1,
+            "stat": [
+                {
+                    "ns": 0,
+                    "count": 100
+                },
+                {
+                    "ns": 2,
+                    "count": 50
+                }
+            ],
+            "sum": 150
+        }
+    }
+}
+```
+
 ## License
 
 The source code of EditCountNeue is licensed under GNU General Public License; either version 2 of the License or any later version is applicable.
