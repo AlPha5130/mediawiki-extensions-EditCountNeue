@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"McDutchie"
+		]
+	},
+	"apihelp-query+editcount-summary": "Lista le numero de modificationes del usatores specificate.",
+	"apihelp-query+editcount-param-user": "Le usatores pro le quales recuperar le numero de modificationes.",
+	"apihelp-query+editcount-param-namespace": "Listar solmente le numeros de modificationes in iste spatios de nomines.",
+	"apihelp-query+editcount-example-user": "Listar le numero de modificationes del usator <kbd>Example</kbd>."
+}
