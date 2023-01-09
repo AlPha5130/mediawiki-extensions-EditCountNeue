@@ -1,0 +1,18 @@
+{
+	"@metadata": {
+		"authors": [
+			"McDutchie"
+		]
+	},
+	"editcountneue": "Contator de modificationes",
+	"editcountneue-desc": "Obtene le numero de modificationes de un usator",
+	"editcountneue-form-legend": "Obtener le numero de modificationes",
+	"editcountneue-form-username": "Nomine de usator:",
+	"editcountneue-form-submit": "Submitter",
+	"editcountneue-result-allnamespaces": "Tote le spatios de nomines",
+	"editcountneue-result-count": "Numero de modificationes",
+	"editcountneue-result-namespace": "Spatio de nomines",
+	"editcountneue-result-percentage": "Percentage",
+	"editcountneue-result-heading": "Numero de modificationes del usator \"$1\"",
+	"editcountneue-error-userdoesnotexist": "Le conto de usator \"$1\" non es registrate e non ha modificationes."
+}
