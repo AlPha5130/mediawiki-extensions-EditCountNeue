@@ -8,5 +8,11 @@
 	"editcountneue-desc": "Pridobi število urejanj uporabnika",
 	"editcountneue-form-legend": "Število urejanj poizvedbe",
 	"editcountneue-form-username": "Uporabniško ime:",
-	"editcountneue-form-submit": "Pošlji"
+	"editcountneue-form-submit": "Pošlji",
+	"editcountneue-result-allnamespaces": "Vsi imenski prostori",
+	"editcountneue-result-count": "Število urejanj",
+	"editcountneue-result-namespace": "Imenski prostor",
+	"editcountneue-result-percentage": "Odstotek",
+	"editcountneue-result-heading": "Število urejanj uporabnika »$1«",
+	"editcountneue-error-userdoesnotexist": "Uporabniški račun »$1« ni registriran in nima urejanj."
 }
