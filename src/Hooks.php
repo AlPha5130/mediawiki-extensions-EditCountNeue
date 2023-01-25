@@ -44,15 +44,11 @@ class Hooks implements \MediaWiki\Hook\ParserFirstCallInitHook {
 	 * @param UserIdentityLookup $userIdentityLookup
 	 */
 	public function __construct(
-		ActorNormalization $actorNormalization,
-		ILoadBalancer $dbLoadBalancer,
+		EditCountQuery $editCountQuery,
 		UserIdentityLookup $userIdentityLookup
 	) {
 		$this->userIdentityLookup = $userIdentityLookup;
-		$this->editCountQuery = new EditCountQuery(
-			$actorNormalization,
-			$dbLoadBalancer
-		);
+		$this->editCountQuery = $editCountQuery;
 		$this->queryResult = [];
 	}
 

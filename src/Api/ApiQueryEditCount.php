@@ -47,15 +47,14 @@ class ApiQueryEditCount extends ApiQueryBase {
 	public function __construct(
 		ApiQuery $query,
 		$moduleName,
-		ActorNormalization $actorNormalization,
-		ILoadBalancer $dbLoadBalancer,
 		UserIdentityLookup $userIdentityLookup,
-		UserNameUtils $userNameUtils
+		UserNameUtils $userNameUtils,
+		EditCountQuery $editCountQuery
 	) {
 		parent::__construct( $query, $moduleName, 'ec' );
 		$this->userIdentityLookup = $userIdentityLookup;
 		$this->userNameUtils = $userNameUtils;
-		$this->editCountQuery = new EditCountQuery( $actorNormalization, $dbLoadBalancer );
+		$this->editCountQuery = $editCountQuery;
 	}
 
 	public function execute() {
