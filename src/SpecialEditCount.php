@@ -47,15 +47,14 @@ class SpecialEditCount extends SpecialPage {
 	 * @param UserIdentityLookup $userIdentityLookup
 	 */
 	public function __construct(
-		ActorNormalization $actorNormalization,
-		ILoadBalancer $dbLoadBalancer,
 		LanguageConverterFactory $languageConverterFactory,
-		UserIdentityLookup $userIdentityLookup
+		UserIdentityLookup $userIdentityLookup,
+		EditCountQuery $editCountQuery
 	) {
 		parent::__construct( 'EditCount' );
 		$this->languageConverterFactory = $languageConverterFactory;
 		$this->userIdentityLookup = $userIdentityLookup;
-		$this->editCountQuery = new EditCountQuery( $actorNormalization, $dbLoadBalancer );
+		$this->editCountQuery = $editCountQuery;
 	}
 
 	/**
