@@ -59,26 +59,7 @@ class ApiQueryEditCount extends ApiQueryBase {
 
 	public function execute() {
 		$params = $this->extractRequestParams();
-		if ( !isset( $params['user'] ) || $params['user'] === [] ) {
-			$encParamName = $this->encodeParamName( 'user' );
-			$this->dieWithError( [ 'apierror-paramempty', $encParamName ], "paramempty_$encParamName" );
-		}
-
 		$names = [];
-		foreach ( $params['user'] as $u ) {
-			if ( $u === '' ) {
-				$encParamName = $this->encodeParamName( 'user' );
-				$this->dieWithError( [ 'apierror-paramempty', $encParamName ], "paramempty_$encParamName" );
-			}
-			$name = $this->userNameUtils->getCanonical( $u );
-			if ( $name == false ) {
-				$encParamName = $this->encodeParamName( 'user' );
-				$this->dieWithError(
-					[ 'apierror-baduser', $encParamName, wfEscapeWikiText( $u ) ], "baduser_$encParamName"
-				);
-			}
-			$names[] = $name;
-		}
 		$userIter = $this->userIdentityLookup
 			->newSelectQueryBuilder()
 			->caller( __METHOD__ )
@@ -114,7 +95,8 @@ class ApiQueryEditCount extends ApiQueryBase {
 			'user' => [
 				ParamValidator::PARAM_TYPE => 'user',
 				UserDef::PARAM_ALLOWED_USER_TYPES => [ 'name', 'id' ],
-				ParamValidator::PARAM_ISMULTI => true
+				ParamValidator::PARAM_ISMULTI => true,
+				ParamValidator::PARAM_REQUIRED => true
 			],
 			'namespace' => [
 				ParamValidator::PARAM_TYPE => 'namespace',
