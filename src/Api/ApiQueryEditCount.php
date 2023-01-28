@@ -56,11 +56,10 @@ class ApiQueryEditCount extends ApiQueryBase {
 
 	public function execute() {
 		$params = $this->extractRequestParams();
-		$names = [];
 		$userIter = $this->userIdentityLookup
 			->newSelectQueryBuilder()
 			->caller( __METHOD__ )
-			->whereUserNames( $names )
+			->whereUserNames( $params['user'] )
 			->orderByName()
 			->fetchUserIdentities();
 
