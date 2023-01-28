@@ -44,14 +44,14 @@ class ApiQueryEditCount extends ApiQueryBase {
 	public function __construct(
 		ApiQuery $query,
 		$moduleName,
+		EditCountQuery $editCountQuery,
 		UserIdentityLookup $userIdentityLookup,
-		UserNameUtils $userNameUtils,
-		EditCountQuery $editCountQuery
+		UserNameUtils $userNameUtils
 	) {
 		parent::__construct( $query, $moduleName, 'ec' );
+		$this->editCountQuery = $editCountQuery;
 		$this->userIdentityLookup = $userIdentityLookup;
 		$this->userNameUtils = $userNameUtils;
-		$this->editCountQuery = $editCountQuery;
 	}
 
 	public function execute() {
