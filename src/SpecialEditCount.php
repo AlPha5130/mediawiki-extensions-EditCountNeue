@@ -24,7 +24,6 @@ use SpecialPage;
 use HTMLForm;
 use Html;
 use MediaWiki\Languages\LanguageConverterFactory;
-use MediaWiki\User\ActorNormalization;
 use MediaWiki\User\UserIdentity;
 use MediaWiki\User\UserIdentityLookup;
 use WikiMedia\Rdbms\ILoadBalancer;
@@ -41,20 +40,19 @@ class SpecialEditCount extends SpecialPage {
 	private $editCountQuery;
 
 	/**
-	 * @param ActorNormalization $actorNormalization
-	 * @param ILoadBalancer $dbLoadBalancer
+	 * @param EditCountQuery $editCountQuery
 	 * @param LanguageConverterFactory $languageConverterFactory
 	 * @param UserIdentityLookup $userIdentityLookup
 	 */
 	public function __construct(
+		EditCountQuery $editCountQuery,
 		LanguageConverterFactory $languageConverterFactory,
-		UserIdentityLookup $userIdentityLookup,
-		EditCountQuery $editCountQuery
+		UserIdentityLookup $userIdentityLookup
 	) {
 		parent::__construct( 'EditCount' );
+		$this->editCountQuery = $editCountQuery;
 		$this->languageConverterFactory = $languageConverterFactory;
 		$this->userIdentityLookup = $userIdentityLookup;
-		$this->editCountQuery = $editCountQuery;
 	}
 
 	/**

@@ -20,12 +20,9 @@
 
 namespace MediaWiki\Extension\EditCount\Api;
 
-use ApiBase;
 use ApiQuery;
 use ApiQueryBase;
-use User;
 use MediaWiki\Extension\EditCount\EditCountQuery;
-use MediaWiki\User\ActorNormalization;
 use MediaWiki\User\UserIdentityLookup;
 use MediaWiki\User\UserNameUtils;
 use Wikimedia\ParamValidator\ParamValidator;
