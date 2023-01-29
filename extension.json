@@ -31,9 +31,7 @@
 		"editcount": {
 			"class": "MediaWiki\\Extension\\EditCount\\Api\\ApiQueryEditCount",
 			"services": [
-				"EditCountNeue.EditCountQuery",
-				"UserIdentityLookup",
-				"UserNameUtils"
+				"EditCountNeue.EditCountQuery"
 			]
 		}
 	},

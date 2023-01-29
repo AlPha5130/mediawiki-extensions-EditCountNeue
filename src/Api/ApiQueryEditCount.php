@@ -23,8 +23,6 @@ namespace MediaWiki\Extension\EditCount\Api;
 use ApiQuery;
 use ApiQueryBase;
 use MediaWiki\Extension\EditCount\EditCountQuery;
-use MediaWiki\User\UserIdentityLookup;
-use MediaWiki\User\UserNameUtils;
 use Wikimedia\ParamValidator\ParamValidator;
 use Wikimedia\ParamValidator\TypeDef\IntegerDef;
 use MediaWiki\ParamValidator\TypeDef\UserDef;
@@ -35,38 +33,23 @@ class ApiQueryEditCount extends ApiQueryBase {
 	/** @var EditCountQuery */
 	private $editCountQuery;
 
-	/** @var UserIdentityLookup */
-	private $userIdentityLookup;
-
-	/** @var UserNameUtils */
-	private $userNameUtils;
-
 	public function __construct(
 		ApiQuery $query,
 		$moduleName,
 		EditCountQuery $editCountQuery,
-		UserIdentityLookup $userIdentityLookup,
-		UserNameUtils $userNameUtils
 	) {
 		parent::__construct( $query, $moduleName, 'ec' );
 		$this->editCountQuery = $editCountQuery;
-		$this->userIdentityLookup = $userIdentityLookup;
-		$this->userNameUtils = $userNameUtils;
 	}
 
 	public function execute() {
 		$params = $this->extractRequestParams();
-		$userIter = $this->userIdentityLookup
-			->newSelectQueryBuilder()
-			->caller( __METHOD__ )
-			->whereUserNames( $params['user'] )
-			->orderByName()
-			->fetchUserIdentities();
+		$users = array_filter( $params['user'], fn ( $v ): array => $v->getId() !== 0 );
 
 		$result = $this->getResult();
 		$result->addIndexedTagName( [ 'query', $this->getModuleName() ], '' );
 
-		foreach ( $userIter as $user ) {
+		foreach ( $users as $user ) {
 			if ( !isset( $params['namespace'] ) ) {
 				$queryResult = $this->editCountQuery->queryAllNamespaces( $user );
 			} else {
@@ -91,6 +74,7 @@ class ApiQueryEditCount extends ApiQueryBase {
 			'user' => [
 				ParamValidator::PARAM_TYPE => 'user',
 				UserDef::PARAM_ALLOWED_USER_TYPES => [ 'name', 'id' ],
+				UserDef::PARAM_RETURN_OBJECT => true,
 				ParamValidator::PARAM_ISMULTI => true,
 				ParamValidator::PARAM_REQUIRED => true
 			],
