@@ -5,7 +5,14 @@
 		]
 	},
 	"editcountneue": "מונה עריכות",
+	"editcountneue-desc": "אחזור מספר העריכות של משתמש",
+	"editcountneue-form-legend": "שאילתה על מספר העריכות של משתמש",
+	"editcountneue-form-username": "שם משתמש:",
 	"editcountneue-form-submit": "שליחה",
 	"editcountneue-result-allnamespaces": "כל מרחבי השם",
-	"editcountneue-result-namespace": "מרחב שם"
+	"editcountneue-result-count": "מספר העריכות",
+	"editcountneue-result-namespace": "מרחב שם",
+	"editcountneue-result-percentage": "אחוזים",
+	"editcountneue-result-heading": "מספר העריכות של המשתמש \"$1\"",
+	"editcountneue-error-userdoesnotexist": "חשבון המשתמש \"$1\" אינו רשום ואין לו עריכות."
 }
