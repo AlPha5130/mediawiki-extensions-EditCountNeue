@@ -24,14 +24,14 @@
 	"AutoloadNamespaces": {
 		"MediaWiki\\Extension\\EditCount\\": "src/"
 	},
+	"ServiceWiringFiles":[
+		"src/ServiceWiring.php"
+	],
 	"APIListModules": {
 		"editcount": {
 			"class": "MediaWiki\\Extension\\EditCount\\Api\\ApiQueryEditCount",
 			"services": [
-				"ActorNormalization",
-				"DBLoadBalancer",
-				"UserIdentityLookup",
-				"UserNameUtils"
+				"EditCountNeue.EditCountQuery"
 			]
 		}
 	},
@@ -39,8 +39,7 @@
 		"EditCount": {
 			"class": "MediaWiki\\Extension\\EditCount\\SpecialEditCount",
 			"services": [
-				"ActorNormalization",
-				"DBLoadBalancer",
+				"EditCountNeue.EditCountQuery",
 				"LanguageConverterFactory",
 				"UserIdentityLookup"
 			]
@@ -53,8 +52,7 @@
 		"handleHooks": {
 			"class": "MediaWiki\\Extension\\EditCount\\Hooks",
 			"services": [
-				"ActorNormalization",
-				"DBLoadBalancer",
+				"EditCountNeue.EditCountQuery",
 				"UserIdentityLookup"
 			]
 		}
