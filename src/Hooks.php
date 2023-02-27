@@ -22,7 +22,6 @@ namespace MediaWiki\Extension\EditCount;
 
 use Parser;
 use PPFrame;
-use MediaWiki\User\ActorNormalization;
 use MediaWiki\User\UserIdentity;
 use MediaWiki\User\UserIdentityLookup;
 use WikiMedia\Rdbms\ILoadBalancer;
@@ -39,20 +38,15 @@ class Hooks implements \MediaWiki\Hook\ParserFirstCallInitHook {
 	private $queryResult;
 
 	/**
-	 * @param ActorNormalization $actorNormalization
-	 * @param ILoadBalancer $dbLoadBalancer
+	 * @param EditCountQuery $editCountQuery
 	 * @param UserIdentityLookup $userIdentityLookup
 	 */
 	public function __construct(
-		ActorNormalization $actorNormalization,
-		ILoadBalancer $dbLoadBalancer,
+		EditCountQuery $editCountQuery,
 		UserIdentityLookup $userIdentityLookup
 	) {
 		$this->userIdentityLookup = $userIdentityLookup;
-		$this->editCountQuery = new EditCountQuery(
-			$actorNormalization,
-			$dbLoadBalancer
-		);
+		$this->editCountQuery = $editCountQuery;
 		$this->queryResult = [];
 	}
 

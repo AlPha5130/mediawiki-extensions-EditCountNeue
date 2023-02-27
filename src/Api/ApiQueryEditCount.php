@@ -20,14 +20,9 @@
 
 namespace MediaWiki\Extension\EditCount\Api;
 
-use ApiBase;
 use ApiQuery;
 use ApiQueryBase;
-use User;
 use MediaWiki\Extension\EditCount\EditCountQuery;
-use MediaWiki\User\ActorNormalization;
-use MediaWiki\User\UserIdentityLookup;
-use MediaWiki\User\UserNameUtils;
 use Wikimedia\ParamValidator\ParamValidator;
 use Wikimedia\ParamValidator\TypeDef\IntegerDef;
 use MediaWiki\ParamValidator\TypeDef\UserDef;
@@ -38,59 +33,23 @@ class ApiQueryEditCount extends ApiQueryBase {
 	/** @var EditCountQuery */
 	private $editCountQuery;
 
-	/** @var UserIdentityLookup */
-	private $userIdentityLookup;
-
-	/** @var UserNameUtils */
-	private $userNameUtils;
-
 	public function __construct(
 		ApiQuery $query,
 		$moduleName,
-		ActorNormalization $actorNormalization,
-		ILoadBalancer $dbLoadBalancer,
-		UserIdentityLookup $userIdentityLookup,
-		UserNameUtils $userNameUtils
+		EditCountQuery $editCountQuery,
 	) {
 		parent::__construct( $query, $moduleName, 'ec' );
-		$this->userIdentityLookup = $userIdentityLookup;
-		$this->userNameUtils = $userNameUtils;
-		$this->editCountQuery = new EditCountQuery( $actorNormalization, $dbLoadBalancer );
+		$this->editCountQuery = $editCountQuery;
 	}
 
 	public function execute() {
 		$params = $this->extractRequestParams();
-		if ( !isset( $params['user'] ) || $params['user'] === [] ) {
-			$encParamName = $this->encodeParamName( 'user' );
-			$this->dieWithError( [ 'apierror-paramempty', $encParamName ], "paramempty_$encParamName" );
-		}
-
-		$names = [];
-		foreach ( $params['user'] as $u ) {
-			if ( $u === '' ) {
-				$encParamName = $this->encodeParamName( 'user' );
-				$this->dieWithError( [ 'apierror-paramempty', $encParamName ], "paramempty_$encParamName" );
-			}
-			$name = $this->userNameUtils->getCanonical( $u );
-			if ( $name == false ) {
-				$encParamName = $this->encodeParamName( 'user' );
-				$this->dieWithError(
-					[ 'apierror-baduser', $encParamName, wfEscapeWikiText( $u ) ], "baduser_$encParamName"
-				);
-			}
-			$names[] = $name;
-		}
-		$userIter = $this->userIdentityLookup
-			->newSelectQueryBuilder()
-			->caller( __METHOD__ )
-			->whereUserNames( $names )
-			->orderByName()
-			->fetchUserIdentities();
+		$users = array_filter( $params['user'], fn ( $v ): array => $v->getId() !== 0 );
 
 		$result = $this->getResult();
 		$result->addIndexedTagName( [ 'query', $this->getModuleName() ], '' );
 
-		foreach ( $userIter as $user ) {
+		foreach ( $users as $user ) {
 			if ( !isset( $params['namespace'] ) ) {
 				$queryResult = $this->editCountQuery->queryAllNamespaces( $user );
 			} else {
@@ -115,7 +74,9 @@ class ApiQueryEditCount extends ApiQueryBase {
 			'user' => [
 				ParamValidator::PARAM_TYPE => 'user',
 				UserDef::PARAM_ALLOWED_USER_TYPES => [ 'name', 'id' ],
-				ParamValidator::PARAM_ISMULTI => true
+				UserDef::PARAM_RETURN_OBJECT => true,
+				ParamValidator::PARAM_ISMULTI => true,
+				ParamValidator::PARAM_REQUIRED => true
 			],
 			'namespace' => [
 				ParamValidator::PARAM_TYPE => 'namespace',
