@@ -44,7 +44,7 @@ class ApiQueryEditCount extends ApiQueryBase {
 
 	public function execute() {
 		$params = $this->extractRequestParams();
-		$users = array_filter( $params['user'], fn ( $v ): array => $v->getId() !== 0 );
+		$users = array_filter( $params['user'], fn ( $v ): bool => $v->getId() !== 0 );
 
 		$result = $this->getResult();
 		$result->addIndexedTagName( [ 'query', $this->getModuleName() ], '' );
