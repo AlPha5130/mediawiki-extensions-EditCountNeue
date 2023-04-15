@@ -24,7 +24,6 @@ use Parser;
 use PPFrame;
 use MediaWiki\User\UserIdentity;
 use MediaWiki\User\UserIdentityLookup;
-use WikiMedia\Rdbms\ILoadBalancer;
 
 class Hooks implements \MediaWiki\Hook\ParserFirstCallInitHook {
 

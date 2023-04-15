@@ -24,9 +24,7 @@ use ApiQuery;
 use ApiQueryBase;
 use MediaWiki\Extension\EditCount\EditCountQuery;
 use Wikimedia\ParamValidator\ParamValidator;
-use Wikimedia\ParamValidator\TypeDef\IntegerDef;
 use MediaWiki\ParamValidator\TypeDef\UserDef;
-use WikiMedia\Rdbms\ILoadBalancer;
 
 class ApiQueryEditCount extends ApiQueryBase {
 

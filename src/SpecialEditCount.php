@@ -26,7 +26,6 @@ use MediaWiki\Html\Html;
 use MediaWiki\Languages\LanguageConverterFactory;
 use MediaWiki\User\UserIdentity;
 use MediaWiki\User\UserIdentityLookup;
-use WikiMedia\Rdbms\ILoadBalancer;
 
 class SpecialEditCount extends SpecialPage {
 
