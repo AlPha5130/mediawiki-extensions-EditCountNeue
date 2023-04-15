@@ -22,7 +22,7 @@ namespace MediaWiki\Extension\EditCount;
 
 use SpecialPage;
 use HTMLForm;
-use Html;
+use MediaWiki\Html\Html;
 use MediaWiki\Languages\LanguageConverterFactory;
 use MediaWiki\User\UserIdentity;
 use MediaWiki\User\UserIdentityLookup;
