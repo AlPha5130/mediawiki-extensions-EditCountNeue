@@ -1,0 +1,18 @@
+{
+	"@metadata": {
+		"authors": [
+			"Mehtab ahmed"
+		]
+	},
+	"editcountneue": "سنوارن جو ڳاڻيٽو",
+	"editcountneue-desc": "واپرائيندڙ جي سنوارن جو انگ حاصل ڪري ٿو",
+	"editcountneue-form-legend": "سنوارن جي ڳاڻيٽي جي ڪئري",
+	"editcountneue-form-username": "واپرائيندڙنانءُ:",
+	"editcountneue-form-submit": "اماڻيو",
+	"editcountneue-result-allnamespaces": "سڀئي نانءُپولارَ",
+	"editcountneue-result-count": "سنوارن جو انگ",
+	"editcountneue-result-namespace": "نانءُپولار",
+	"editcountneue-result-percentage": "سيڪڙو",
+	"editcountneue-result-heading": "واپرائيندڙ جي سنوارن جو انگ \"$1\"",
+	"editcountneue-error-userdoesnotexist": "واپرائيندڙ کاتو \"$1\" رجسٽر ٿيل ناهي ۽ ان ۾ ڪا بہ سنوار ناھي."
+}
