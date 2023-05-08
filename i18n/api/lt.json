@@ -1,0 +1,9 @@
+{
+	"@metadata": {
+		"authors": [
+			"Nokeoo"
+		]
+	},
+	"apihelp-query+editcount-param-user": "Naudotojas, kurio pakeitimus gauti.",
+	"apihelp-query+editcount-param-namespace": "Išvardinti tik šių vardų sričių keitimų skaičių."
+}
