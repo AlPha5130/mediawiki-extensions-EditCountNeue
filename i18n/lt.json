@@ -1,11 +1,19 @@
 {
 	"@metadata": {
 		"authors": [
+			"Nokeoo",
 			"Pavel1513"
 		]
 	},
 	"editcountneue": "Naudotojo indėlis",
 	"editcountneue-desc": "Išgauna naudotojo redagavimų skaičių",
 	"editcountneue-form-legend": "Užklausos redagavimo skaičius",
-	"editcountneue-form-submit": "Pateikti"
+	"editcountneue-form-username": "Naudotojo vardas:",
+	"editcountneue-form-submit": "Pateikti",
+	"editcountneue-result-allnamespaces": "Visos vardų sritys",
+	"editcountneue-result-count": "Pakeitimų skaičius",
+	"editcountneue-result-namespace": "Vardų sritis",
+	"editcountneue-result-percentage": "Procentas",
+	"editcountneue-result-heading": "Naudotojo „$1“ pakeitimų skaičius",
+	"editcountneue-error-userdoesnotexist": "Naudotojo paskyra „$1“ neregistruota ir neturi pakeitimų."
 }
