@@ -22,26 +22,26 @@ namespace MediaWiki\Extension\EditCount;
 
 use MediaWiki\User\ActorNormalization;
 use MediaWiki\User\UserIdentity;
-use WikiMedia\Rdbms\ILoadBalancer;
+use WikiMedia\Rdbms\LBFactory;
 
 class EditCountQuery {
 
-	/** @var ILoadBalancer */
-	private $dbLoadBalancer;
+	/** @var LBFactory */
+	private $lbFactory;
 
 	/** @var ActorNormalization */
 	private $actorNormalization;
 
 	/**
 	 * @param ActorNormalization $actorNormalization
-	 * @param ILoadBalancer $dbLoadBalancer
+	 * @param LBFactory $lbFactory
 	 */
 	public function __construct(
 		ActorNormalization $actorNormalization,
-		ILoadBalancer $dbLoadBalancer
+		LBFactory $lbFactory
 	) {
 		$this->actorNormalization = $actorNormalization;
-		$this->dbLoadBalancer = $dbLoadBalancer;
+		$this->lbFactory = $lbFactory;
 	}
 
 	/**
@@ -84,7 +84,7 @@ class EditCountQuery {
 	 * @return array
 	 */
 	protected function execute( UserIdentity $user ) {
-		$dbr = $this->dbLoadBalancer->getConnectionRef( DB_REPLICA );
+		$dbr = $this->lbFactory->getReplicaDatabase();
 		$actorId = $this->actorNormalization->findActorId( $user, $dbr );
 		if ( is_null( $actorId ) ) {
 			return [ 'sum' => 0 ];
