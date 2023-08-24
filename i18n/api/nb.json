@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"Jon Harald Søby"
+		]
+	},
+	"apihelp-query+editcount-summary": "List opp antall redigeringer en gitt bruker har gjort.",
+	"apihelp-query+editcount-param-user": "Brukeren antall redigeringer skal hentes for.",
+	"apihelp-query+editcount-param-namespace": "List kun opp antall redigeringer i disse navnerommene.",
+	"apihelp-query+editcount-example-user": "List opp antall redigeringer av brukeren <kbd>Example</kbd>."
+}
