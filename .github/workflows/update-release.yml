@@ -1,0 +1,30 @@
+name: Update release
+
+on:
+  release:
+    types:
+      - published
+  workflow_run:
+    workflows: 
+      - Sync localization
+    types:
+      - completed
+
+jobs:
+  update-release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Build target packages
+        run: |
+          mkdir output
+          for branch in REL1_35 REL1_39 REL1_40
+          do
+            git checkout $branch
+            tar -czvf output/EditCountNeue-$branch.tar.gz i18n src composer.json EditCount.i18n.alias.php EditCount.i18n.magic.php extension.json LICENSE README.md
+            zip output/EditCountNeue-$branch.zip -r i18n src composer.json EditCount.i18n.alias.php EditCount.i18n.magic.php extension.json LICENSE README.md
+          done
+      - name: update release
+        run: gh release upload $(git describe --tags $(git rev-list --tags --max-count=1)) $(find ./output -type f -printf "%p " --clobber)
