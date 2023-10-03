@@ -23,8 +23,11 @@ jobs:
           for branch in REL1_35 REL1_39 REL1_40
           do
             git checkout $branch
-            tar -czvf output/EditCountNeue-$branch.tar.gz i18n src composer.json EditCount.i18n.alias.php EditCount.i18n.magic.php extension.json LICENSE README.md
-            zip output/EditCountNeue-$branch.zip -r i18n src composer.json EditCount.i18n.alias.php EditCount.i18n.magic.php extension.json LICENSE README.md
+            echo $"$(printf "EditCountNeue: %s\n%s\n\n%s" $branch "$(date -u -d $(git show -s --format=%cI) +%FT%T)" $(git show -s --format=%h))" | tee version
+            tar -czvf output/EditCountNeue-$branch.tar.gz i18n src composer.json EditCount.i18n.alias.php EditCount.i18n.magic.php extension.json LICENSE README.md version
+            zip output/EditCountNeue-$branch.zip -r i18n src composer.json EditCount.i18n.alias.php EditCount.i18n.magic.php extension.json LICENSE README.md version
           done
       - name: update release
-        run: gh release upload $(git describe --tags $(git rev-list --tags --max-count=1)) $(find ./output -type f -printf "%p " --clobber)
+        run: gh release upload $(git describe --tags $(git rev-list --tags --max-count=1)) $(find ./output -type f -printf "%p ") --clobber
+        env:
+          GH_TOKEN: ${{ github.token }}
