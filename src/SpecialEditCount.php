@@ -70,9 +70,30 @@ class SpecialEditCount extends SpecialPage {
 		$output = $this->getOutput();
 		$this->setHeaders();
 		$this->outputHeader();
-		
-		$username = $par ?? $request->getText( 'wpUsername' ) ?? $request->getText( 'wpuser' );
-		if ( !$username ) {
+
+		// Check URL parameters passed from the submit button first.
+		// Usernames don't allow leading and trailing whitespaces, so trim them.
+		// WebRequest::getText return '' by default but ?? only allow null-detection.
+		$trimChars = "_ \n\r\t\v\x00";
+		$usernameParams = [];
+		$usernameParams[] = $request->getText( 'wpUsername' );
+		$usernameParams[] = $request->getText( 'wpuser' );
+		$usernameParams[] = $par !== null ? $par : '';
+
+		foreach ( $usernameParams as $usernameParam ) {
+			$username = trim( $usernameParam, $trimChars );
+			if ( $par === '' || ( $usernameParam !== '' && $par !== $username ) ) {
+				$username = $username !== '' ? $username : null;
+				$url = SpecialPage::getTitleFor( 'EditCount', $username )->getLocalURL();
+				$output->redirect( $url );
+			}
+		}
+
+		$username = $par;
+
+		// PHP considers '0' to be falsy –
+		//  but '0' is a valid title and valid user name in MediaWiki.
+		if ( $username === null || $username === '' ) {
 			$this->outputHTMLForm();
 			return;
 		}
@@ -80,7 +101,7 @@ class SpecialEditCount extends SpecialPage {
 		$user = $this->userIdentityLookup
 			->getUserIdentityByName( $username );
 		if ( !$user || $user->getId() === 0 ) {
-			$this->outputHTMLForm();
+			$this->outputHTMLForm( null, $username );
 			$output->addHTML( '<br>' . Html::element(
 				'strong',
 				[ 'class' => 'error' ],
@@ -105,8 +126,9 @@ class SpecialEditCount extends SpecialPage {
 	/**
 	 * Output form for query.
 	 * @param ?UserIdentity $user
+	 * @param string $username Usually for nonexistent username query
 	 */
-	protected function outputHTMLForm( ?UserIdentity $user = null ) {
+	protected function outputHTMLForm( ?UserIdentity $user = null, string $username = '' ) {
 		$formDescriptor = [
 			'username' => [
 				'type' => 'user',
@@ -115,13 +137,14 @@ class SpecialEditCount extends SpecialPage {
 				'exists' => true,
 				'label-message' => 'editcountneue-form-username',
 				'required' => true,
-				'default' => $user ? $user->getName() : ''
+				'default' => $user ? $user->getName() : $username
 			]
 		];
 
 		$htmlForm = HTMLForm::factory( 'ooui', $formDescriptor, $this->getContext() );
 		$htmlForm
 			->setMethod( 'get' )
+			->setAction( SpecialPage::getTitleFor( 'EditCount' )->getLocalURL() )
 			->setWrapperLegendMsg( 'editcountneue-form-legend' )
 			->setSubmitTextMsg( 'editcountneue-form-submit' )
 			->prepareForm()
