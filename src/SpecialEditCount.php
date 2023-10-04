@@ -58,7 +58,7 @@ class SpecialEditCount extends SpecialPage {
 	 * @inheritDoc
 	 */
 	public function getDescription() {
-		return $this->msg( 'editcountneue' )->text();
+		return $this->msg( 'editcountneue' );
 	}
 
 	/**
