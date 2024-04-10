@@ -20,10 +20,10 @@
 
 namespace MediaWiki\Extension\EditCount;
 
-use SpecialPage;
-use HTMLForm;
+use MediaWiki\HTMLForm\HTMLForm;
 use MediaWiki\Html\Html;
 use MediaWiki\Languages\LanguageConverterFactory;
+use MediaWiki\SpecialPage\SpecialPage;
 use MediaWiki\User\UserIdentity;
 use MediaWiki\User\UserIdentityLookup;
 

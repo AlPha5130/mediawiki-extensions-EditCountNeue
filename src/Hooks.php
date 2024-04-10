@@ -20,7 +20,7 @@
 
 namespace MediaWiki\Extension\EditCount;
 
-use Parser;
+use MediaWiki\Parser\Parser;
 use PPFrame;
 use MediaWiki\User\UserIdentity;
 use MediaWiki\User\UserIdentityLookup;
