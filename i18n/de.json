@@ -1,13 +1,19 @@
 {
 	"@metadata": {
 		"authors": [
-			"ThisCarthing"
+			"ThisCarthing",
+			"TomatoCake"
 		]
 	},
 	"editcountneue": "Bearbeitungszähler",
+	"editcountneue-desc": "Ruft die Anzahl der Bearbeitungen eines Kontos ab",
+	"editcountneue-form-legend": "Bearbeitungszahl abrufen",
 	"editcountneue-form-username": "Benutzername:",
+	"editcountneue-form-submit": "Senden",
 	"editcountneue-result-allnamespaces": "Alle Namensräume",
 	"editcountneue-result-count": "Anzahl der Bearbeitungen",
 	"editcountneue-result-namespace": "Namensraum",
-	"editcountneue-result-percentage": "Prozentsatz"
+	"editcountneue-result-percentage": "Prozentsatz",
+	"editcountneue-result-heading": "Anzahl der Bearbeitungen des Kontos „$1“",
+	"editcountneue-error-userdoesnotexist": "Das Konto „$1“ ist nicht registriert und hat keine Bearbeitungen."
 }
