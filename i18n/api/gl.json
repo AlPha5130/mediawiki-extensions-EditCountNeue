@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"Toliño"
+		]
+	},
+	"apihelp-query+editcount-summary": "Lista o número de edicións dos usuarios indicados.",
+	"apihelp-query+editcount-param-user": "Os usuarios para os que recuperar o número de edicións.",
+	"apihelp-query+editcount-param-namespace": "Listar só o número de edicións nestes espazos de nomes.",
+	"apihelp-query+editcount-example-user": "Listar o número de edicións do usuario <kbd>Example</kbd>."
+}
