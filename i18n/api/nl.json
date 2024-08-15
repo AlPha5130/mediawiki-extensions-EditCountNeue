@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"McDutchie"
+		]
+	},
+	"apihelp-query+editcount-summary": "Geef het aantal bewerkingen van de opgegeven gebruikers weer.",
+	"apihelp-query+editcount-param-user": "De gebruikers om het aantal bewerkingen voor op te halen.",
+	"apihelp-query+editcount-param-namespace": "Alleen het aantal bewerkingen in deze naamruimten weergeven.",
+	"apihelp-query+editcount-example-user": "Het aantal bewerkingen van de gebruiker <kbd>Example</kbd> weergeven."
+}
