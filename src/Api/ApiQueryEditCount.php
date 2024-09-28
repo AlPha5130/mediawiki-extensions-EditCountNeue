@@ -20,8 +20,8 @@
 
 namespace MediaWiki\Extension\EditCount\Api;
 
-use ApiQuery;
-use ApiQueryBase;
+use MediaWiki\Api\ApiQuery;
+use MediaWiki\Api\ApiQueryBase;
 use MediaWiki\Extension\EditCount\EditCountQuery;
 use Wikimedia\ParamValidator\ParamValidator;
 use MediaWiki\ParamValidator\TypeDef\UserDef;
