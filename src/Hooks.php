@@ -21,7 +21,7 @@
 namespace MediaWiki\Extension\EditCount;
 
 use MediaWiki\Parser\Parser;
-use PPFrame;
+use MediaWiki\Parser\PPFrame;
 use MediaWiki\User\UserIdentity;
 use MediaWiki\User\UserIdentityLookup;
 
