@@ -5,7 +5,7 @@ on:
     types:
       - published
   workflow_run:
-    workflows: 
+    workflows:
       - Sync localization
     types:
       - completed
@@ -20,7 +20,7 @@ jobs:
       - name: Build target packages
         run: |
           mkdir output
-          for branch in REL1_39 REL1_40 REL1_41 REL1_42
+          for branch in REL1_39 REL1_41 REL1_42
           do
             git checkout $branch
             mkdir EditCountNeue

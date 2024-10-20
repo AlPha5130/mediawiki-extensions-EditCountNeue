@@ -5,7 +5,7 @@ on:
     branches:
       - master
     paths:
-      - 'i18n/**'
+      - "i18n/**"
 
 jobs:
   sync-localization:
@@ -18,7 +18,7 @@ jobs:
         run: |
           git config user.name github-actions
           git config user.email github-actions@github.com
-          for branch in REL1_39 REL1_40 REL1_41 REL1_42
+          for branch in REL1_39 REL1_41 REL1_42
           do
             git checkout $branch
             git cherry-pick ${{ github.sha }}
