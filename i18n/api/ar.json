@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"Meno25"
+		]
+	},
+	"apihelp-query+editcount-summary": "قائمة عدد التعديلات للمستخدمين المحددين.",
+	"apihelp-query+editcount-param-user": "المستخدمون الذين يريدون استرداد عدد التعديلات الخاصة بهم.",
+	"apihelp-query+editcount-param-namespace": "قم بإدراج عدد التعديلات في هذه المساحات فقط.",
+	"apihelp-query+editcount-example-user": "قائمة عدد التعديلات التي أجراها المستخدم <kbd>مثال</kbd> ."
+}
