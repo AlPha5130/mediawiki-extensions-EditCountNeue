@@ -1,0 +1,15 @@
+{
+	"@metadata": {
+		"authors": [
+			"Yupik"
+		]
+	},
+	"editcountneue": "Rievdadusaid mearri",
+	"editcountneue-form-username": "Geavaheaddjinamma:",
+	"editcountneue-form-submit": "Sádde",
+	"editcountneue-result-allnamespaces": "Buot nammagomuvuođat",
+	"editcountneue-result-count": "Rievdadusaid mearri",
+	"editcountneue-result-namespace": "Nammagomuvuohta",
+	"editcountneue-result-heading": "Geavaheaddji \"$1\" rievdadusaid mearri",
+	"editcountneue-error-userdoesnotexist": "Geavaheaddjidovddaldat \"$1\" ii leat registrerejuvvon iige leat rievdadan maidege."
+}
