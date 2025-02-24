@@ -1,12 +1,15 @@
 {
 	"@metadata": {
 		"authors": [
-			"Deltaspace"
+			"Deltaspace",
+			"Yurina Tatiana"
 		]
 	},
 	"editcountneue": "Счётчик правок",
+	"editcountneue-form-username": "Имя участника:",
 	"editcountneue-form-submit": "Отправить",
 	"editcountneue-result-allnamespaces": "Все пространства имён",
 	"editcountneue-result-count": "Количество правок",
-	"editcountneue-result-namespace": "Пространство имён"
+	"editcountneue-result-namespace": "Пространство имён",
+	"editcountneue-result-percentage": "Процент"
 }
