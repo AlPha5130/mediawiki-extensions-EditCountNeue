@@ -2,14 +2,19 @@
 	"@metadata": {
 		"authors": [
 			"Deltaspace",
+			"Rairakkumee",
 			"Yurina Tatiana"
 		]
 	},
 	"editcountneue": "Счётчик правок",
+	"editcountneue-desc": "Извлекает число правок участника",
+	"editcountneue-form-legend": "Запрос числа правок",
 	"editcountneue-form-username": "Имя участника:",
 	"editcountneue-form-submit": "Отправить",
 	"editcountneue-result-allnamespaces": "Все пространства имён",
 	"editcountneue-result-count": "Количество правок",
 	"editcountneue-result-namespace": "Пространство имён",
-	"editcountneue-result-percentage": "Процент"
+	"editcountneue-result-percentage": "Процент",
+	"editcountneue-result-heading": "Число правок участника «$1»",
+	"editcountneue-error-userdoesnotexist": "Учётная запись с именем «$1» не зарегистрирована и не имеет правок."
 }
