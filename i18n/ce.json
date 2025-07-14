@@ -5,10 +5,13 @@
 		]
 	},
 	"editcountneue": "Нисдарш ларар",
+	"editcountneue-form-legend": "Хийцамийн дукхалла дехар",
 	"editcountneue-form-username": "Декъашхочун цӀе:",
 	"editcountneue-form-submit": "ДӀадахьийта",
 	"editcountneue-result-allnamespaces": "Йерриге цӀерийн меттигаш",
 	"editcountneue-result-count": "Нисдарийн дукхалла",
 	"editcountneue-result-namespace": "ЦӀерийн меттиг",
-	"editcountneue-result-percentage": "Процент"
+	"editcountneue-result-percentage": "Процент",
+	"editcountneue-result-heading": "Декъашхочун хийцамийн дукхъалла «$1»",
+	"editcountneue-error-userdoesnotexist": "«$1» цӀе йолу аккаунт дӀайазйина йац, хийцамаш а бац."
 }
