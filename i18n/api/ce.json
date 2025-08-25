@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"Умар"
+		]
+	},
+	"apihelp-query+editcount-summary": "Билгалбаьхначу декъашхойн хийцамийн дукхалла.",
+	"apihelp-query+editcount-param-user": "Хийцамийн дукхалла схьаэца деза декъашхой.",
+	"apihelp-query+editcount-param-namespace": "ХӀокху цӀерийн меттигашкахь болу хийцамийн допахала бен ма гайта.",
+	"apihelp-query+editcount-example-user": "Декъашхочун хийцамийн дукхаллин могӀам <kbd>Масала</kbd>."
+}
