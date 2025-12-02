@@ -20,7 +20,7 @@ jobs:
       - name: Build target packages
         run: |
           mkdir output
-          for branch in REL1_39 REL1_41 REL1_42 REL1_43
+          for branch in REL1_39 REL1_43 REL1_44 REL1_45
           do
             git checkout $branch
             mkdir EditCountNeue
