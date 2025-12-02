@@ -22,10 +22,11 @@ namespace MediaWiki\Extension\EditCount;
 
 use MediaWiki\Parser\Parser;
 use MediaWiki\Parser\PPFrame;
+use MediaWiki\Parser\Hook\ParserFirstCallInitHook;
 use MediaWiki\User\UserIdentity;
 use MediaWiki\User\UserIdentityLookup;
 
-class Hooks implements \MediaWiki\Hook\ParserFirstCallInitHook {
+class Hooks implements ParserFirstCallInitHook {
 
 	/** @var UserIdentityLookup */
 	private $userIdentityLookup;
