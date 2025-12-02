@@ -18,7 +18,7 @@ jobs:
         run: |
           git config user.name github-actions
           git config user.email github-actions@github.com
-          for branch in REL1_39 REL1_41 REL1_42 REL1_43
+          for branch in REL1_39 REL1_43 REL1_44 REL1_45
           do
             git checkout $branch
             git cherry-pick ${{ github.sha }}
