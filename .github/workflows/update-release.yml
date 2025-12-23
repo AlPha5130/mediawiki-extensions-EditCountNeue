@@ -20,18 +20,9 @@ jobs:
       - name: Build target packages
         run: |
           mkdir output
-          for branch in REL1_39 REL1_43 REL1_44 REL1_45
-          do
-            git checkout $branch
-            mkdir EditCountNeue
-            sha=$(git show -s --format=%H)
-            printf "{\"head\": \"%s\\\n\", \"headSHA1\": \"%s\\\n\", \"headCommitDate\": \"%s\", \"branch\": \"%s\\\n\", \"remoteURL\": \"https://github.com/AlPha5130/mediawiki-extensions-EditCountNeue\"}" $sha $sha $(git show -s --format=%ct) $sha | tee gitinfo.json
-            echo $"$(printf "EditCountNeue: %s\n%s\n\n%s" $branch "$(date -u -d $(git show -s --format=%cI) +%FT%T)" $(git show -s --format=%h))" | tee version
-            cp -r i18n src composer.json CODE_OF_CONDUCT.md EditCount.i18n.alias.php EditCount.i18n.magic.php extension.json Gruntfile.js LICENSE README.md version gitinfo.json EditCountNeue
-            tar -czf output/EditCountNeue-$branch.tar.gz EditCountNeue
-            zip -q -r output/EditCountNeue-$branch.zip EditCountNeue
-            rm -r EditCountNeue
-          done
+          cp pack.sh output/
+          bash output/pack.sh
+          rm output/pack.sh
       - name: update release
         run: gh release upload $(git describe --tags $(git rev-list --tags --max-count=1)) $(find ./output -type f -printf "%p ") --clobber
         env:
