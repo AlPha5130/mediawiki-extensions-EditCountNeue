@@ -26,27 +26,14 @@ use WikiMedia\Rdbms\IConnectionProvider;
 
 class EditCountQuery {
 
-	/** @var IConnectionProvider */
-	private $dbProvider;
-
-	/** @var ActorNormalization */
-	private $actorNormalization;
-
-	/**
-	 * @param ActorNormalization $actorNormalization
-	 * @param IConnectionProvider $dbProvider
-	 */
 	public function __construct(
-		ActorNormalization $actorNormalization,
-		IConnectionProvider $dbProvider
-	) {
-		$this->actorNormalization = $actorNormalization;
-		$this->dbProvider = $dbProvider;
-	}
+		private ActorNormalization $actorNormalization,
+		private IConnectionProvider $dbProvider
+	) {}
 
 	/**
 	 * Count the number of edits of a user in all namespaces
-	 * @param User $user
+	 * @param UserIdentity $user
 	 * @return array
 	 */
 	public function queryAllNamespaces( UserIdentity $user ) {

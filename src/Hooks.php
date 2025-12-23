@@ -28,27 +28,15 @@ use MediaWiki\User\UserIdentityLookup;
 
 class Hooks implements ParserFirstCallInitHook {
 
-	/** @var UserIdentityLookup */
-	private $userIdentityLookup;
-
-	/** @var EditCountQuery */
-	private $editCountQuery;
-
-	/** @var array */
-	private $queryResult;
-
 	/**
 	 * @param EditCountQuery $editCountQuery
 	 * @param UserIdentityLookup $userIdentityLookup
 	 */
 	public function __construct(
-		EditCountQuery $editCountQuery,
-		UserIdentityLookup $userIdentityLookup
-	) {
-		$this->userIdentityLookup = $userIdentityLookup;
-		$this->editCountQuery = $editCountQuery;
-		$this->queryResult = [];
-	}
+		private EditCountQuery $editCountQuery,
+		private UserIdentityLookup $userIdentityLookup,
+		private array $queryResult = []
+	) {}
 
 	/**
 	 * @param Parser $parser

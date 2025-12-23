@@ -29,29 +29,12 @@ use MediaWiki\User\UserIdentityLookup;
 
 class SpecialEditCount extends SpecialPage {
 
-	/** @var LanguageConverterFactory */
-	private $languageConverterFactory;
-
-	/** @var UserIdentityLookup */
-	private $userIdentityLookup;
-
-	/** @var EditCountQuery */
-	private $editCountQuery;
-
-	/**
-	 * @param EditCountQuery $editCountQuery
-	 * @param LanguageConverterFactory $languageConverterFactory
-	 * @param UserIdentityLookup $userIdentityLookup
-	 */
 	public function __construct(
-		EditCountQuery $editCountQuery,
-		LanguageConverterFactory $languageConverterFactory,
-		UserIdentityLookup $userIdentityLookup
+		private EditCountQuery $editCountQuery,
+		private LanguageConverterFactory $languageConverterFactory,
+		private UserIdentityLookup $userIdentityLookup
 	) {
 		parent::__construct( 'EditCount' );
-		$this->editCountQuery = $editCountQuery;
-		$this->languageConverterFactory = $languageConverterFactory;
-		$this->userIdentityLookup = $userIdentityLookup;
 	}
 
 	/**
@@ -128,7 +111,7 @@ class SpecialEditCount extends SpecialPage {
 	 * @param ?UserIdentity $user
 	 * @param string $username Usually for nonexistent username query
 	 */
-	protected function outputHTMLForm( ?UserIdentity $user = null, string $username = '' ) {
+	protected function outputHTMLForm( ?UserIdentity $user, string $username = '' ) {
 		$formDescriptor = [
 			'username' => [
 				'type' => 'user',

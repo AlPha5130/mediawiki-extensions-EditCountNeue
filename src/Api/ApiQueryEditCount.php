@@ -28,16 +28,12 @@ use MediaWiki\ParamValidator\TypeDef\UserDef;
 
 class ApiQueryEditCount extends ApiQueryBase {
 
-	/** @var EditCountQuery */
-	private $editCountQuery;
-
 	public function __construct(
 		ApiQuery $query,
 		$moduleName,
-		EditCountQuery $editCountQuery,
+		private EditCountQuery $editCountQuery,
 	) {
 		parent::__construct( $query, $moduleName, 'ec' );
-		$this->editCountQuery = $editCountQuery;
 	}
 
 	public function execute() {
