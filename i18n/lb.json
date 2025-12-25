@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Robby"
+			"Robby",
+			"Volvox"
 		]
 	},
 	"editcountneue": "Zuel vun de Säitenännerungen",
@@ -14,5 +15,5 @@
 	"editcountneue-result-namespace": "Nummraum",
 	"editcountneue-result-percentage": "Prozentsaz",
 	"editcountneue-result-heading": "Zuel vun den Ännerunge vum Benotzer \"$1\"",
-	"editcountneue-error-userdoesnotexist": "De Benotzerkont \"$1\" ass net registréiert an huet keng Ännerungen."
+	"editcountneue-error-userdoesnotexist": "De Benotzerkont „$1“ ass net registréiert an huet keng Ännerungen."
 }
