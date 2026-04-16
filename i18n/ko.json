@@ -1,9 +1,12 @@
 {
 	"@metadata": {
-		"authors": []
+		"authors": [
+			"Tensama0415"
+		]
 	},
 	"editcountneue": "편집 수",
 	"editcountneue-form-username": "사용자 이름:",
+	"editcountneue-form-submit": "제출",
 	"editcountneue-result-allnamespaces": "모든 이름공간",
 	"editcountneue-result-count": "편집 수",
 	"editcountneue-result-namespace": "이름공간",
