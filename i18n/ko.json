@@ -5,6 +5,8 @@
 		]
 	},
 	"editcountneue": "편집 수",
+	"editcountneue-desc": "사용자의 편집 횟수를 검색합니다",
+	"editcountneue-form-legend": "편집 횟수 조회",
 	"editcountneue-form-username": "사용자 이름:",
 	"editcountneue-form-submit": "제출",
 	"editcountneue-result-allnamespaces": "모든 이름공간",
