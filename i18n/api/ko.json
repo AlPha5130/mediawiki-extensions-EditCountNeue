@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"Tensama0415"
+		]
+	},
+	"apihelp-query+editcount-summary": "주어진 사용자들의 편집 횟수를 나열합니다.",
+	"apihelp-query+editcount-param-user": "편집 횟수를 조회할 사용자입니다.",
+	"apihelp-query+editcount-param-namespace": "이 이름공간의 편집 횟수만을 나열합니다.",
+	"apihelp-query+editcount-example-user": "사용자 <kbd>Example</kbd>의 편집 횟수를 나열합니다."
+}
