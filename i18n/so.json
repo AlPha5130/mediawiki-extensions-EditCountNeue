@@ -1,0 +1,18 @@
+{
+	"@metadata": {
+		"authors": [
+			"AhmedG612"
+		]
+	},
+	"editcountneue": "Tirada wax ka beddelka",
+	"editcountneue-desc": "Waxay soo celisaa tirada wax ka beddelka ee isticmaale",
+	"editcountneue-form-legend": "Soo saar tirada wax ka beddelka",
+	"editcountneue-form-username": "Magaca isticmaalaha:",
+	"editcountneue-form-submit": "Gudbi",
+	"editcountneue-result-allnamespaces": "Dhammaan magacyada meelaha",
+	"editcountneue-result-count": "Tirada wax ka beddelka",
+	"editcountneue-result-namespace": "Magac meel",
+	"editcountneue-result-percentage": "Boqolkiiba",
+	"editcountneue-result-heading": "Tirada wax ka beddelka ee isticmaalaha \"$1\"",
+	"editcountneue-error-userdoesnotexist": "Koontada isticmaalaha \"$1\" lama diiwaangelin mana laha wax ka beddel."
+}
