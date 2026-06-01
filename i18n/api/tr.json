@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"HakanIST"
+		]
+	},
+	"apihelp-query+editcount-summary": "Belirtilen kullanıcıların düzenleme sayılarını listele.",
+	"apihelp-query+editcount-param-user": "Düzenleme sayısı alınacak kullanıcılar.",
+	"apihelp-query+editcount-param-namespace": "Yalnızca bu ad alanlarındaki düzenleme sayısını listele.",
+	"apihelp-query+editcount-example-user": "<kbd>Example</kbd> kullanıcısının düzenleme sayısını listele."
+}
