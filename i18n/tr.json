@@ -1,9 +1,14 @@
 {
 	"@metadata": {
-		"authors": []
+		"authors": [
+			"HakanIST"
+		]
 	},
 	"editcountneue": "Değişiklik sayısı",
+	"editcountneue-desc": "Bir kullanıcının düzenleme sayısını alır",
+	"editcountneue-form-legend": "Düzenleme sayısını sorgula",
 	"editcountneue-form-username": "Kullanıcı adı:",
+	"editcountneue-form-submit": "Gönder",
 	"editcountneue-result-allnamespaces": "Tüm ad alanları",
 	"editcountneue-result-count": "Değişiklik sayısı",
 	"editcountneue-result-namespace": "Ad alanı",
