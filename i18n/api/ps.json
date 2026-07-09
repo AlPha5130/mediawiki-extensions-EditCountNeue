@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"شاه زمان پټان"
+		]
+	},
+	"apihelp-query+editcount-summary": "د ورکړل شويو کارنانو د سمونونو شمېر لړليک کړئ.",
+	"apihelp-query+editcount-param-user": "هغه کارن چې د سمونونو شمېر يې بايد بېرته ترلاسه شي.",
+	"apihelp-query+editcount-param-namespace": "يوازې د دې نوم‌تشيالونو د سمونونو شمېر لړليک کړئ.",
+	"apihelp-query+editcount-example-user": "د کارن د سمونونو شمېر لړليک کړئ\n<kbd>د بیلگې په ډول</kbd>."
+}
