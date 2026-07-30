@@ -1,0 +1,18 @@
+{
+	"@metadata": {
+		"authors": [
+			"شاه زمان پټان"
+		]
+	},
+	"editcountneue": "د سمونونو شمېر",
+	"editcountneue-desc": "د کارن د سمونونو شمېر بېرته ترلاسه کوي",
+	"editcountneue-form-legend": "تپو سمون شمېر",
+	"editcountneue-form-username": "کارن‌نوم:",
+	"editcountneue-form-submit": "سپارل",
+	"editcountneue-result-allnamespaces": "ټول نوم‌تشيالونه",
+	"editcountneue-result-count": "د سمونونو شمېر",
+	"editcountneue-result-namespace": "نوم‌تشيال",
+	"editcountneue-result-percentage": "سلنه",
+	"editcountneue-result-heading": "د \"$1\" کارن د سمونونو شمېر",
+	"editcountneue-error-userdoesnotexist": "د \"$1\" کارن گڼون نوم‌ليکلی نه دی او هېڅ سمونونه نلري."
+}
