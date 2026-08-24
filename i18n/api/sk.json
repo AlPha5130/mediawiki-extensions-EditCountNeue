@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"Wizzard"
+		]
+	},
+	"apihelp-query+editcount-summary": "Vypísať počet úprav zadaných používateľov.",
+	"apihelp-query+editcount-param-user": "Používatelia, ktorých počet úprav sa má získať.",
+	"apihelp-query+editcount-param-namespace": "Vypísať len počet úprav v týchto menných priestoroch.",
+	"apihelp-query+editcount-example-user": "Vypísať počet úprav používateľa <kbd>Example</kbd>."
+}
