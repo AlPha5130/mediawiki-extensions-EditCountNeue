@@ -1,0 +1,18 @@
+{
+	"@metadata": {
+		"authors": [
+			"Wizzard"
+		]
+	},
+	"editcountneue": "Počet príspevkov",
+	"editcountneue-desc": "Získava počet úprav používateľa",
+	"editcountneue-form-legend": "Zistiť počet úprav",
+	"editcountneue-form-username": "Používateľské meno:",
+	"editcountneue-form-submit": "Odoslať",
+	"editcountneue-result-allnamespaces": "Všetky menné priestory",
+	"editcountneue-result-count": "Počet úprav",
+	"editcountneue-result-namespace": "Menný priestor",
+	"editcountneue-result-percentage": "Percento",
+	"editcountneue-result-heading": "Počet úprav používateľa „$1“",
+	"editcountneue-error-userdoesnotexist": "Používateľský účet „$1“ nie je zaregistrovaný a nemá žiadne úpravy."
+}
